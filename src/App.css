@@ -171,42 +171,46 @@ body{
 
 /*main header*/
 
-.main__header {
+.header {
   background: #F8F9FA;
   height: 140px;
+  width: 1000px;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
 }
 
-.main__search-box{
+.search-box__input{
   margin: auto 0;
-  height: 70px;
-  width: 900px;
-  background: #ffff;
-  border-radius: 10px;
-  border: #EFEFF1 1px solid;
-}
-.main__input{
-  width: 88%;
-  height: 90%;
+  height:100%;
+  width: 90%;
   background: #ffff;
   border-radius: 10px;
   border: #ffff 1px solid;
+  padding: 0 16px;
   font-size: 40px;
-  padding: 10px;
-  box-sizing: border-box;
-  /*cursor: none;*/
+  display: inline;
 }
-.main__search-box>button{
-  height: 90%;
-  padding: 0;
-  margin: 0;
-  width: 10%;
-  font-size: 25px;
+.search-box{
+  max-width: 270px;
+  height: 40px;
+  background: #ffff;
+  border-radius: 10px;
+  border: #EFEFF1 1px solid;
+  box-sizing: border-box;
+  cursor: none;
+  padding-right:10px ;
+
+}
+.search-box__button{
+  padding: 0 ;
+  margin: auto 0 ;
+  width:10%;
+  font-size: 17px;
   background: #ffff;
   border-radius: 10px;
   border: #ffff 1px solid;
   cursor: pointer;
+
 }
 .main__sort{
   background: white;
