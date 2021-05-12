@@ -5,13 +5,8 @@ const AsideSelect = (props) => {
     return(
         <>
             <select name="asideSelect" id="asideSelect" className={'aside__Select'}>
-                <AsideSelectOption title = 'Ship From' />
-                <AsideSelectOption title = 'Ship From' />
-                <AsideSelectOption title = 'Ship From' />
-                <AsideSelectOption title = 'Ship From' />
-                <AsideSelectOption title = 'Ship From' />
-                <AsideSelectOption title = 'Ship From' />
-                <AsideSelectOption title = 'Ship From' />
+                <AsideSelectOption title = {props.title} />
+                <AsideSelectOption title ={props.title} />
             </select>
         </>
     )
