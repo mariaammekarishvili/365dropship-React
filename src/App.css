@@ -17,7 +17,7 @@ body{
   margin: 0 10px;
 }
 .button{
-  height: 40px;
+  height: 32px;
   width: auto;
   color: white;
   border: none;
@@ -26,6 +26,7 @@ body{
   padding: 0 14px;
   margin: auto 0;
   background: #61D5DF;
+  font-size: 12px;
 
 }
 .button--big{
@@ -176,7 +177,7 @@ body{
   height: 140px;
   width: 1000px;
   display: flex;
-  /*justify-content: center;*/
+  justify-content:space-between;
 }
 
 .search-box__input{
@@ -199,6 +200,7 @@ body{
   box-sizing: border-box;
   cursor: none;
   padding-right:10px ;
+  margin: 0 auto;
 
 }
 .search-box__button{
@@ -211,6 +213,16 @@ body{
   border: #ffff 1px solid;
   cursor: pointer;
 
+}
+.Header__para{
+  width: auto;
+  height: 14px;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 12px;
+  color: #353C55;
+  margin: 0 auto;
+  padding: 0 20px;
+  border-left: 1px solid darkslategrey;
 }
 .main__sort{
   background: white;
