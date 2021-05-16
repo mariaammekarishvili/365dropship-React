@@ -1,4 +1,6 @@
 import Header from "./Header";
+import SortSection from "./SortSection";
+import CatalogSection from "./CatalogSection";
 
 const Main = () => {
     return(
@@ -6,17 +8,13 @@ const Main = () => {
 
             <Header/>
 
-            <div className="main__sort">
-                <select id="sort">
-                    <option value="asc">Ascoding</option>
-                    <option value="desc">DEsscoding</option>
-                </select>
-            </div>
+            <SortSection/>
 
-            <section className="main__catalog">
+            <CatalogSection/>
 
 
-            </section>
+
+
 
         </main>
     )
