@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './img/dropship_logo.png';
+import logo from '../img/dropship_logo.png';
 
 const Logo = () => {
     return(

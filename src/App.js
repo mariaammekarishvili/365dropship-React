@@ -1,6 +1,6 @@
 import './App.css';
-import Navigation from "./Navigation";
-import AsideBar from "./AsideBar";
+import Navigation from "./common/Navigation";
+import AsideBar from "./asideBar/AsideBar";
 import Main from "./Main";
 
 function App() {

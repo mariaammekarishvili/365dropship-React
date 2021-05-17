@@ -1,7 +1,7 @@
 import SearchBox from "./SearchBox";
-import Button from "./Button";
+import Button from "../common/Button";
 import Paragraph from "./Paragraph";
-import CatalogItem from "./CatalogItem";
+import CatalogItem from "../catalog/CatalogItem";
 
 const Header = () =>{
     return(

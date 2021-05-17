@@ -1,4 +1,4 @@
-import picture4 from './img/girl.jpg';
+import picture4 from '../img/girl.jpg';
 import {useState} from "react";
 
 const CatalogItem = ({title,price,img}) => {

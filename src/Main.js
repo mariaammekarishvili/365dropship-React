@@ -1,6 +1,6 @@
-import Header from "./Header";
-import SortSection from "./SortSection";
-import CatalogSection from "./CatalogSection";
+import Header from "./header/Header";
+import SortSection from "./catalog/SortSection";
+import CatalogSection from "./catalog/CatalogSection";
 
 const Main = () => {
     return(

@@ -2,7 +2,7 @@ import AsideFilter from "./AsideFilter";
 import AsideSelect from "./AsideSelect";
 import AsideSelectOption from "./AsideSelectOption";
 import AsideRangeSlider from "./AsideRangeSlider";
-import Button from "./Button";
+import Button from "../common/Button";
 
 const AsideBar = () => {
     return (
