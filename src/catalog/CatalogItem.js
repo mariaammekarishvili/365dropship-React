@@ -1,17 +1,18 @@
 import picture4 from '../img/girl.jpg';
 import {useState} from "react";
 
-const CatalogItem = ({title,price,img}) => {
+const CatalogItem = ({title,price,img,onChange}) => {
     const [itemSelected, setItemSelected] = useState(false)
 
     const checkboxChainge = (event) => {
-        setItemSelected(event.target.checked)
+        const checked = event.target.checked
+        // setItemSelected(event.target.checked)
+        setItemSelected(checked)
+        onChange(checked ? 1 : -1)
     };
-    const [selectedItemNumb, setSelectedItemNumb] = useState(0)
-    const numberOfselected = () => {
-        setItemSelected(itemSelected ? selectedItemNumb + 1 : selectedItemNumb)
-        console.log(selectedItemNumb)
-    }
+
+
+
 
 
     return (

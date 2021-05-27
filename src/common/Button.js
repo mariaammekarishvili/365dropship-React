@@ -2,7 +2,7 @@
 const Button = (props) => {
     return(
         <>
-            <button type="button" className={'button' + (props.big ? ' button--big' : '')} onClick="">{props.title}</button>
+            <button type="button" className={'button' + (props.big ? ' button--big' : '')} >{props.title}</button>
         </>
     )
 }

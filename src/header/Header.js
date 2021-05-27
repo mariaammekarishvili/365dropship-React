@@ -1,15 +1,23 @@
 import SearchBox from "./SearchBox";
 import Button from "../common/Button";
-import Paragraph from "./Paragraph";
-import CatalogItem from "../catalog/CatalogItem";
+import React, { useState, useEffect } from 'react';
 
-const Header = () =>{
+
+
+
+
+const Header = ({selectedNumber, productNumber}) =>{
     return(
 
         <header className="header">
             <Button title={'SELECT ALL'}/>
-            <Paragraph text={'selected out of 270.872 products'} class={'header__para'}/>
-            <SearchBox/>
+            <p className={'header__para'}>selected {selectedNumber} out of {productNumber} products </p>
+            {/*<SearchBox/>*/}
+            <div className="search-box">
+                <input className="search-box__input" id="search" type="text"/>
+                <button className="search-box__button" type="submit">O</button>
+            </div>
+
             <Button title={'ADD TO INVENTORY'}/>
         </header>
     )
