@@ -356,10 +356,10 @@ body{
 .catalog__title{
   border-bottom:  #E4E5EC 1px solid;
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 .catalog__price{
-  font-size: 25px;
+  font-size: 18px;
   text-align: center;
   margin-bottom: 10px;
 }
