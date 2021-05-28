@@ -6,12 +6,21 @@ import React, { useState, useEffect } from 'react';
 
 
 
-const Header = ({selectedNumber, productNumber}) =>{
+const Header = ({selectedNumber, productNumber,slectButton}) =>{
+
+
+    const [buttChecked,setButtChecked] = useState(true)
+    const selectAllItem = () => {
+        setButtChecked(!buttChecked)
+        slectButton(buttChecked)
+    }
     return(
 
         <header className="header">
-            <Button title={'SELECT ALL'}/>
-            <p className={'header__para'}>selected {selectedNumber} out of {productNumber} products </p>
+
+            <button type="button" className={'button'} onClick={selectAllItem}>SELECT ALL</button>
+
+            <p className={'header__para'}>selected {buttChecked ? selectedNumber: productNumber} out of {productNumber} products </p>
             {/*<SearchBox/>*/}
             <div className="search-box">
                 <input className="search-box__input" id="search" type="text"/>
