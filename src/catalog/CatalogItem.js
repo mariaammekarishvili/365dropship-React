@@ -1,20 +1,17 @@
-import picture4 from '../img/girl.jpg';
 import {useState} from "react";
 import ItemTable from "./ItemTable";
 
 
-const CatalogItem = ({title,price,img,onChange,selectAll,onClick,description}) => {
+const CatalogItem = ({title,price,img,onChange,selectAll,description}) => {
     const [itemSelected, setItemSelected] = useState(selectAll)
     const [shown, setShown] = useState(false)
     const checkboxChainge = (event) => {
         const checked = event.target.checked
-        // setItemSelected(event.target.checked)
         setItemSelected(checked)
         onChange(checked ? 1 : -1)
     };
     const productClick = () => {
         setShown(!shown)
-        onClick(shown)
     }
 
 
