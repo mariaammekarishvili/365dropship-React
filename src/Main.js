@@ -12,16 +12,37 @@ const Main = () => {
     const [selectAllProducts,setSelectAllProducts] = useState(false)
     const [arr,setArr] = useState([])
 
+
     const connectAPI = async () => {
         const request = await fetch(`https://fakestoreapi.com/products`)
         return await request.json()
     }
 
+
     const sortType = (value) => {
         setArr([...information])
+        if (value === "priceAsc") {
+            setArr(arr.sort((a, b) => a.price - b.price))
 
-    }
+        } else if (value === "priceDesc") {
+            setArr(arr.sort((a, b) => b.price - a.price))
 
+        } else if (value === "profitAsc") {
+            setArr(arr.sort((a, b) => {
+                if (a.title < b.title) return -1;
+                else if (a.title > b.title) return 1;
+                else return 0;
+            }))
+        } else if (value === "profitDesc") {
+            setArr(arr.sort((a, b) => {
+                    if (a.title > b.title) return -1;
+                    else if (a.title < b.title) return 1;
+                    else return 0;
+                })
+            )
+        }    console.log(arr)}
+
+    console.log(arr)
 
     useEffect(() => {
         connectAPI().then(iformationData => {
@@ -49,7 +70,7 @@ const Main = () => {
 
             <div className="catalog">
 
-                {information.map(item => {
+                {arr.map(item => {
                     return <CatalogItem title={item.title} img={item.image} price={item.price} description={item.description} onChange={selectCount} selectAll={selectAllProducts}  />
                     })
                 }

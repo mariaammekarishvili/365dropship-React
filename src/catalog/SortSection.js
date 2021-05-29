@@ -6,7 +6,8 @@ const SortSection = ({sort,onChange}) => {
     const[sortType,setSortType] = useState('')
 
     const chaingeTipe = (e) => {
-        console.log(e.target.value)
+        setSortType(e.target.value)
+        onChange(sortType)
     }
     console.log(sortType)
 
