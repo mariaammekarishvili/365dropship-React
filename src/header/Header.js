@@ -21,7 +21,8 @@ const Header = ({selectedNumber, productNumber,slectButton}) =>{
             <button type="button" className={'button'} onClick={selectAllItem}>SELECT ALL</button>
 
             <p className={'header__para'}>selected {buttChecked ? selectedNumber: productNumber} out of {productNumber} products </p>
-            {/*<SearchBox/>*/}
+
+{/*searchbox*/}
             <div className="search-box">
                 <input className="search-box__input" id="search" type="text"/>
                 <button className="search-box__button" type="submit">O</button>

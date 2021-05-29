@@ -20,27 +20,20 @@ const Main = () => {
 
 
     const sortType = (value) => {
+        if(value == "priceDesc"){
+            information.sort((a, b) => (a.price < b.price) ? 1 : -1)
+        }
+        else if(value == "priceAsc"){
+            information.sort((a, b) => (a.price > b.price) ? 1 : -1)
+        }
+        else if(value == "profitDesc"){
+            information.sort((a, b) => (a.title > b.title) ? 1 : -1)
+        }
+        else if(value == "profitAsc"){
+            information.sort((a, b) => (a.title < b.title) ? 1 : -1)
+        }
         setArr([...information])
-        if (value === "priceAsc") {
-            setArr(arr.sort((a, b) => a.price - b.price))
-
-        } else if (value === "priceDesc") {
-            setArr(arr.sort((a, b) => b.price - a.price))
-
-        } else if (value === "profitAsc") {
-            setArr(arr.sort((a, b) => {
-                if (a.title < b.title) return -1;
-                else if (a.title > b.title) return 1;
-                else return 0;
-            }))
-        } else if (value === "profitDesc") {
-            setArr(arr.sort((a, b) => {
-                    if (a.title > b.title) return -1;
-                    else if (a.title < b.title) return 1;
-                    else return 0;
-                })
-            )
-        }    console.log(arr)}
+    }
 
     console.log(arr)
 
@@ -70,7 +63,7 @@ const Main = () => {
 
             <div className="catalog">
 
-                {arr.map(item => {
+                {information.map(item => {
                     return <CatalogItem title={item.title} img={item.image} price={item.price} description={item.description} onChange={selectCount} selectAll={selectAllProducts}  />
                     })
                 }
@@ -79,6 +72,8 @@ const Main = () => {
 
 
         </main>
+
+
     )
 }
 
