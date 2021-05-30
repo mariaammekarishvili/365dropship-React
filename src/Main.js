@@ -62,7 +62,7 @@ const Main = () => {
         return(
         <main className="main">
 
-            <Header selectedNumber={numbOfSelected} productNumber={information.length} input={setSearchValue} slectButton={selectProducts} />
+            <Header selectedNumber={numbOfSelected} productNumber={sortedProduct.length} input={setSearchValue} slectButton={selectProducts} />
 
             <SortSection onChange={setSortState}/>
 

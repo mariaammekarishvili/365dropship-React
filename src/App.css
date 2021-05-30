@@ -49,6 +49,7 @@ body{
 .navigation{
   width: 54px;
   padding-top: 28px;
+
 }
 
 @media screen and( min-width: 1070px) {
@@ -441,4 +442,9 @@ hr{
   /*justify-content: space-between;*/
   padding: 30px;
   background: white;
+}
+/*----*/
+.Navigation-item__img{
+  width: 33px;
+  margin: 10px;
 }
