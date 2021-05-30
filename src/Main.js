@@ -10,9 +10,8 @@ const Main = () => {
     const [numbOfSelected,setNumbOfSelected] = useState(0)
     const [information, setInformation] = useState([])
     const [selectAllProducts,setSelectAllProducts] = useState(false)
-    const [arr,setArr] = useState([])
-    const [filteredProducts, setFilteredProducts] = useState([])
-
+    const [searchValue, setSearchValue] = useState('')
+    const [sortState, setSortState] = useState('default')
 
     const connectAPI = async () => {
         const request = await fetch(`https://fakestoreapi.com/products`)
@@ -20,20 +19,20 @@ const Main = () => {
     }
 
 
-    const sortType = (value) => {
-        if(value == "priceDesc"){
-            information.sort((a, b) => (a.price < b.price) ? 1 : -1)
+    const sortType = (products, sortState) => {
+        if(sortState == "priceDesc"){
+           return [ ...products.sort((a, b) => (a.price < b.price) ? 1 : -1)]
         }
-        else if(value == "priceAsc"){
-            information.sort((a, b) => (a.price > b.price) ? 1 : -1)
+        else if(sortState == "priceAsc"){
+           return [...products.sort((a, b) => (a.price > b.price) ? 1 : -1)]
         }
-        else if(value == "profitDesc"){
-            information.sort((a, b) => (a.title > b.title) ? 1 : -1)
+        else if(sortState == "profitDesc"){
+           return [ ...products.sort((a, b) => (a.title > b.title) ? 1 : -1)]
         }
-        else if(value == "profitAsc"){
-            information.sort((a, b) => (a.title < b.title) ? 1 : -1)
-        }
-        setArr([...information])
+        else if(sortState == "profitAsc"){
+           return [ ...products.sort((a, b) => (a.title < b.title) ? 1 : -1)]
+        }else
+        return [...products]
     }
 
 
@@ -52,27 +51,24 @@ const Main = () => {
        return  setSelectAllProducts(click)
     }
 
-    const inputSort = (search) => {
-        {
-            information.filter((value) =>
-                value.title.toLowerCase().includes(search.toLowerCase()))
-        }
-        setFilteredProducts([ ...information])
-    }
+    const filteredProducts = information.filter((value) => {
+             return value.title.toLowerCase().includes(searchValue.toLowerCase())
+    })
+
+    const sortedProduct = sortType(filteredProducts, sortState)
 
     console.log(filteredProducts)
-
-
+    console.log(selectAllProducts)
         return(
         <main className="main">
 
-            <Header selectedNumber={numbOfSelected} productNumber={information.length} input={inputSort} slectButton={selectProducts} />
+            <Header selectedNumber={numbOfSelected} productNumber={information.length} input={setSearchValue} slectButton={selectProducts} />
 
-            <SortSection onChange={sortType}/>
+            <SortSection onChange={setSortState}/>
 
             <div className="catalog">
 
-                {(information).map(item => {
+                {(sortedProduct).map(item => {
                     return <CatalogItem title={item.title} img={item.image} price={item.price} description={item.description} onChange={selectCount} selectAll={selectAllProducts}  />
                     })
                 }
