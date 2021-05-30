@@ -1,19 +1,29 @@
 import SearchBox from "./SearchBox";
 import Button from "../common/Button";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffec } from 'react';
 
 
 
 
 
-const Header = ({selectedNumber, productNumber,slectButton}) =>{
+const Header = ({selectedNumber, productNumber,slectButton,input}) =>{
 
 
     const [buttChecked,setButtChecked] = useState(true)
+    const [inputText, setInputText] = useState('')
     const selectAllItem = () => {
         setButtChecked(!buttChecked)
         slectButton(buttChecked)
     }
+    const changeInputText = (e) => {
+        setInputText(e.target.value)
+    }
+
+    const changeText = () => {
+        input(inputText)
+        // setInputText('')
+    }
+
     return(
 
         <header className="header">
@@ -24,8 +34,8 @@ const Header = ({selectedNumber, productNumber,slectButton}) =>{
 
 {/*searchbox*/}
             <div className="search-box">
-                <input className="search-box__input" id="search" type="text"/>
-                <button className="search-box__button" type="submit">O</button>
+                <input onChange={changeInputText} className="search-box__input" id="search" value={inputText} on type="text"/>
+                <button onClick={changeText} className="search-box__button" type="submit">O</button>
             </div>
 
             <Button title={'ADD TO INVENTORY'}/>

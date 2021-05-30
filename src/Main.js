@@ -11,6 +11,7 @@ const Main = () => {
     const [information, setInformation] = useState([])
     const [selectAllProducts,setSelectAllProducts] = useState(false)
     const [arr,setArr] = useState([])
+    const [filteredProducts, setFilteredProducts] = useState([])
 
 
     const connectAPI = async () => {
@@ -35,7 +36,7 @@ const Main = () => {
         setArr([...information])
     }
 
-    console.log(arr)
+
 
     useEffect(() => {
         connectAPI().then(iformationData => {
@@ -51,19 +52,27 @@ const Main = () => {
        return  setSelectAllProducts(click)
     }
 
+    const inputSort = (search) => {
+        {
+            information.filter((value) =>
+                value.title.toLowerCase().includes(search.toLowerCase()))
+        }
+        setFilteredProducts([ ...information])
+    }
 
+    console.log(filteredProducts)
 
 
         return(
         <main className="main">
 
-            <Header selectedNumber={numbOfSelected} productNumber={information.length} slectButton={selectProducts} />
+            <Header selectedNumber={numbOfSelected} productNumber={information.length} input={inputSort} slectButton={selectProducts} />
 
             <SortSection onChange={sortType}/>
 
             <div className="catalog">
 
-                {information.map(item => {
+                {(information).map(item => {
                     return <CatalogItem title={item.title} img={item.image} price={item.price} description={item.description} onChange={selectCount} selectAll={selectAllProducts}  />
                     })
                 }
