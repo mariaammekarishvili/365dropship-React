@@ -1,18 +1,19 @@
 import Logo from "./Logo";
-import dashboard from '../img/spid.png'
-import catalog from '../img/section.png'
-import inventory from '../img/cub.png'
-import cart from '../img/bascet.png'
-import orders from '../img/selected.png'
-import transaction from '../img/transactions.png'
-import stores from '../img/store.png'
+import profile from '../img/profile.jpg'
+import dashboard from '../img/dashboard.svg'
+import catalog from '../img/catalog.svg'
+import inventory from '../img/inventory.svg'
+import cart from '../img/cart.svg'
+import orders from '../img/orders.svg'
+import transaction from '../img/transactions.svg'
+import stores from '../img/storesList.svg'
 import NavigationItem from "./NavigationItem";
 
 const Navigation = () => {
     return (
         <nav className="navigation">
             <Logo/>
-            <hr/>
+            <NavigationItem img={profile} round/>
             <NavigationItem img={dashboard}/>
             <NavigationItem img={catalog}/>
             <NavigationItem img={inventory}/>

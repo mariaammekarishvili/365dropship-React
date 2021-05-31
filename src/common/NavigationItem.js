@@ -1,7 +1,7 @@
 
-const NavigationItem = ({img}) => {
+const NavigationItem = ({img,round}) => {
     return(
-    <img className={'Navigation-item__img'} src={img} />
+    <img className={'Navigation-item__img' + ( round ? ' Navigation-item__img--round' : '')} src={img} />
     )
 }
 

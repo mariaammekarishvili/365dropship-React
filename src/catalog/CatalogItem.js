@@ -1,10 +1,11 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ItemTable from "./ItemTable";
 
+const CatalogItem = ({title,price,img,onChange,selectAll,description,unselectAll}) => {
 
-const CatalogItem = ({title,price,img,onChange,selectAll,description}) => {
-    const [itemSelected, setItemSelected] = useState(selectAll)
+    const [itemSelected, setItemSelected] = useState(true )
     const [shown, setShown] = useState(false)
+
     const checkboxChainge = (event) => {
         const checked = event.target.checked
         setItemSelected(checked)
@@ -14,9 +15,23 @@ const CatalogItem = ({title,price,img,onChange,selectAll,description}) => {
         setShown(!shown)
     }
 
+    useEffect(() =>
+        {
+          if (selectAll){
+              setItemSelected(true)
+          }else {
+              setItemSelected(false)
+          }
+        },[selectAll])
 
-
-
+    useEffect(() =>
+    {
+        if (unselectAll){
+            setItemSelected(false)
+        }else {
+            setItemSelected(false)
+        }
+    },[unselectAll])
 
     return (
         <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') } onClick={productClick}>

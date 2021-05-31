@@ -6,9 +6,8 @@ import {useEffect, useState} from "react";
 
 const Main = () => {
 
-
-    const [numbOfSelected,setNumbOfSelected] = useState(0)
     const [information, setInformation] = useState([])
+    const [numbOfSelected,setNumbOfSelected] = useState(0)
     const [selectAllProducts,setSelectAllProducts] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [sortState, setSortState] = useState('default')
@@ -18,6 +17,11 @@ const Main = () => {
         return await request.json()
     }
 
+    useEffect(() => {
+        connectAPI().then(iformationData => {
+            setInformation(iformationData)
+        })
+    },[])
 
     const sortType = (products, sortState) => {
         if(sortState == "priceDesc"){
@@ -35,31 +39,32 @@ const Main = () => {
         return [...products]
     }
 
+    const filteredProducts = information.filter((value) => {
+        return value.title.toLowerCase().includes(searchValue.toLowerCase())
+    })
 
-
-    useEffect(() => {
-        connectAPI().then(iformationData => {
-            setInformation(iformationData)
-        })
-    },[])
+    const sortedProduct = sortType(filteredProducts, sortState)
 
     const selectCount = (action) => {
         setNumbOfSelected(numbOfSelected + action)
     }
 
+    useEffect( () => {
+           if(selectAllProducts){
+             setNumbOfSelected(sortedProduct.length )
+           }else if(!selectAllProducts){
+             setNumbOfSelected(0 )
+           }else {
+               setNumbOfSelected(setNumbOfSelected)
+           }
+    },[selectAllProducts])
+
     const selectProducts = (click) => {
        return  setSelectAllProducts(click)
     }
 
-    const filteredProducts = information.filter((value) => {
-             return value.title.toLowerCase().includes(searchValue.toLowerCase())
-    })
-
-    const sortedProduct = sortType(filteredProducts, sortState)
-
-    console.log(filteredProducts)
-    console.log(selectAllProducts)
         return(
+
         <main className="main">
 
             <Header selectedNumber={numbOfSelected} productNumber={sortedProduct.length} input={setSearchValue} slectButton={selectProducts} />
@@ -69,12 +74,11 @@ const Main = () => {
             <div className="catalog">
 
                 {(sortedProduct).map(item => {
-                    return <CatalogItem title={item.title} img={item.image} price={item.price} description={item.description} onChange={selectCount} selectAll={selectAllProducts}  />
+                    return <CatalogItem title={item.title} img={item.image} price={item.price} description={item.description}  onChange={selectCount} selectAll={selectAllProducts}  />
                     })
                 }
 
             </div>
-
 
         </main>
 
