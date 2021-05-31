@@ -366,8 +366,10 @@ body{
 /*----------*/
 .catalog__title{
   border-bottom:  #E4E5EC 1px solid;
-  text-align: center;
-  font-size: 20px;
+  font-size: 17px;
+  font-weight: 450;
+  text-align: left;
+  margin: 2px 20px;
 }
 .catalog__price{
   font-size: 18px;
@@ -419,6 +421,26 @@ hr{
   border-right: 1px solid white;
   background: #FAFAFA;
 }
+
+.catalog__cost-box{
+  text-align: left;
+  background: white;
+  box-sizing: content-box;
+  padding-right: 30px;
+  border-right: 1px solid #F0E4E4;
+  color: #626262;
+  font-size: 30px;
+}
+.catalog__cost-box>.cost__text{
+  font-size: 15px;
+}
+.catalog__cost-box>.cost__price{
+  font-size: 17px;
+  font-weight: revert;
+}
+.catalog__cost-box:last-child{
+  border-right: none;
+}
 .cost__price{
   font-size: 17px;
   color: #717171;
@@ -436,6 +458,13 @@ hr{
   padding: 10px 10px 20px;
   border: 2px white solid;
   box-shadow: 2px 5px #F1F1F1;
+}
+.catalog__item--cost{
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  max-height: 150px ;
+  background: white;
 }
 .item-table__information>h3{
   font-size: 20px;

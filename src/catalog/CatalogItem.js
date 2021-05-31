@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import ItemTable from "./ItemTable";
+import Cost from "./Cost";
 
 const CatalogItem = ({title,price,img,onChange,selectAll,description,unselectAll}) => {
 
@@ -50,7 +51,9 @@ const CatalogItem = ({title,price,img,onChange,selectAll,description,unselectAll
                 {title}
             </div>
             <div className="catalog__price">
-                {price}
+                <div className={'catalog__item--cost item__cost'}>
+                    <Cost text={'RRP'} price={price} catalog/> <Cost text={'COST'} price={Math.round(price - (price * 0.2))} catalog/> <Cost catalog price={'27%(' + Math.round(price * 0.2) + ')'} text={'PROFIT'}/>
+                </div>
             </div>
             {shown && <ItemTable title={title} img={img} price={price} description={description} />}
         </div>
