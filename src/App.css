@@ -260,7 +260,23 @@ a{
   background: white;
   height: 80px;
   border-bottom: 1px solid #E4E5EC;
-  padding: 30px;
+  padding: 0 30px;
+}
+
+#sort{
+  border: none;
+  height: 50px;
+  width: 250px;
+  font-size: 20px;
+  margin: 10px;
+  color: #B1AEAE;
+}
+
+#sort>option{
+  color: black;
+  font-size: 15px;
+  height: 45px;
+  width: 250px;
 }
 /*main__catalog*/
 .catalog{
@@ -269,13 +285,14 @@ a{
   background: #F8F9FA;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: space-around;
+  justify-content: start;
 }
 
 .catalog__product{
   position: relative;
   flex: 1 500px;
-  height: 370px;
+  height: 400px;
+  max-width: 530px;
   background: #FFF;
   display: flex;
   flex-direction: column;
@@ -402,32 +419,36 @@ hr{
   flex-wrap: wrap;
   max-height:100%;
   position: fixed;
-  z-index: 3;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
   border: solid white 1px;
-  height: 500px;
+  /*height: 500px;*/
   min-width: 750px;
-  backdrop-filter: none !important;
-
+  backdrop-filter: none;
 }
-@media screen and( min-width: 1070px){
-  .modal>.item-table{
-    height: 700px !important;
-    width: 1200px !important;
+@media only screen and (min-width: 2000px){
+  .item-table{
+    height: 700px ;
+    width: 1200px ;
   }
+}
+@media only screen and (max-width: 1200px){
   .modal{
-    width: 97%;
+    display: none;
+  }
+  .item-table{
+    display: none ;
   }
 }
 
 .modal{
   height: 100%;
   width: 92%;
-  backdrop-filter: blur(0.7px);
-  z-index: 2;
+  backdrop-filter: blur(1px);
+  z-index: 1;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -448,8 +469,8 @@ hr{
 }
 .item-table__img{
   margin: auto auto;
-  max-width: 250px;
-  max-height: 320px;
+  max-width: 90%;
+  max-height: 60%;
 }
 
 .cost__box{
@@ -506,6 +527,10 @@ hr{
 .item-table__information>h3{
   font-size: 20px;
   color: #7A7A7A;
+  margin-top: 30px;
+}
+.item-table__information>h2{
+  flex-grow: 1;
 }
 .item-table__information>button{
   position: revert;
@@ -516,9 +541,13 @@ hr{
   display: flex;
   flex-direction: column;
   width: 60%;
-  /*justify-content: start;*/
+  justify-content: start;
   padding:30px;
   background: white;
+
+}
+.information__description{
+  flex-grow: 2;
 }
 /*----*/
 .Navigation-item__img{

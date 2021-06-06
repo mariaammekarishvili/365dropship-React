@@ -3,7 +3,9 @@ import Button from "../common/Button";
 
 const Modal = ({img,title,description,price}) => {
     return(
+     <>
         <div className={'modal'}>
+        </div>
             <div className={'item-table'}>
                 <div className={'item-table__representation'} >
                     <div className={'item__cost'}>
@@ -21,8 +23,8 @@ const Modal = ({img,title,description,price}) => {
                     <h3>Description:</h3>
                     <p className={'information__description'}>{description}</p>
                 </div>
-            </div>
-        </div>
+             </div>
+     </>
     )
 }
 
