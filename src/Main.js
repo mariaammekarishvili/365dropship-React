@@ -2,28 +2,36 @@ import Header from "./header/Header";
 import SortSection from "./catalog/SortSection";
 import CatalogItem from "./catalog/CatalogItem";
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 
-const Main = () => {
+const Main = (props) => {
 
-    const [information, setInformation] = useState([])
+    const [products, setProducts] = useState([])
     const [numbOfSelected,setNumbOfSelected] = useState(0)
-    const [selectAllProducts,setSelectAllProducts] = useState(false)
+    const [markType, setMarkType] = useState('')
     const [searchValue, setSearchValue] = useState('')
     const [sortState, setSortState] = useState('default')
 
-    const connectAPI = async () => {
-        const request = await fetch(`https://fakestoreapi.com/products`)
-        return await request.json()
-    }
 
     useEffect(() => {
-        connectAPI().then(iformationData => {
-            setInformation(iformationData)
-        })
+        axios
+            .get("http://fakestoreapi.com/products/category/women's%20clothing")
+            .then(res => {
+                localStorage.setItem('womenCloth', JSON.stringify(res.data));
+            })
+        localStorage.removeItem('woCloth')
     },[])
 
-    const sortType = (products, sortState) => {
+
+    useEffect(() => {
+        const productsList = JSON.parse(localStorage.getItem(`${props.category}`));
+        setProducts(sortType(productsList.filter((value) => {
+            return value.title.toLowerCase().includes(searchValue.toLowerCase())
+        }),sortState))
+    },[sortState,searchValue,props.category])
+
+    const sortType = (products,sortState) => {
         if(sortState == "priceDesc"){
            return [ ...products.sort((a, b) => (a.price < b.price) ? 1 : -1)]
         }
@@ -39,50 +47,48 @@ const Main = () => {
         return [...products]
     }
 
-    const filteredProducts = information.filter((value) => {
-        return value.title.toLowerCase().includes(searchValue.toLowerCase())
-    })
-
-    const sortedProduct = sortType(filteredProducts, sortState)
-
     const selectCount = (action) => {
         setNumbOfSelected(numbOfSelected + action)
     }
-
+    const markProducts = (click) => {
+        return  setMarkType(click)
+    }
     useEffect( () => {
-           if(selectAllProducts){
-             setNumbOfSelected(sortedProduct.length )
-           }else if(!selectAllProducts){
+           if(markType === 'select'){
+             setNumbOfSelected(products.length )
+           }else if(markType === 'clear'){
              setNumbOfSelected(0 )
+             setMarkType('')
            }else {
                setNumbOfSelected(setNumbOfSelected)
            }
-    },[selectAllProducts])
+    },[markType])
 
-    const selectProducts = (click) => {
-       return  setSelectAllProducts(click)
-    }
 
         return(
 
         <main className="main">
 
-            <Header selectedNumber={numbOfSelected} productNumber={sortedProduct.length} input={setSearchValue} slectButton={selectProducts} />
+            <Header selectedNumber={numbOfSelected}
+                    productNumber={products.length}
+                    input={setSearchValue}
+                    slectButton={markProducts}
+                    clearButton={numbOfSelected}/>
 
             <SortSection onChange={setSortState}/>
 
             <div className="catalog">
 
-                {(sortedProduct).map(item => {
-                    return <CatalogItem title={item.title} img={item.image} price={item.price} description={item.description}  onChange={selectCount} selectAll={selectAllProducts}  />
+                {(products).map(item => {
+                    return <CatalogItem title={item.title}
+                                        img={item.image} price={item.price}
+                                        description={item.description}
+                                        onChange={selectCount}
+                                        select={markType}  />
                     })
                 }
-
             </div>
-
         </main>
-
-
     )
 }
 

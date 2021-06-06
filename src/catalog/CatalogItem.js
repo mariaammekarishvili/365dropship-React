@@ -1,45 +1,39 @@
 import {useEffect, useState} from "react";
-import ItemTable from "./ItemTable";
+import Modal from "./Modal";
 import Cost from "./Cost";
 
-const CatalogItem = ({title,price,img,onChange,selectAll,description,unselectAll}) => {
+const CatalogItem = ({title,price,img,onChange,select,description}) => {
 
-    const [itemSelected, setItemSelected] = useState(true )
+    const [itemSelected, setItemSelected] = useState(false )
     const [shown, setShown] = useState(false)
 
-    const checkboxChainge = (event) => {
+    const checkboxChange = (event) => {
         const checked = event.target.checked
         setItemSelected(checked)
         onChange(checked ? 1 : -1)
-    };
+    }
+
     const productClick = () => {
         setShown(!shown)
     }
 
-    useEffect(() =>
-        {
-          if (selectAll){
-              setItemSelected(true)
-          }else {
-              setItemSelected(false)
-          }
-        },[selectAll])
-
-    useEffect(() =>
-    {
-        if (unselectAll){
+    useEffect(() => {
+        if(select === 'select'){
+            setItemSelected(true)
+        }else if (select === 'clear'){
             setItemSelected(false)
         }else {
-            setItemSelected(false)
-        }
-    },[unselectAll])
+            setItemSelected(itemSelected)
+        }},[select])
 
     return (
-        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') } onClick={productClick}>
+        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') }
+             onClick={productClick}>
+
             <label className="container">
                 <input
                     type="checkbox"
-                    onChange={checkboxChainge}
+                    onChange={checkboxChange}
                     checked = {itemSelected}/>
                 <span className="checkmark"></span>
             </label>
@@ -50,12 +44,15 @@ const CatalogItem = ({title,price,img,onChange,selectAll,description,unselectAll
             <div className="catalog__title">
                 {title}
             </div>
+
             <div className="catalog__price">
                 <div className={'catalog__item--cost item__cost'}>
-                    <Cost text={'RRP'} price={price} catalog/> <Cost text={'COST'} price={Math.round(price - (price * 0.2))} catalog/> <Cost catalog price={'27%(' + Math.round(price * 0.2) + ')'} text={'PROFIT'}/>
+                    <Cost text={'RRP'} price={price} catalog/>
+                    <Cost text={'COST'} price={Math.round(price - (price * 0.2))} catalog/>
+                    <Cost catalog price={'27%(' + Math.round(price * 0.2) + ')'} text={'PROFIT'}/>
                 </div>
             </div>
-            {shown && <ItemTable title={title} img={img} price={price} description={description} />}
+            {shown && <Modal title={title} img={img} price={price} description={description} />}
         </div>
 
 )

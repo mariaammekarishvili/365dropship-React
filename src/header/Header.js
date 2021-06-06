@@ -1,21 +1,17 @@
 import Button from "../common/Button";
 import React, { useState, useEffec } from 'react';
-import { FiSearch } from "@react-icons/all-files/fa/FaBeer";
 
-const Header = ({selectedNumber, productNumber,slectButton,input}) =>{
+const Header = ({selectedNumber, productNumber,slectButton,input,clearButton}) =>{
 
-    const [buttChecked,setButtChecked] = useState(true)
     const [inputText, setInputText] = useState('')
 
-    const selectAllItem = () => {
-        setButtChecked(!buttChecked)
-        slectButton(buttChecked)
+    const selectOrClearAllItem = (e) => {
+        slectButton (e.target.value)
     }
 
     const changeInputText = (e) => {
         setInputText(e.target.value)
     }
-
     const changeText = () => {
         input(inputText)
     }
@@ -23,18 +19,29 @@ const Header = ({selectedNumber, productNumber,slectButton,input}) =>{
     return(
         <header className="header">
 
-            <button type="button" className={'button'} value={'select'} onClick={selectAllItem}>SELECT ALL</button>
+            <button type="button"
+                    className={'button'}
+                    value={'select'}
+                    onClick={selectOrClearAllItem}>SELECT ALL</button>
 
             <p className={'header__para'}>selected {selectedNumber} out of {productNumber} products </p>
 
-            {!buttChecked && <button type="button" className={'button'} value={'clear'} onClick={selectAllItem}> CLEAR </button>}
+            {(clearButton > 0) && <button type="button"
+                                          className={'button'}
+                                          value={'clear'}
+                                          onClick={selectOrClearAllItem}> CLEAR </button>}
 
 {/*searchbox*/}
             <div className="search-box">
-                <input onChange={changeInputText} className="search-box__input" id="search" value={inputText}  type="text"/>
-                <button onClick={changeText} className="search-box__button" type="submit">🔍</button>
+                <input onChange={changeInputText}
+                       className="search-box__input"
+                       id="search"
+                       value={inputText}
+                       type="text"/>
+                <button onClick={changeText}
+                        className="search-box__button"
+                        type="submit">🔍</button>
             </div>
-
             <Button title={'ADD TO INVENTORY'}/>
         </header>
     )
