@@ -20,7 +20,21 @@ const Main = (props) => {
             .then(res => {
                 localStorage.setItem('womenCloth', JSON.stringify(res.data));
             })
-        localStorage.removeItem('woCloth')
+        axios
+            .get('https://fakestoreapi.com/products/category/jewelery')
+            .then(res => {
+                localStorage.setItem('jewelery', JSON.stringify(res.data));
+            })
+        axios
+            .get('https://fakestoreapi.com/products/category/electronics')
+            .then(res => {
+                localStorage.setItem('electronics', JSON.stringify(res.data));
+            })
+        axios
+            .get('https://fakestoreapi.com/products/category/men\'s%20clothing')
+            .then(res => {
+                localStorage.setItem('menCloth', JSON.stringify(res.data));
+            })
     },[])
 
 
