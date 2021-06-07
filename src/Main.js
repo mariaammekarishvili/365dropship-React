@@ -39,10 +39,11 @@ const Main = (props) => {
 
 
     useEffect(() => {
+        if(localStorage.getItem(`${props.category}`)){
         const productsList = JSON.parse(localStorage.getItem(`${props.category}`));
         setProducts(sortType(productsList.filter((value) => {
             return value.title.toLowerCase().includes(searchValue.toLowerCase())
-        }),sortState))
+        }),sortState))}
     },[sortState,searchValue,props.category])
 
     const sortType = (products,sortState) => {
