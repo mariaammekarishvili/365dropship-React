@@ -1,11 +1,14 @@
 import {useEffect, useState} from "react";
 import Modal from "./Modal";
 import Cost from "./Cost";
+import {useParams, Link} from "react-router-dom";
 
-const CatalogItem = ({title,price,img,onChange,select,description}) => {
+const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
 
     const [itemSelected, setItemSelected] = useState(false )
     const [shown, setShown] = useState(false)
+
+    // const {id} = useParams()
 
     const checkboxChange = (event) => {
         const checked = event.target.checked
@@ -26,9 +29,11 @@ const CatalogItem = ({title,price,img,onChange,select,description}) => {
             setItemSelected(itemSelected)
         }},[select])
 
-    return (
-        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') }
-             onClick={productClick}>
+    console.log(id,shown)
+
+ return (
+
+        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') }>
 
             <label className="container">
                 <input
@@ -52,7 +57,8 @@ const CatalogItem = ({title,price,img,onChange,select,description}) => {
                     <Cost catalog price={'27%(' + Math.round(price * 0.2) + ')'} text={'PROFIT'}/>
                 </div>
             </div>
-            {shown && <Modal title={title} img={img} price={price} description={description} />}
+                {/*<Modal title={title} img={img} price={price} description={description} openId={id}/>}*/}
+
         </div>
 
 )

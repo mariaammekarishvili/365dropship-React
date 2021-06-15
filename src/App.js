@@ -11,7 +11,7 @@ function App() {
         <Navigation/>
         <AsideBar/>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/catalog/:id?'>
                  <Main category={'products'}/>
             </Route>
             <Route path='/electronics'>

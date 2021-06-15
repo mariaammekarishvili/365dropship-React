@@ -2,16 +2,21 @@ import Header from "./header/Header";
 import SortSection from "./catalog/SortSection";
 import CatalogItem from "./catalog/CatalogItem";
 import {useEffect, useState} from "react";
+import {useParams} from 'react-router-dom'
+import Modal from './catalog/Modal'
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 const Main = (props) => {
 
     const [products, setProducts] = useState([])
-    const [numbOfSelected,setNumbOfSelected] = useState(0)
+    const [numbOfSelected, setNumbOfSelected] = useState(0)
     const [markType, setMarkType] = useState('')
     const [searchValue, setSearchValue] = useState('')
     const [sortState, setSortState] = useState('default')
+
+    const {id} = useParams();
 
 
     useEffect(() => {
@@ -35,52 +40,55 @@ const Main = (props) => {
             .then(res => {
                 localStorage.setItem('menCloth', JSON.stringify(res.data));
             })
-    },[])
+        axios
+            .get('https://fakestoreapi.com/products')
+            .then(res => {
+                localStorage.setItem('products', JSON.stringify(res.data));
+            })
+    }, [])
 
 
     useEffect(() => {
-        if(localStorage.getItem(`${props.category}`)){
-        const productsList = JSON.parse(localStorage.getItem(`${props.category}`));
-        setProducts(sortType(productsList.filter((value) => {
-            return value.title.toLowerCase().includes(searchValue.toLowerCase())
-        }),sortState))}
-    },[sortState,searchValue,props.category])
+        if (localStorage.getItem(`${props.category}`)) {
+            const productsList = JSON.parse(localStorage.getItem(`${props.category}`));
+            setProducts(sortType(productsList.filter((value) => {
+                return value.title.toLowerCase().includes(searchValue.toLowerCase())
+            }), sortState))
+        }
+    }, [sortState, searchValue, props.category])
 
-    const sortType = (products,sortState) => {
-        if(sortState == "priceDesc"){
-           return [ ...products.sort((a, b) => (a.price < b.price) ? 1 : -1)]
-        }
-        else if(sortState == "priceAsc"){
-           return [...products.sort((a, b) => (a.price > b.price) ? 1 : -1)]
-        }
-        else if(sortState == "profitDesc"){
-           return [ ...products.sort((a, b) => (a.title > b.title) ? 1 : -1)]
-        }
-        else if(sortState == "profitAsc"){
-           return [ ...products.sort((a, b) => (a.title < b.title) ? 1 : -1)]
-        }else
-        return [...products]
+    const sortType = (products, sortState) => {
+        if (sortState == "priceDesc") {
+            return [...products.sort((a, b) => (a.price < b.price) ? 1 : -1)]
+        } else if (sortState == "priceAsc") {
+            return [...products.sort((a, b) => (a.price > b.price) ? 1 : -1)]
+        } else if (sortState == "profitDesc") {
+            return [...products.sort((a, b) => (a.title > b.title) ? 1 : -1)]
+        } else if (sortState == "profitAsc") {
+            return [...products.sort((a, b) => (a.title < b.title) ? 1 : -1)]
+        } else
+            return [...products]
     }
 
     const selectCount = (action) => {
         setNumbOfSelected(numbOfSelected + action)
     }
     const markProducts = (click) => {
-        return  setMarkType(click)
+        return setMarkType(click)
     }
-    useEffect( () => {
-           if(markType === 'select'){
-             setNumbOfSelected(products.length )
-           }else if(markType === 'clear'){
-             setNumbOfSelected(0 )
-             setMarkType('')
-           }else {
-               setNumbOfSelected(setNumbOfSelected)
-           }
-    },[markType])
+    useEffect(() => {
+        if (markType === 'select') {
+            setNumbOfSelected(products.length)
+        } else if (markType === 'clear') {
+            setNumbOfSelected(0)
+            setMarkType('')
+        } else {
+            setNumbOfSelected(setNumbOfSelected)
+        }
+    }, [markType])
 
 
-        return(
+    return (
 
         <main className="main">
 
@@ -94,14 +102,21 @@ const Main = (props) => {
 
             <div className="catalog">
 
-                {(products).map(item => {
-                    return <CatalogItem title={item.title}
-                                        img={item.image} price={item.price}
-                                        description={item.description}
-                                        onChange={selectCount}
-                                        select={markType}  />
-                    })
-                }
+                {(products).map(item =>
+                    <>
+                       <Link to={`/catalog/${item.id}`}>
+                                <CatalogItem title={item.title}
+                                             img={item.image} price={item.price}
+                                             description={item.description}
+                                             onChange={selectCount}
+                                             select={markType}
+                                             id={item.id}/>
+                       </Link>
+
+
+                    </>
+                )}
+                <Modal openId={id}/>
             </div>
         </main>
     )
