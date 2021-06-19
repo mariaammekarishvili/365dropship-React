@@ -6,6 +6,7 @@ import {useParams} from 'react-router-dom'
 import Modal from './catalog/Modal'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {Box, Grid} from "@material-ui/core";
 
 
 const Main = (props) => {
@@ -100,24 +101,32 @@ const Main = (props) => {
 
             <SortSection onChange={setSortState}/>
 
-            <div className="catalog">
+            <Box p={3}>
+                <Grid container
+                      direction="row"
+                      justify="flex-start"
+                      alignItems="flex-start"
+                      wrap={"wrap"}
+                      m={0}
+                        >
 
-                {(products).map(item =>
-                    <>
-                       <Link to={`/catalog/${item.id}`}>
-                                <CatalogItem title={item.title}
-                                             img={item.image} price={item.price}
-                                             description={item.description}
-                                             onChange={selectCount}
-                                             select={markType}
-                                             id={item.id}/>
-                       </Link>
+                    {(products).map(item =>
+                        <Grid item xs={12} sm={6}md={5} lg={4}  xl={3} wrap={"wrap"}>
+                           <Link to={`/catalog/${item.id}`}>
+                                    <CatalogItem title={item.title}
+                                                 img={item.image} price={item.price}
+                                                 description={item.description}
+                                                 onChange={selectCount}
+                                                 select={markType}
+                                                 id={item.id}/>
+                           </Link>
 
 
-                    </>
-                )}
-                <Modal openId={id}/>
-            </div>
+                        </Grid>
+                    )}
+                    <Modal openId={id}/>
+                </Grid>
+            </Box>
         </main>
     )
 }

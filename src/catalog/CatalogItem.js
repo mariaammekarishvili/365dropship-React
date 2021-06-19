@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import Modal from "./Modal";
 import Cost from "./Cost";
 import {useParams, Link} from "react-router-dom";
+import {Button, Grid} from "@material-ui/core";
 
 const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
 
@@ -33,7 +34,7 @@ const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
 
  return (
 
-        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') }>
+        <div  className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') }>
 
             <label className="container">
                 <input
@@ -42,6 +43,7 @@ const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
                     checked = {itemSelected}/>
                 <span className="checkmark"></span>
             </label>
+
 
             <div className="catalog__photo">
                 <img src={img}/>
