@@ -1,6 +1,5 @@
 import Cost from "./Cost";
-import Button from "../common/Button";
-import {Dialog,DialogActions, DialogContent, DialogTitle, Typography} from "@material-ui/core";
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography} from "@material-ui/core";
 import {useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
 
@@ -29,7 +28,7 @@ const Modal = ({openId}) => {
     }
 
 
-    console.log(open)
+    console.log(product)
     return(
      <>
         {/*<div className={'modal'}>*/}
@@ -53,18 +52,37 @@ const Modal = ({openId}) => {
         {/*        </div>*/}
         {/*     </div>*/}
 
-         <Dialog open={open} onClose={closeDialog}>
-             <DialogTitle>{product.title}</DialogTitle>
-             <DialogContent>
-                 <Typography gutterBottom>
-                     {product.description}
-                 </Typography>
-             </DialogContent>
-             <DialogActions>
-                 <button color='primary' variant='contained'>
-                     ADD TO INVENTORY
-                 </button>
-             </DialogActions>
+         <Dialog open={open} onClose={closeDialog} >
+                 <div className={'item-table'}>
+                     <div className={'item-table__representation'} >
+                         <div className={'item__cost'}>
+                             <Cost text={'RRP'} price={product.price}/>
+                             <Cost text={'COST'} price={Math.round(product.price - (product.price * 0.2))}/>
+                             <Cost price={Math.round(product.price * 0.2)} text={'PROFIT'}/>
+                         </div>
+
+                         <img className={'item-table__img'} src={product.image}/>
+                     </div>
+
+                     <div className={'item-table__information'}>
+                         <h2 className={'information__titele'}>{product.title}</h2>
+                         <Button variant="contained"
+                                 color="primary">ADD INVENTORY</Button>
+                         <h3>Description:</h3>
+                         <p className={'information__description'}>{product.description}</p>
+                     </div>
+             {/*<DialogTitle>{product.title}</DialogTitle>*/}
+             {/*<DialogContent>*/}
+             {/*    <Typography gutterBottom>*/}
+             {/*        {product.description}*/}
+             {/*    </Typography>*/}
+             {/*</DialogContent>*/}
+             {/*<DialogActions>*/}
+             {/*    <button color='primary' variant='contained'>*/}
+             {/*        ADD TO INVENTORY*/}
+             {/*    </button>*/}
+             {/*</DialogActions>*/}
+                 </div>
          </Dialog>
      </>
     )

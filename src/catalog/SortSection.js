@@ -1,19 +1,33 @@
 import {useState} from "react";
+import {Button, FormControl, InputLabel, ListSubheader, makeStyles, MenuItem, Select} from "@material-ui/core";
 
 
-const SortSection = ({onChange}) => {
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+}));
+
+export default function SortSection({onChange}) {
+const classes = useStyles();
+
 
     return(
-    <div className="sort-section">
-        <select onChange={(e) => onChange(e.target.value)} id="sort">
-            <option  value="0">Sort by:  New Arrivals</option>
-            <option  value="priceAsc">Price: Low To High</option>
-            <option  value="priceDesc">Price: High To Low</option>
-            <option  value="profitAsc">Profit: High To Low</option>
-            <option  value="profitDesc">Profit: Low To High</option>
-        </select>
-    </div>
+        <div className={"sort-section"}>
+            <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="grouped-select">Sort Type</InputLabel>
+                <Select defaultValue=""
+                        onChange={(e) => onChange(e.target.value)}
+                        id="grouped-select sort">
+                    <ListSubheader>Price</ListSubheader>
+                    <MenuItem value={"priceAsc"}> Low To High</MenuItem>
+                    <MenuItem value={"priceDesc"}>High To Low</MenuItem>
+                    <ListSubheader>Profit</ListSubheader>
+                    <MenuItem value={"profitAsc"}> Low To High</MenuItem>
+                    <MenuItem value={"profitDesc"}>High To Low</MenuItem>
+                </Select>
+            </FormControl>
+        </div>
     )
 }
-
-export default SortSection

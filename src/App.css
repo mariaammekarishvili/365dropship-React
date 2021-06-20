@@ -429,6 +429,7 @@ hr{
   /*height: 500px;*/
   min-width: 750px;
   backdrop-filter: none;
+  background: white;
 }
 @media only screen and (min-width: 2000px){
   .item-table{

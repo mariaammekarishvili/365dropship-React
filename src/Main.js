@@ -35,21 +35,7 @@ const Main = () => {
                 })}
     },[category])
 
-    // useEffect(() => {
-    //     if (category) {
-    //         axios
-    //             .get(`https://fakestoreapi.com/products/category/${category}`)
-    //             .then(res => {
-    //                 localStorage.setItem(`${category}`, JSON.stringify(res.data));
-    //             })
-    //     }else {
-    //         axios
-    //             .get(`https://fakestoreapi.com/products`)
-    //             .then(res => {
-    //                 localStorage.setItem('products', JSON.stringify(res.data));
-    //             })
-    // }}, [category])
-    //
+    
 
     useEffect(() => {
         if (localStorage.getItem(category)) {
@@ -114,7 +100,7 @@ const Main = () => {
 
                     {(products).map(item =>
                         <Grid item xs={12} sm={6}md={5} lg={4}  xl={3} wrap={"wrap"}>
-                           <Link to={`/catalog/${item.id}`}>
+                           <Link to={`/catalog/${category}/${item.id}`}>
                                     <CatalogItem title={item.title}
                                                  img={item.image} price={item.price}
                                                  description={item.description}

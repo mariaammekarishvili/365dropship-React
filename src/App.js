@@ -13,13 +13,13 @@ function App() {
         <Hidden smDown><AsideBar/></Hidden>
 
           <Switch>
-            <Route exact path='/catalog/:id?'>
-                 <Main category={'products'}/>
+            <Route exact path='/catalog/:category?/:id?'>
+                 <Main/>
             </Route>
 
-            <Route path='/:category?'>
-                <Main category={'electronics'}/>
-            </Route>
+            {/*<Route path='/:category?'>*/}
+            {/*    <Main category={'electronics'}/>*/}
+            {/*</Route>*/}
           </Switch>
       </div>
   );
