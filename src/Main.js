@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 import {Box, Grid} from "@material-ui/core";
 
 
-const Main = (props) => {
+const Main = () => {
 
     const [products, setProducts] = useState([])
     const [numbOfSelected, setNumbOfSelected] = useState(0)
@@ -18,45 +18,47 @@ const Main = (props) => {
     const [sortState, setSortState] = useState('default')
 
     const {id} = useParams();
-
-
-    useEffect(() => {
-        axios
-            .get("http://fakestoreapi.com/products/category/women's%20clothing")
-            .then(res => {
-                localStorage.setItem('womenCloth', JSON.stringify(res.data));
-            })
-        axios
-            .get('https://fakestoreapi.com/products/category/jewelery')
-            .then(res => {
-                localStorage.setItem('jewelery', JSON.stringify(res.data));
-            })
-        axios
-            .get('https://fakestoreapi.com/products/category/electronics')
-            .then(res => {
-                localStorage.setItem('electronics', JSON.stringify(res.data));
-            })
-        axios
-            .get('https://fakestoreapi.com/products/category/men\'s%20clothing')
-            .then(res => {
-                localStorage.setItem('menCloth', JSON.stringify(res.data));
-            })
-        axios
-            .get('https://fakestoreapi.com/products')
-            .then(res => {
-                localStorage.setItem('products', JSON.stringify(res.data));
-            })
-    }, [])
-
+    const {category} = useParams()
 
     useEffect(() => {
-        if (localStorage.getItem(`${props.category}`)) {
-            const productsList = JSON.parse(localStorage.getItem(`${props.category}`));
+        if(category){
+        fetch(`https://fakestoreapi.com/products/category/${category}`)
+            .then(res => res.json())
+            .then(res => {
+                setProducts(res)
+            })}
+        else {
+            fetch(`https://fakestoreapi.com/products`)
+                .then(res => res.json())
+                .then(res => {
+                    setProducts(res)
+                })}
+    },[category])
+
+    // useEffect(() => {
+    //     if (category) {
+    //         axios
+    //             .get(`https://fakestoreapi.com/products/category/${category}`)
+    //             .then(res => {
+    //                 localStorage.setItem(`${category}`, JSON.stringify(res.data));
+    //             })
+    //     }else {
+    //         axios
+    //             .get(`https://fakestoreapi.com/products`)
+    //             .then(res => {
+    //                 localStorage.setItem('products', JSON.stringify(res.data));
+    //             })
+    // }}, [category])
+    //
+
+    useEffect(() => {
+        if (localStorage.getItem(category)) {
+            const productsList = JSON.parse(localStorage.getItem(category));
             setProducts(sortType(productsList.filter((value) => {
                 return value.title.toLowerCase().includes(searchValue.toLowerCase())
             }), sortState))
         }
-    }, [sortState, searchValue, props.category])
+    }, [sortState, searchValue])
 
     const sortType = (products, sortState) => {
         if (sortState == "priceDesc") {

@@ -16,17 +16,9 @@ function App() {
             <Route exact path='/catalog/:id?'>
                  <Main category={'products'}/>
             </Route>
-            <Route path='/electronics'>
+
+            <Route path='/:category?'>
                 <Main category={'electronics'}/>
-            </Route>
-            <Route path='/menCloth'>
-                <Main category={'menCloth'}/>
-            </Route>
-            <Route path='/womenCloth'>
-                <Main category={'womenCloth'}/>
-            </Route>
-            <Route path='/jewelery'>
-                <Main category={'jewelery'}/>
             </Route>
           </Switch>
       </div>

@@ -9,8 +9,6 @@ const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
     const [itemSelected, setItemSelected] = useState(false )
     const [shown, setShown] = useState(false)
 
-    // const {id} = useParams()
-
     const checkboxChange = (event) => {
         const checked = event.target.checked
         setItemSelected(checked)
@@ -29,8 +27,6 @@ const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
         }else {
             setItemSelected(itemSelected)
         }},[select])
-
-    console.log(id,shown)
 
  return (
 
@@ -59,7 +55,7 @@ const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
                     <Cost catalog price={'27%(' + Math.round(price * 0.2) + ')'} text={'PROFIT'}/>
                 </div>
             </div>
-                {/*<Modal title={title} img={img} price={price} description={description} openId={id}/>}*/}
+
 
         </div>
 
