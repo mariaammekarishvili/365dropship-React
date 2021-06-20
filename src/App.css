@@ -6,6 +6,10 @@ body{
   box-sizing: border-box;
 }
 
+a{
+  color: black;
+}
+
 .content{
   justify-content: center;
   display: flex;
@@ -312,7 +316,7 @@ a{
 .catalog__photo{
   margin: 20px 0 0;
   max-width: 500px;
-  max-height: 200px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -400,6 +404,7 @@ a{
   padding: 10px 0;
   margin: 20px 20px 0;
   overflow: hidden;
+  height: 50px;
 }
 .catalog__price{
   font-size: 18px;
@@ -567,4 +572,9 @@ hr{
   border: solid 1px #B8ECF1;
   padding: 2px;
   margin: 10px 0;
+}
+
+
+.profile-page{
+  min-width: 1000px;
 }

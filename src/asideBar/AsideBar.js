@@ -15,8 +15,6 @@ const AsideBar = () => {
         setCategory(!category)
     }
 
-    const {id} = useParams();
-
     return (
         <>
             <aside className="aside-bar">

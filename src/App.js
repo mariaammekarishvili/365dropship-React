@@ -5,6 +5,7 @@ import Main from "./Main";
 import {Route, Switch} from "react-router-dom";
 import Modal from "./catalog/Modal";
 import {Hidden} from "@material-ui/core";
+import ProfilePage from "./ProfilePage";
 
 function App() {
   return (
@@ -13,13 +14,13 @@ function App() {
         <Hidden smDown><AsideBar/></Hidden>
 
           <Switch>
-            <Route exact path='/catalog/:category?/:id?'>
+            <Route exact path='/:catalog?/:category?/:id?'>
                  <Main/>
             </Route>
 
-            {/*<Route path='/:category?'>*/}
-            {/*    <Main category={'electronics'}/>*/}
-            {/*</Route>*/}
+            <Route path='/profile'>
+                <ProfilePage/>
+            </Route>
           </Switch>
       </div>
   );

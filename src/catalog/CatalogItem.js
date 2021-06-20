@@ -1,13 +1,14 @@
 import {useEffect, useState} from "react";
 import Modal from "./Modal";
 import Cost from "./Cost";
-import {useParams, Link} from "react-router-dom";
+import {useParams, Link,useHistory} from "react-router-dom";
 import {Button, Grid} from "@material-ui/core";
 
-const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
+const CatalogItem = ({title,price,img,onChange,select,description,category,id}) => {
 
-    const [itemSelected, setItemSelected] = useState(false )
+    const [itemSelected, setItemSelected] = useState(false)
     const [shown, setShown] = useState(false)
+    const history = useHistory()
 
     const checkboxChange = (event) => {
         const checked = event.target.checked
@@ -19,28 +20,33 @@ const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
         setShown(!shown)
     }
 
+    const onClick = () => {
+        history.push(`/catalog/${category}/${id}`)
+    }
+
     useEffect(() => {
-        if(select === 'select'){
+        if (select === 'select') {
             setItemSelected(true)
-        }else if (select === 'clear'){
+        } else if (select === 'clear') {
             setItemSelected(false)
-        }else {
+        } else {
             setItemSelected(itemSelected)
-        }},[select])
+        }
+    }, [select])
 
- return (
+    return (
 
-        <div  className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '') }>
+        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '')}>
 
             <label className="container">
                 <input
                     type="checkbox"
                     onChange={checkboxChange}
-                    checked = {itemSelected}/>
+                    checked={itemSelected}/>
                 <span className="checkmark"></span>
             </label>
 
-
+        <Link to={`/catalog/${category}/${id}`} >
             <div className="catalog__photo">
                 <img src={img}/>
             </div>
@@ -55,11 +61,10 @@ const CatalogItem = ({title,price,img,onChange,select,description,id}) => {
                     <Cost catalog price={'27%(' + Math.round(price * 0.2) + ')'} text={'PROFIT'}/>
                 </div>
             </div>
-
-
+        </Link>
         </div>
 
-)
+    )
 }
 
 export default CatalogItem

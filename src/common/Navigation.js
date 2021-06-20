@@ -8,12 +8,13 @@ import orders from '../img/orders.svg'
 import transaction from '../img/transactions.svg'
 import stores from '../img/storesList.svg'
 import NavigationItem from "./NavigationItem";
+import {Link} from "react-router-dom";
 
 const Navigation = () => {
     return (
         <nav className="navigation">
             <Logo/>
-            <NavigationItem img={profile} round/>
+            <Link to={'/profile'}><NavigationItem img={profile} round/></Link>
             <NavigationItem img={dashboard}/>
             <NavigationItem img={catalog}/>
             <NavigationItem img={inventory}/>

@@ -2,7 +2,7 @@ import Header from "./header/Header";
 import SortSection from "./catalog/SortSection";
 import CatalogItem from "./catalog/CatalogItem";
 import {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import Modal from './catalog/Modal'
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -12,6 +12,7 @@ import {Box, Grid} from "@material-ui/core";
 const Main = () => {
 
     const [products, setProducts] = useState([])
+    const [productsList, setProductsList] = useState([])
     const [numbOfSelected, setNumbOfSelected] = useState(0)
     const [markType, setMarkType] = useState('')
     const [searchValue, setSearchValue] = useState('')
@@ -19,6 +20,7 @@ const Main = () => {
 
     const {id} = useParams();
     const {category} = useParams()
+
 
     useEffect(() => {
         if(category){
@@ -35,16 +37,15 @@ const Main = () => {
                 })}
     },[category])
 
-    
+
 
     useEffect(() => {
-        if (localStorage.getItem(category)) {
-            const productsList = JSON.parse(localStorage.getItem(category));
-            setProducts(sortType(productsList.filter((value) => {
+            setProductsList(sortType(products.filter((value) => {
                 return value.title.toLowerCase().includes(searchValue.toLowerCase())
             }), sortState))
-        }
-    }, [sortState, searchValue])
+        }, [sortState, searchValue,category,products])
+
+    console.log(sortState)
 
     const sortType = (products, sortState) => {
         if (sortState == "priceDesc") {
@@ -77,9 +78,11 @@ const Main = () => {
     }, [markType])
 
 
+
     return (
 
         <main className="main">
+
 
             <Header selectedNumber={numbOfSelected}
                     productNumber={products.length}
@@ -96,19 +99,23 @@ const Main = () => {
                       alignItems="flex-start"
                       wrap={"wrap"}
                       m={0}
+                      spacing={2}
                         >
 
-                    {(products).map(item =>
-                        <Grid item xs={12} sm={6}md={5} lg={4}  xl={3} wrap={"wrap"}>
-                           <Link to={`/catalog/${category}/${item.id}`}>
+                    {(productsList).map(item =>
+                        <Grid item xs={12} sm={6} md={5} lg={4} xl={3}
+                              wrap={"wrap"}
+                              spacing={1}  >
+                           {/*<Link to={`/catalog/${category}/${item.id}`}>*/}
+
                                     <CatalogItem title={item.title}
                                                  img={item.image} price={item.price}
                                                  description={item.description}
                                                  onChange={selectCount}
                                                  select={markType}
-                                                 id={item.id}/>
-                           </Link>
-
+                                                 id={item.id}
+                                                 category={category}/>
+                           {/*</Link>*/}
 
                         </Grid>
                     )}
