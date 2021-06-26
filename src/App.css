@@ -71,6 +71,7 @@ a{
   font-family: 'Gilroy', sans-serif;
   width: 257px;
   padding-bottom: 10px;
+  min-height: 1092px;
 }
 /*@media (max-width: 935px){*/
 /*  .aside-bar{*/

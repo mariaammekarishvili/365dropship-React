@@ -1,0 +1,101 @@
+.home-page{
+    background-image: url("https://mk0q365dropshipe482k.kinstacdn.com/wp-content/uploads/2020/06/hero-1.jpg");
+    background-position: revert;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 1200px;
+}
+
+.home-page__navigation{
+    position: static;
+    top: 0;
+    height: 80px;
+    display: flex;
+    /*justify-content: space-around;*/
+    min-width: 100%;
+    background: rgba(53, 60, 85, 0.7);
+
+}
+
+.home-page__navigation>div{
+    margin: auto 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.home-page__navigation>div:hover,.a:hover{
+    color: #61d5df;
+}
+.hm-page__nav-img{
+    margin-left: 150px !important;
+    flex-basis: 30%;
+}
+.hm-page__nav-button{
+    color: #61d5df !important;
+
+}
+.a{
+    text-decoration: none;
+    color: white;
+    margin: 26% 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.home-page__tabla{
+    margin: 200px auto 10px auto;
+    height: 210px;
+    width: 800px;
+    background: rgba(53, 60, 85, 0.8);
+    text-align: center;
+    color: white;
+    padding: 20px 10px;
+
+}
+.home-page__tabla>h1{
+    margin: 1px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.home-page__tabla>h3{
+    font-size: 25px;
+    margin-top: 1px;
+}
+.home-page_butt-container{
+    text-align: center;
+    margin: 10px;
+}
+.log-in--flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 500px;
+    text-align: center;
+    padding: 20px 100px;
+    background: white;
+    margin: auto auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 5px;
+}
+.log-in__input{
+    height: 50px;
+    border: #61d5df solid 1px;
+    border-radius: 6px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    padding-left: 10px;
+}
+.log-in__button{
+    background: #61d5df;
+    color: white;
+    font-size: 25px;
+}
+
+.log-in__permeation{
+    color: #9DA9D5;
+}

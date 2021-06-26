@@ -6,15 +6,23 @@ import {Route, Switch} from "react-router-dom";
 import Modal from "./catalog/Modal";
 import {Hidden} from "@material-ui/core";
 import ProfilePage from "./ProfilePage";
+import HomePage from "./HomePage";
 
 function App() {
   return (
       <div className="content">
-        <Hidden xsDown><Navigation/></Hidden>
-        <Hidden smDown><AsideBar/></Hidden>
+
 
           <Switch>
-            <Route exact path='/:catalog?/:category?/:id?'>
+
+            <Route exact path='/' >
+                <HomePage/>
+            </Route>
+
+              <Hidden xsDown><Navigation/></Hidden>
+              <Hidden smDown><AsideBar/></Hidden>
+
+            <Route path='/:catalog/:category?/:id?'>
                  <Main/>
             </Route>
 

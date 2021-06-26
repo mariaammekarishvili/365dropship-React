@@ -70,18 +70,7 @@ const Modal = ({openId}) => {
                                  color="primary">ADD INVENTORY</Button>
                          <h3>Description:</h3>
                          <p className={'information__description'}>{product.description}</p>
-                     </div>
-             {/*<DialogTitle>{product.title}</DialogTitle>*/}
-             {/*<DialogContent>*/}
-             {/*    <Typography gutterBottom>*/}
-             {/*        {product.description}*/}
-             {/*    </Typography>*/}
-             {/*</DialogContent>*/}
-             {/*<DialogActions>*/}
-             {/*    <button color='primary' variant='contained'>*/}
-             {/*        ADD TO INVENTORY*/}
-             {/*    </button>*/}
-             {/*</DialogActions>*/}
+                     </div>}
                  </div>
          </Dialog>
      </>
