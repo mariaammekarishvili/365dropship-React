@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import Modal from "./Modal";
 import Cost from "./Cost";
 import {useParams, Link,useHistory} from "react-router-dom";
-import {Button, Grid} from "@material-ui/core";
+import {Grid, Button} from "@material-ui/core";
+import {addToCart} from "../API";
 
 const CatalogItem = ({title,price,img,onChange,select,description,category,id}) => {
 
@@ -36,7 +37,7 @@ const CatalogItem = ({title,price,img,onChange,select,description,category,id}) 
 
     return (
 
-        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '')}>
+        <div className={'catalog__product' + (itemSelected ? ' catalog__product--set' : '')} key={id}>
 
             <label className="container">
                 <input
@@ -46,10 +47,21 @@ const CatalogItem = ({title,price,img,onChange,select,description,category,id}) 
                 <span className="checkmark"></span>
             </label>
 
-        <Link to={`/catalog/${category}/${id}`} >
+            <Button className={'add-iv'}
+                    size={"small"}
+                    fullWidth={50}
+                    onClick={() => {
+                        addToCart(id, 1)
+                    }}
+                    variant="contained"
+                    color="primary" >ADD TO INVENTORY</Button>
+
+            <Link to={`/catalog/${category}/${id}`} >
             <div className="catalog__photo">
                 <img src={img}/>
             </div>
+
+
             <div className="catalog__title">
                 {title}
             </div>

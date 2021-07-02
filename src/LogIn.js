@@ -1,8 +1,9 @@
 import Box from '@material-ui/core/Box';
 import {Button, makeStyles, TextField} from "@material-ui/core";
 import {login} from './API.js'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
+import {useHistory} from "react-router-dom";
 
 
 
@@ -26,6 +27,7 @@ function Form(props) {
 Form.propTypes = {children: PropTypes.node};
 const LogIn = () => {
 
+    const history = useHistory()
 
     const classes = useStyles();
     const [email,setEmail] = useState('')
@@ -34,6 +36,21 @@ const LogIn = () => {
     const loginAction = (e) => {
         e.preventDefault()
         login(email,password)
+            .then(result => {
+                loggedIn()
+            })
+            .catch(err=>{
+                alert('Username or Password is incorrect')
+                })
+    }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) loggedIn()
+    },[loginAction])
+
+    const loggedIn = () => {
+        history.push('/catalog')
     }
 
     return(

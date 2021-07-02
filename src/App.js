@@ -7,6 +7,8 @@ import Modal from "./catalog/Modal";
 import {Hidden} from "@material-ui/core";
 import ProfilePage from "./ProfilePage";
 import HomePage from "./HomePage";
+import TestCatalog from "./TestCatalog";
+import Cart from "./Cart";
 
 function App() {
   return (
@@ -19,12 +21,14 @@ function App() {
                 <HomePage/>
             </Route>
 
-              <Hidden xsDown><Navigation/></Hidden>
-              <Hidden smDown><AsideBar/></Hidden>
 
-            <Route path='/:catalog/:category?/:id?'>
-                 <Main/>
-            </Route>
+              <Route path='/catalog'>
+                  <Main/>
+              </Route>
+
+              <Route path='/cart'>
+                  <Cart/>
+              </Route>
 
             <Route path='/profile'>
                 <ProfilePage/>

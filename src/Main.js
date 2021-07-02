@@ -6,8 +6,10 @@ import {useHistory, useParams} from 'react-router-dom'
 import Modal from './catalog/Modal'
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {Box, Grid} from "@material-ui/core";
-
+import {Box, Grid, Hidden} from "@material-ui/core";
+import {products as productsData} from "./API";
+import Navigation from "./common/Navigation";
+import AsideBar from "./asideBar/AsideBar";
 
 const Main = () => {
 
@@ -23,19 +25,25 @@ const Main = () => {
 
 
     useEffect(() => {
-        if(category){
-        fetch(`https://fakestoreapi.com/products/category/${category}`)
-            .then(res => res.json())
-            .then(res => {
-                setProducts(res)
-            })}
-        else {
-            fetch(`https://fakestoreapi.com/products`)
-                .then(res => res.json())
-                .then(res => {
-                    setProducts(res)
-                })}
-    },[category])
+        productsData().then(result =>{
+        setProducts(result)})
+    },[])
+
+
+    // useEffect(() => {
+    //     if(category){
+    //     fetch(`https://fakestoreapi.com/products/category/${category}`)
+    //         .then(res => res.json())
+    //         .then(res => {
+    //             setProducts(res)
+    //         })}
+    //     else {
+    //         fetch(`https://fakestoreapi.com/products`)
+    //             .then(res => res.json())
+    //             .then(res => {
+    //                 setProducts(res)
+    //             })}
+    // },[category])
 
 
 
@@ -80,6 +88,10 @@ const Main = () => {
 
 
     return (
+        <>
+     <Hidden xsDown><Navigation/></Hidden>
+     <Hidden smDown><AsideBar/></Hidden>
+
 
         <main className="main">
 
@@ -102,14 +114,15 @@ const Main = () => {
                       spacing={2}
                         >
 
-                    {(productsList).map(item =>
+                    {productsList.map(item =>
                         <Grid item xs={12} sm={6} md={5} lg={4} xl={3}
                               wrap={"wrap"}
                               spacing={1}  >
                            {/*<Link to={`/catalog/${category}/${item.id}`}>*/}
 
                                     <CatalogItem title={item.title}
-                                                 img={item.image} price={item.price}
+                                                 key = {item.id}
+                                                 img={item.imageUrl} price={item.price}
                                                  description={item.description}
                                                  onChange={selectCount}
                                                  select={markType}
@@ -123,6 +136,7 @@ const Main = () => {
                 </Grid>
             </Box>
         </main>
+            </>
     )
 }
 

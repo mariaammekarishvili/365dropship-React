@@ -4,10 +4,12 @@ import Logo from "./common/Logo";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import LogIn from "./LogIn";
+import SignUp from "./SignUp";
 
 
 const HomePage= () => {
     const [openLogIn, setOpenLogIn] = useState(false);
+    const [openSignUp, setOpenSignUp] = useState(false)
 
     const handleOpen = () => {
         setOpenLogIn(true);
@@ -16,6 +18,16 @@ const HomePage= () => {
     const handleClose = () => {
         setOpenLogIn(false);
     };
+
+    const signUpClose = () => {
+        setOpenSignUp(false)
+    }
+
+    const signUpOpen = () => {
+        setOpenSignUp(true)
+    }
+
+
 
     return(
         <div className={'home-page'}>
@@ -41,7 +53,7 @@ const HomePage= () => {
                 <h3>EVERYTHING YOU NEED TO KNOW IN ONE PLACE</h3>
             </div>
             <div className={'home-page_butt-container'}>
-                <Button   variant="contained" size="large"  color="inherit" disableElevation>
+                <Button onClick={signUpOpen}  variant="contained" size="large"  color="inherit" disableElevation>
                     Sign Up Now
                 </Button>
                 <Button onClick={handleOpen} variant="outlined" size="large"  color="primary">
@@ -55,6 +67,15 @@ const HomePage= () => {
                 aria-describedby="simple-modal-description"
             >
                 <LogIn/>
+            </Modal>
+
+            <Modal
+                open={openSignUp}
+                onClose={signUpClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+                <SignUp/>
             </Modal>
 
         </div>

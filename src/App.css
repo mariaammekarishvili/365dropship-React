@@ -9,6 +9,16 @@ body{
 a{
   color: black;
 }
+.add-iv{
+  width: 150px !important;
+  font-size: 10px !important;
+  margin: 10px 0  0 10px !important;
+  background: #61d5df !important;
+}
+
+  .add-iv:hover{
+  }
+
 
 .content{
   justify-content: center;
@@ -578,4 +588,8 @@ hr{
 
 .profile-page{
   min-width: 1000px;
+}
+
+.cart--grid{
+  display: flex;
 }

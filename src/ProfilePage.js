@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import {Typography} from "@material-ui/core";
+import LogOut from "./LogOut";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,10 +24,8 @@ const ProfilePage = () => {
 
     return (
         <div className={"profile-page"}>
+            <LogOut/>
 
-            <Typography variant="h3" component="h3" align={"center"} gutterBottom>
-                Loading...
-            </Typography>
         </div>
     )
 }
