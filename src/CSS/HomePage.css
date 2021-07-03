@@ -90,10 +90,11 @@
     font-size: 22px;
     padding-left: 10px;
 }
-.log-in__button{
+.form__button{
     background: #61d5df;
     color: white;
     font-size: 25px;
+    width: 100%;
 }
 
 .log-in__permeation{

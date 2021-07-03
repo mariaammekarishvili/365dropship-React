@@ -7,7 +7,7 @@ const LogOut = () => {
     const logOutAction = () => {
         localStorage.removeItem('user')
         localStorage.removeItem('token')
-        history.push('/login')
+        history.push('/')
     }
 
     return(

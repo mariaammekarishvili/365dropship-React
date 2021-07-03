@@ -1,13 +1,13 @@
 import {creatProduct, getProduct, updateProduct, updeatProduct} from "./API";
-import {Form, Formik, Field} from 'formik'
+import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 const creatProductValidation = yup.object().shape({
     title:          yup.string().min(2).max(20),
-    description:    yup.string().min(10).max(300),
-    price:          yup.number().integer().max(20),
+    description:    yup.string().min(8).max(300),
+    price:          yup.number().integer().min(20),
     imageUrl:       yup.string().url()
 })
 
@@ -39,7 +39,9 @@ const AddProduct = () => {
 
     return(
         <div>
+            <p>{productId ? 'edit' : 'add'} products</p>
             <Formik enableReinitialize
+
                 initialValues={productId ?
                     {
                         title: product.title,
@@ -53,28 +55,43 @@ const AddProduct = () => {
                         price: '',
                         imageUrl: ''
                     }}
-                onSubmit={values => {
-                    creatProduct(values)
-                }}
-                    validationSchema={creatProductValidation}
+                onSubmit={handleSubmit}
+                validationSchema={creatProductValidation}
             >
-                <Form onSubmit={handleSubmit}>
+                <Form >
                     <Field placeholder='Title'
                            name='title'
                     />
+                    <ErrorMessage name={'title'}
+                                  className={'ErrorMessage'}
+                                  component={'div'}/>
+
                     <Field placeholder='Description'
                            component='textarea'
                             name='description'
                     />
+                    <ErrorMessage name={'description'}
+                                  className={'ErrorMessage'}
+                                  component={'div'}/>
+
                     <Field placeholder='Price'
                            name='price'
                     />
+                    <ErrorMessage name={'price'}
+                                  className={'ErrorMessage'}
+                                  component={'div'}/>
+
                     <Field placeholder='Image URL'
                            name='imageUrl'
                     />
-                    <input type={'submit'}
-                           value={'Save'}
-                           />
+                    <ErrorMessage name={'imageUrl'}
+                                  className={'ErrorMessage'}
+                                  component={'div'}/>
+
+                    <button type={'submit'}
+                            className={'form__button'}>
+                           Submit
+                    </button>
                 </Form>
             </Formik>
 

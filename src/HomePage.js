@@ -1,5 +1,5 @@
 import {Button, Grid, Modal, Paper} from "@material-ui/core";
-import './HomePage.css';
+import './CSS/HomePage.css';
 import Logo from "./common/Logo";
 import {Link} from "react-router-dom";
 import {useState} from "react";
@@ -53,31 +53,17 @@ const HomePage= () => {
                 <h3>EVERYTHING YOU NEED TO KNOW IN ONE PLACE</h3>
             </div>
             <div className={'home-page_butt-container'}>
-                <Button onClick={signUpOpen}  variant="contained" size="large"  color="inherit" disableElevation>
+                <Link to={'/signup'}>
+                    <Button onClick={signUpOpen}  variant="contained" size="large"  color="inherit" disableElevation>
                     Sign Up Now
-                </Button>
-                <Button onClick={handleOpen} variant="outlined" size="large"  color="primary">
-                    Log In
-                </Button>
+                    </Button><span> </span>
+                </Link>
+                <Link to={'/login'}>
+                    <Button onClick={handleOpen} variant="outlined" size="large"  color="primary">
+                        Log In
+                    </Button>
+                </Link>
             </div>
-            <Modal
-                open={openLogIn}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                <LogIn/>
-            </Modal>
-
-            <Modal
-                open={openSignUp}
-                onClose={signUpClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                <SignUp/>
-            </Modal>
-
         </div>
     )
 }

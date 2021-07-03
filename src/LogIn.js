@@ -1,3 +1,4 @@
+import './CSS/LogIn-SignUp.css'
 import Box from '@material-ui/core/Box';
 import {Button, makeStyles, TextField} from "@material-ui/core";
 import {login} from './API.js'
@@ -54,6 +55,7 @@ const LogIn = () => {
     }
 
     return(
+        <div className={'log-in form--background'}>
         <form onSubmit={loginAction} className={'log-in--flex'}>
            <h2 className={'log-in__header'}>Log In</h2>
            <input type={'text'} name={'email'}
@@ -74,9 +76,10 @@ const LogIn = () => {
            <Form><input type="checkbox"/>
                <label htmlFor="vehicle1">Subscribe to Newslette</label>
            </Form>
-           <input className={'log-in__input log-in__button'}
+           <input className={'log-in__input form__button'}
                   type={'submit'}/>
         </form>
+        </div>
     )
 }
 

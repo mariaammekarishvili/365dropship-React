@@ -20,8 +20,8 @@ export const login = async (email, password) => {
     }catch (err){
         throw new Error(err)
 }}
-export const signUp = async (firstName, lastName, email , password, passwordConfirmation) => {
-    const result = await axios.post(SERVER_URL + 'register', {firstName, lastName, email , password, passwordConfirmation})
+export const signUp = async (data) => {
+    const result = await axios.post(SERVER_URL + 'register', data)
     console.log(result)
 }
 
@@ -42,24 +42,26 @@ export const products = async () => {
     return result.data.data
 }
 
+export const removeFromCart = async (productId) => {
+    const result = await axios.post(SERVER_URL_V1 + `cart/remove/${productId}`)
+    return result.data.data
+}
 export const addToCart = async (productId, qty) => {
     const result = await axios.post(SERVER_URL_V1 + 'cart/add',
         {productId, qty})
     return result.data.data
 }
 
+
 export  const creatProduct = async (data) => {
     const result = await axios.post(SERVER_URL_V1 + 'products',
-        {data})
+    data)
     return result.data.data
 
 }
 
-export  const updateProduct = async(data,id) => {
-    const result = await axios.put(SERVER_URL_V1 + `products/${id}` ,
-        {data})
-
-    console.log(data)
+export  const updateProduct = async(id,data) => {
+    const result = await axios.put(SERVER_URL_V1 + `products/${id}` ,data)
     return result.data.data
 }
 

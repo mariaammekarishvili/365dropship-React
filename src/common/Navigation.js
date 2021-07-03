@@ -18,7 +18,7 @@ const Navigation = () => {
             <NavigationItem img={dashboard}/>
             <NavigationItem img={catalog}/>
             <NavigationItem img={inventory}/>
-            <NavigationItem img={cart}/>
+            <Link to={'/cart'}><NavigationItem img={cart}/></Link>
             <NavigationItem img={orders}/>
             <NavigationItem img={transaction}/>
             <NavigationItem img={stores}/>

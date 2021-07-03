@@ -1,0 +1,20 @@
+
+
+.log-in,.form--background{
+    background: url("https://mk0q365dropshipe482k.kinstacdn.com/wp-content/uploads/2020/06/hero-1.jpg");
+    background-position: revert;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 1200px;
+}
+
+.log-in--flex{
+    z-index: 200;
+}
+.ErrorMessage{
+    color: red;
+}
+.log-in__button{
+    width: 100%;
+}

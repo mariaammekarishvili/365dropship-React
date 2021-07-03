@@ -7,18 +7,22 @@ import Modal from './catalog/Modal'
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {Box, Grid, Hidden} from "@material-ui/core";
-import {products as productsData} from "./API";
+import {products as productsData, updateProduct} from "./API";
 import Navigation from "./common/Navigation";
 import AsideBar from "./asideBar/AsideBar";
+import {addToCart as cartRequest} from './API'
+
 
 const Main = () => {
 
     const [products, setProducts] = useState([])
     const [productsList, setProductsList] = useState([])
-    const [numbOfSelected, setNumbOfSelected] = useState(0)
+    const [selectedProductId, setSelectedProductId] = useState([])
+    const [selectedProductQty, setSelectedProductQty] = useState([])
     const [markType, setMarkType] = useState('')
     const [searchValue, setSearchValue] = useState('')
     const [sortState, setSortState] = useState('default')
+    const [numbOfSelected, setNumbOfSelected] = useState(selectedProductId.length)
 
     const {id} = useParams();
     const {category} = useParams()
@@ -30,22 +34,6 @@ const Main = () => {
     },[])
 
 
-    // useEffect(() => {
-    //     if(category){
-    //     fetch(`https://fakestoreapi.com/products/category/${category}`)
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             setProducts(res)
-    //         })}
-    //     else {
-    //         fetch(`https://fakestoreapi.com/products`)
-    //             .then(res => res.json())
-    //             .then(res => {
-    //                 setProducts(res)
-    //             })}
-    // },[category])
-
-
 
     useEffect(() => {
             setProductsList(sortType(products.filter((value) => {
@@ -53,7 +41,7 @@ const Main = () => {
             }), sortState))
         }, [sortState, searchValue,category,products])
 
-    console.log(sortState)
+
 
     const sortType = (products, sortState) => {
         if (sortState == "priceDesc") {
@@ -68,23 +56,48 @@ const Main = () => {
             return [...products]
     }
 
-    const selectCount = (action) => {
-        setNumbOfSelected(numbOfSelected + action)
+
+    const selectedIds = (id) => {
+        setSelectedProductId([...selectedProductId,id])
     }
+    const selectedQty = (qty) => {
+        let add = (qty > 0 ? qty : 1)
+        setSelectedProductQty([...selectedProductQty,add])
+    }
+
     const markProducts = (click) => {
         return setMarkType(click)
     }
+
+    // console.log(selectedProductQty)
+
+    const addToCart = (req) => {
+        if (req === 'add'){
+            for(let i =0 ;i < selectedProductQty.length;i++){
+                cartRequest(selectedProductId[i], selectedProductQty[i])
+                    .then(res => {
+                        alert('Add Successfully')
+                    }).catch(err => alert(err.message))
+            }
+        }
+    }
+
+
     useEffect(() => {
+        setNumbOfSelected(selectedProductQty.length)
         if (markType === 'select') {
             setNumbOfSelected(products.length)
         } else if (markType === 'clear') {
             setNumbOfSelected(0)
+            setSelectedProductQty([])
+            setSelectedProductId([])
             setMarkType('')
         } else {
             setNumbOfSelected(setNumbOfSelected)
         }
-    }, [markType])
+    }, [markType,selectedProductQty])
 
+    console.log(selectedProductId, selectedProductQty)
 
 
     return (
@@ -100,7 +113,9 @@ const Main = () => {
                     productNumber={products.length}
                     input={setSearchValue}
                     slectButton={markProducts}
-                    clearButton={numbOfSelected}/>
+                    clearButton={numbOfSelected}
+                    cartReq = {addToCart}
+                    />
 
             <SortSection onChange={setSortState}/>
 
@@ -124,12 +139,15 @@ const Main = () => {
                                                  key = {item.id}
                                                  img={item.imageUrl} price={item.price}
                                                  description={item.description}
-                                                 onChange={selectCount}
+                                                 selectId={selectedIds}
+                                                 selectQty={selectedQty}
                                                  select={markType}
                                                  id={item.id}
-                                                 category={category}/>
+                                                 category={category}
+                                                 catalog
+                                                    />
                            {/*</Link>*/}
-
+                           {/* {setSelectedProductId(markType === 'select' ? [...selectedProductId,item.id] : (selectedProductId))}*/}
                         </Grid>
                     )}
                     <Modal openId={id}/>

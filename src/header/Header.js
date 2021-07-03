@@ -1,12 +1,16 @@
-import Button from "../common/Button";
 import React, { useState, useEffec } from 'react';
+import {Button} from "@material-ui/core";
 
-const Header = ({selectedNumber, productNumber,slectButton,input,clearButton}) =>{
+const Header = ({selectedNumber, productNumber,slectButton,input,clearButton,cartReq}) =>{
 
     const [inputText, setInputText] = useState('')
 
     const selectOrClearAllItem = (e) => {
         slectButton (e.target.value)
+    }
+
+    const addToCart = () => {
+        cartReq('add')
     }
 
     const changeInputText = (e) => {
@@ -42,7 +46,8 @@ const Header = ({selectedNumber, productNumber,slectButton,input,clearButton}) =
                         className="search-box__button"
                         type="submit">🔍</button>
             </div>
-            <Button title={'ADD TO INVENTORY'}/>
+            <Button color={'primary'}
+                    onClick={addToCart}>ADD TO INVENTORY</Button>
         </header>
     )
 }

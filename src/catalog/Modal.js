@@ -28,7 +28,6 @@ const Modal = ({openId}) => {
     }
 
 
-    console.log(product)
     return(
      <>
         {/*<div className={'modal'}>*/}

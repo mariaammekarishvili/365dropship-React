@@ -1,4 +1,4 @@
-import './App.css';
+import './CSS/App.css';
 import Navigation from "./common/Navigation";
 import AsideBar from "./asideBar/AsideBar";
 import Main from "./Main";
@@ -10,6 +10,8 @@ import HomePage from "./HomePage";
 import TestCatalog from "./TestCatalog";
 import Cart from "./Cart";
 import AddProduct from "./AddProduct";
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
 
 function App() {
   return (
@@ -22,8 +24,15 @@ function App() {
                 <HomePage/>
             </Route>
 
+            <Route path={'/login'}>
+                <LogIn/>
+            </Route>
 
-              <Route path='/catalog'>
+              <Route path={'/signup'}>
+                  <SignUp/>
+              </Route>
+
+              <Route path='/catalog/:id?'>
                   <Main/>
               </Route>
 
