@@ -9,6 +9,7 @@ import ProfilePage from "./ProfilePage";
 import HomePage from "./HomePage";
 import TestCatalog from "./TestCatalog";
 import Cart from "./Cart";
+import AddProduct from "./AddProduct";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
 
             <Route path='/profile'>
                 <ProfilePage/>
+            </Route>
+
+            <Route path='/addProduct/:productId?'>
+                <AddProduct/>
             </Route>
           </Switch>
       </div>

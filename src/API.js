@@ -47,3 +47,23 @@ export const addToCart = async (productId, qty) => {
         {productId, qty})
     return result.data.data
 }
+
+export  const creatProduct = async (data) => {
+    const result = await axios.post(SERVER_URL_V1 + 'products',
+        {data})
+    return result.data.data
+
+}
+
+export  const updateProduct = async(data,id) => {
+    const result = await axios.put(SERVER_URL_V1 + `products/${id}` ,
+        {data})
+
+    console.log(data)
+    return result.data.data
+}
+
+export const getProduct = async (id) => {
+    const result = await axios.get(SERVER_URL_V1 +  `products/${id}`)
+    return result.data.data
+}
