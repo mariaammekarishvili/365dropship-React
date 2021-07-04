@@ -15,23 +15,13 @@ const Cart = () => {
     },)
 
     return(
-        <div className={'cart--grid main'}>
+        <>
             <Hidden xsDown><Navigation/></Hidden>
             <Hidden smDown><AsideBar/></Hidden>
 
 
-         <Box p={3} minWidth={1500} minHeight={1200}>
-            <Grid container
-                  direction="row"
-                  justify="flex-start"
-                  alignItems="flex-start"
-                  wrap={"wrap"}
-                  m={0}
-                  spacing={2}  >
 
-                <Grid item xs={12} sm={6} md={5} lg={4} xl={3}
-                      wrap={"wrap"}
-                      spacing={1}  >
+          <div className={'cart--flex'}>
 
                     {cartData.cartItem && cartData.cartItem.items.map(item =>
                         <CatalogItem
@@ -43,10 +33,8 @@ const Cart = () => {
                             getQtyNumb = {item.qty}
                         />
                     )}
-                </Grid>
-            </Grid>
-         </Box>
-        </div>
+              </div>
+        </>
     )
 }
 

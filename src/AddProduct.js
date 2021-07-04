@@ -1,8 +1,11 @@
 import {creatProduct, getProduct, updateProduct, updeatProduct} from "./API";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
+import './CSS/AddProduct.css'
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import Navigation from "./common/Navigation";
+import {Hidden} from "@material-ui/core";
 
 const creatProductValidation = yup.object().shape({
     title:          yup.string().min(2).max(20),
@@ -38,63 +41,71 @@ const AddProduct = () => {
 
 
     return(
-        <div>
-            <p>{productId ? 'edit' : 'add'} products</p>
-            <Formik enableReinitialize
+        <div className={'add-form'}>
+            <Hidden xsDown><Navigation/></Hidden>
+            <div className={'add-form__box'}>
+                <p className={'add-form__title'}>
+                    {productId ? 'Edit' : 'Add'} products</p>
 
-                initialValues={productId ?
-                    {
-                        title: product.title,
-                        description: product.description,
-                        price: product.price,
-                        imageUrl: product.imageUrl
-                    } :
-                    {
-                        title: '',
-                        description: '',
-                        price: '',
-                        imageUrl: ''
-                    }}
-                onSubmit={handleSubmit}
-                validationSchema={creatProductValidation}
-            >
-                <Form >
-                    <Field placeholder='Title'
-                           name='title'
-                    />
-                    <ErrorMessage name={'title'}
-                                  className={'ErrorMessage'}
-                                  component={'div'}/>
+                <Formik enableReinitialize
 
-                    <Field placeholder='Description'
-                           component='textarea'
-                            name='description'
-                    />
-                    <ErrorMessage name={'description'}
-                                  className={'ErrorMessage'}
-                                  component={'div'}/>
+                    initialValues={productId ?
+                        {
+                            title: product.title,
+                            description: product.description,
+                            price: product.price,
+                            imageUrl: product.imageUrl
+                        } :
+                        {
+                            title: '',
+                            description: '',
+                            price: '',
+                            imageUrl: ''
+                        }}
+                    onSubmit={handleSubmit}
+                    validationSchema={creatProductValidation}
+                >
+                    <Form className={'add-form__Form'} >
+                        <p>Product Title:</p>
+                        <Field placeholder='Title'
+                               name='title'
+                        />
+                        <ErrorMessage name={'title'}
+                                      className={'ErrorMessage'}
+                                      component={'div'}/>
 
-                    <Field placeholder='Price'
-                           name='price'
-                    />
-                    <ErrorMessage name={'price'}
-                                  className={'ErrorMessage'}
-                                  component={'div'}/>
+                        <p>Product Description:</p>
+                        <Field placeholder='Description'
+                               component='textarea'
+                                name='description'
+                        />
+                        <ErrorMessage name={'description'}
+                                      className={'ErrorMessage'}
+                                      component={'div'}/>
 
-                    <Field placeholder='Image URL'
-                           name='imageUrl'
-                    />
-                    <ErrorMessage name={'imageUrl'}
-                                  className={'ErrorMessage'}
-                                  component={'div'}/>
+                        <p>Enter price $:</p>
+                        <Field placeholder='Price'
+                               name='price'
+                        />
+                        <ErrorMessage name={'price'}
+                                      className={'ErrorMessage'}
+                                      component={'div'}/>
 
-                    <button type={'submit'}
-                            className={'form__button'}>
-                           Submit
-                    </button>
-                </Form>
-            </Formik>
+                        <p>Add Picture URL:</p>
+                        <Field placeholder='Image URL'
+                               name='imageUrl'
+                        />
+                        <ErrorMessage name={'imageUrl'}
+                                      className={'ErrorMessage'}
+                                      component={'div'}/>
 
+                        <button type={'submit'}
+                                className={'form__button add-form__button'}>
+                               Submit
+                        </button>
+                    </Form>
+                </Formik>
+            </div>
         </div>
     )
 }

@@ -642,3 +642,10 @@ hr{
 .get_qty{
   border-radius: 5px;
 }
+
+.cart--flex{
+  display: flex;
+  justify-content: space-around;
+
+
+}

@@ -10,7 +10,7 @@ import HomePage from "./HomePage";
 import TestCatalog from "./TestCatalog";
 import Cart from "./Cart";
 import AddProduct from "./AddProduct";
-import LogIn from "./LogIn";
+import LogIn from "./common/LogIn";
 import SignUp from "./SignUp";
 
 function App() {

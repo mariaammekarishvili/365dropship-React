@@ -99,7 +99,6 @@ const Main = () => {
 
     console.log(selectedProductId, selectedProductQty)
 
-
     return (
         <>
      <Hidden xsDown><Navigation/></Hidden>

@@ -3,7 +3,7 @@ import './CSS/HomePage.css';
 import Logo from "./common/Logo";
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import LogIn from "./LogIn";
+import LogIn from "./common/LogIn";
 import SignUp from "./SignUp";
 
 
