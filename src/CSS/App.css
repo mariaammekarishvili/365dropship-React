@@ -461,14 +461,6 @@ hr{
     width: 1200px ;
   }
 }
-/*@media only screen and (max-width: 1200px){*/
-/*  .modal{*/
-/*    display: none;*/
-/*  }*/
-/*  .item-table{*/
-/*    display: none ;*/
-/*  }*/
-/*}*/
 
 .modal{
   height: 100%;
@@ -534,7 +526,6 @@ hr{
   font-size: 10px;
   color: #9E9E9E;
   margin: 10px;
-
 }
 .item__cost{
   background: #FAFAFA;
@@ -570,7 +561,6 @@ hr{
   justify-content: start;
   padding:30px;
   background: white;
-
 }
 .information__description{
   flex-grow: 2;
@@ -593,7 +583,6 @@ hr{
   margin: 10px 0;
 }
 
-
 .profile-page{
   min-width: 1000px;
 }
@@ -602,15 +591,20 @@ hr{
   display: flex;
 }
 
-
 .qty{
   text-align: right;
   height: 25px;
-  /*width: 40%;*/
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
   margin-top: 7px;
+}
+.qty__only{
+  text-align: right;
+  height: 25px;
+  margin-right: 20px;
+  margin-top: 7px;
+  color: #7A7A7A;
 }
 .qty>*{
   width: 30px;
@@ -646,6 +640,23 @@ hr{
 .cart--flex{
   display: flex;
   justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin: 70px;
+}
 
+.cart {
+  justify-content: space-between;
+  display: flex;
+  position: absolute;
+  flex-wrap: wrap ;
+  left: 317px;
+}
 
+.add-form__title{
+  font-size: 25px;
+  font-weight: bold;
+  padding: 15px 0 28px 20px;
+  border-bottom:  solid 1px #DDE3EE;
 }

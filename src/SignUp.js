@@ -15,7 +15,6 @@ const signUpValidation = yup.object().shape({
 })
 
 const SignUp = () => {
-
     const history = useHistory()
 
     const singUpAction = values => {
@@ -91,57 +90,13 @@ const SignUp = () => {
                                 className={'ErrorMessage'}/>
 
                    <br/>
-                  <button type={'submit'} className={'log-in__input form__button'}>
-                      Submit
+                  <button type={'submit'}
+                          className={'log-in__input form__button'}>
+                          Submit
                   </button>
               </Form>
           </Formik>
           </div>
-
-
-        {/*<form onSubmit={singUpAction} className={'log-in--flex'}>*/}
-        {/*    <h2 className={'log-in__header'}>Sign Up</h2>*/}
-
-
-        {/*    <input type={'text'} name={'firstName'}*/}
-        {/*           placeholder={'firstName'}*/}
-        {/*           className={'log-in__input'}*/}
-        {/*           value={firstName}*/}
-        {/*           onChange={(e) => setFirstName(e.target.value)}/>*/}
-
-        {/*    <input type={'text'}*/}
-        {/*           name={'lastName'}*/}
-        {/*           placeholder={'lastName'}*/}
-        {/*           className={'log-in__input'}*/}
-        {/*           value={lastName}*/}
-        {/*           onChange={(e) => setLastName(e.target.value)}/>*/}
-
-        {/*    <input type={'text'} name={'email'}*/}
-        {/*           placeholder={'E-mail'}*/}
-        {/*           className={'log-in__input'}*/}
-        {/*           value={email}*/}
-        {/*           onChange={(e) => setEmail(e.target.value)}/>*/}
-
-        {/*    <input type={'password'}*/}
-        {/*           name={'password'}*/}
-        {/*           placeholder={'Password'}*/}
-        {/*           className={'log-in__input'}*/}
-        {/*           value={password}*/}
-        {/*           onChange={(e) => setPassword(e.target.value)}/>*/}
-        {/*    <input type={'passwordConfirmation'}*/}
-        {/*           name={'passwordConfirmation'}*/}
-        {/*           placeholder={'passwordConfirmation'}*/}
-        {/*           className={'log-in__input'}*/}
-        {/*           value={passwordConfirmation}*/}
-        {/*           onChange={(e) => setPasswordConfirmation(e.target.value)}/>*/}
-
-
-        {/*    <form><input type="checkbox"/>*/}
-        {/*        <label htmlFor="vehicle1">Subscribe to Newslette</label>*/}
-        {/*    </form>*/}
-        {/*    <input className={'log-in__input log-in__button'}*/}
-        {/*           type={'submit'}/>*/}
-        {/*</form>*/}
       </div>
     )
 }

@@ -34,13 +34,11 @@ const Main = () => {
     },[])
 
 
-
     useEffect(() => {
             setProductsList(sortType(products.filter((value) => {
                 return value.title.toLowerCase().includes(searchValue.toLowerCase())
             }), sortState))
         }, [sortState, searchValue,category,products])
-
 
 
     const sortType = (products, sortState) => {
@@ -69,8 +67,6 @@ const Main = () => {
         return setMarkType(click)
     }
 
-    // console.log(selectedProductQty)
-
     const addToCart = (req) => {
         if (req === 'add'){
             for(let i =0 ;i < selectedProductQty.length;i++){
@@ -81,7 +77,6 @@ const Main = () => {
             }
         }
     }
-
 
     useEffect(() => {
         setNumbOfSelected(selectedProductQty.length)
@@ -97,17 +92,13 @@ const Main = () => {
         }
     }, [markType,selectedProductQty])
 
-    console.log(selectedProductId, selectedProductQty)
 
     return (
         <>
-     <Hidden xsDown><Navigation/></Hidden>
-     <Hidden smDown><AsideBar/></Hidden>
-
+         <Hidden xsDown><Navigation/></Hidden>
+         <Hidden smDown><AsideBar/></Hidden>
 
         <main className="main">
-
-
             <Header selectedNumber={numbOfSelected}
                     productNumber={products.length}
                     input={setSearchValue}
@@ -127,13 +118,10 @@ const Main = () => {
                       m={0}
                       spacing={2}
                         >
-
                     {productsList.map(item =>
                         <Grid item xs={12} sm={6} md={5} lg={4} xl={3}
                               wrap={"wrap"}
-                              spacing={1}  >
-                           {/*<Link to={`/catalog/${category}/${item.id}`}>*/}
-
+                              spacing={1}>
                                     <CatalogItem title={item.title}
                                                  key = {item.id}
                                                  img={item.imageUrl} price={item.price}
@@ -145,9 +133,7 @@ const Main = () => {
                                                  category={category}
                                                  catalog
                                                     />
-                           {/*</Link>*/}
-                           {/* {setSelectedProductId(markType === 'select' ? [...selectedProductId,item.id] : (selectedProductId))}*/}
-                        </Grid>
+                             </Grid>
                     )}
                     <Modal openId={id}/>
                 </Grid>

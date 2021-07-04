@@ -16,12 +16,12 @@ const Navigation = () => {
             <Logo/>
             <Link to={'/profile'}><NavigationItem img={profile} round/></Link>
             <NavigationItem img={dashboard}/>
-            <Link to={'/catalog:id?'}><NavigationItem img={catalog}/></Link>
+            <Link to={'/catalog'}><NavigationItem img={catalog}/></Link>
             <NavigationItem img={inventory}/>
             <Link to={'/cart'}><NavigationItem img={cart}/></Link>
             <NavigationItem img={orders}/>
             <NavigationItem img={transaction}/>
-            <Link to={'/addProduct/:productId?'}><NavigationItem img={stores}/></Link>
+            <Link to={'/addProduct'}><NavigationItem img={stores}/></Link>
 
         </nav>
     )

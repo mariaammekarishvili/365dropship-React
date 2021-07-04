@@ -4,25 +4,24 @@ import CatalogItem from "./catalog/CatalogItem";
 import {Grid, Hidden} from "@material-ui/core";
 import Navigation from "./common/Navigation";
 import AsideBar from "./asideBar/AsideBar";
-import Box from "@material-ui/core/Box";
+import './CSS/AddProduct.css'
+import {removeFromCart} from './API'
 
 const Cart = () => {
     const [cartData, setCartData] = useState([])
+
     useEffect(() => {
         cart().then(result => {
             setCartData(result)
         })
-    },)
+    },[removeFromCart()])
 
     return(
-        <>
+        <div className={'cart'}>
             <Hidden xsDown><Navigation/></Hidden>
             <Hidden smDown><AsideBar/></Hidden>
 
-
-
           <div className={'cart--flex'}>
-
                     {cartData.cartItem && cartData.cartItem.items.map(item =>
                         <CatalogItem
                             title={item.title}
@@ -34,7 +33,7 @@ const Cart = () => {
                         />
                     )}
               </div>
-        </>
+        </div>
     )
 }
 

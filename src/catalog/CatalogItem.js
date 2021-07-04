@@ -90,8 +90,8 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
                                 value={'minus'}> -
                         </button>
                     </div>
-                    : <div className={'qty'}>
-                        <div className={'qty__number get_qty'}>{getQtyNumb}</div>
+                    : <div className={'qty__only'}>
+                        <div className>Qty : {getQtyNumb === 0 ? 1 : getQtyNumb }</div>
                     </div>}
 
                 <div className="catalog__title">

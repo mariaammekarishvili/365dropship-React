@@ -17,14 +17,14 @@
 }
 .add-form__button{
     border: none;
-    width: 100px;
+    width: 100px!important;
     border-radius: 5px;
-    font-size: 17px;
+    font-size: 17px!important;
     height: 33px ;
     margin-top: 15px;
 }
 .add-form__Form{
-    margin: 40px auto;
+    margin: 40px 117px;
     background: white;
     width: 900px ;
     /*height: 300px;*/
@@ -38,7 +38,8 @@
     background: #FEFEFE;
 
 }
-input{
+
+.add-form__input{
     height: 33px;
     width: 135px;
     border-radius: 5px;

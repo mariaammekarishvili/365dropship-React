@@ -1,5 +1,6 @@
 import {Button} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
+import '../CSS/Profile.css'
 
 const LogOut = () => {
     const history = useHistory()
@@ -11,7 +12,7 @@ const LogOut = () => {
     }
 
     return(
-        <Button size={"medium"} onClick={logOutAction} color={'default'}>Log Out</Button>
+        <button size={"medium"} className={'logout__but'} onClick={logOutAction} color={'default'}>Log Out</button>
     )
 }
 

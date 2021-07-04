@@ -1,5 +1,4 @@
 import axios from "axios";
-import Logo from "./common/Logo";
 
 const SERVER_URL = 'http://18.185.148.165:3000/';
 const SERVER_URL_V1 = SERVER_URL + 'api/v1/';
@@ -8,7 +7,6 @@ axios.interceptors.request.use( (config) => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
     return config;
 })
-
 
 export const login = async (email, password) => {
     try{
@@ -52,7 +50,6 @@ export const addToCart = async (productId, qty) => {
     return result.data.data
 }
 
-
 export  const creatProduct = async (data) => {
     const result = await axios.post(SERVER_URL_V1 + 'products',
     data)
@@ -69,3 +66,4 @@ export const getProduct = async (id) => {
     const result = await axios.get(SERVER_URL_V1 +  `products/${id}`)
     return result.data.data
 }
+

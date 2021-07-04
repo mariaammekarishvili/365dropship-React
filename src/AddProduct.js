@@ -2,7 +2,7 @@ import {creatProduct, getProduct, updateProduct, updeatProduct} from "./API";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import './CSS/AddProduct.css'
-import {useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Navigation from "./common/Navigation";
 import {Hidden} from "@material-ui/core";
@@ -17,6 +17,7 @@ const creatProductValidation = yup.object().shape({
 const AddProduct = () => {
     const {productId} = useParams()
     const [product, setProduct] = useState({})
+    const history = useHistory()
 
     useEffect(() => {
         if(productId){
@@ -30,6 +31,7 @@ const AddProduct = () => {
         if(productId){
             updateProduct(productId,values).then(res => {
                 alert('Update Successful!')
+                history.push('/addProduct')
             }).catch(err => alert(err.message))
         } else {
             creatProduct(values).then(res => {
@@ -39,7 +41,6 @@ const AddProduct = () => {
         }
     }
 
-
     return(
         <div className={'add-form'}>
             <Hidden xsDown><Navigation/></Hidden>
@@ -48,7 +49,6 @@ const AddProduct = () => {
                     {productId ? 'Edit' : 'Add'} products</p>
 
                 <Formik enableReinitialize
-
                     initialValues={productId ?
                         {
                             title: product.title,
@@ -69,6 +69,7 @@ const AddProduct = () => {
                         <p>Product Title:</p>
                         <Field placeholder='Title'
                                name='title'
+                               className={'add-form__input'}
                         />
                         <ErrorMessage name={'title'}
                                       className={'ErrorMessage'}
@@ -78,6 +79,8 @@ const AddProduct = () => {
                         <Field placeholder='Description'
                                component='textarea'
                                 name='description'
+                               className={'add-form__input'}
+
                         />
                         <ErrorMessage name={'description'}
                                       className={'ErrorMessage'}
@@ -86,6 +89,8 @@ const AddProduct = () => {
                         <p>Enter price $:</p>
                         <Field placeholder='Price'
                                name='price'
+                               className={'add-form__input'}
+
                         />
                         <ErrorMessage name={'price'}
                                       className={'ErrorMessage'}
@@ -94,6 +99,8 @@ const AddProduct = () => {
                         <p>Add Picture URL:</p>
                         <Field placeholder='Image URL'
                                name='imageUrl'
+                               className={'add-form__input'}
+
                         />
                         <ErrorMessage name={'imageUrl'}
                                       className={'ErrorMessage'}

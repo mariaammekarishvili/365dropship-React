@@ -6,9 +6,6 @@ import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
 
-
-
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
