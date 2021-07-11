@@ -14,6 +14,7 @@ import LogIn from "./common/LogIn";
 import SignUp from "./SignUp";
 
 function App() {
+    const token = localStorage.getItem('token')
   return (
       <div className="content">
 
@@ -33,15 +34,15 @@ function App() {
               </Route>
 
               <Route path='/catalog/:id?'>
-                  <Main/>
+                  {token ? <Main/> :  <HomePage/>}
               </Route>
 
               <Route path='/cart'>
-                  <Cart/>
+                  {token ? <Cart/> :  <HomePage/>}
               </Route>
 
             <Route path='/profile'>
-                <ProfilePage/>
+                {token ? <ProfilePage/> :  <HomePage/>}
             </Route>
 
             <Route path='/addProduct/:productId?'>

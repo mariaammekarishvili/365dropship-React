@@ -4,12 +4,30 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+import {combineReducers, createStore} from "redux";
+import {ProductReducer} from "./reducers/ProductReducer/ProductReducer";
+import {GetCartReducer} from "./reducers/CartReducer/GetCartReducer";
+
+// combineReducers
+
+const reducers = combineReducers({
+    products: ProductReducer,
+    getCart: GetCartReducer
+
+})
+
+
+const store = createStore(reducers,
+   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
   <React.StrictMode>
-   <BrowserRouter>
-     <App />
-   </BrowserRouter>
+      <Provider store={store}>
+           <BrowserRouter>
+             <App />
+           </BrowserRouter>
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

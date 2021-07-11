@@ -1,0 +1,27 @@
+.cart-item{
+    display: flex;
+}
+.table{
+    width: 100%;
+}
+
+.cart-item__box{
+    padding: 0 30px;
+}
+.table__item{
+    height: 70px;
+    width: 100%;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+.td__img{
+    height: 102px;
+    width: 149px;
+}
+.td__img-box,.td__title,.td__qty,.td__price{
+    width: 170px;
+    text-align: center;
+}
+.thead{
+    height: 63px;
+}

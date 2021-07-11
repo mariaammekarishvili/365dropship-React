@@ -11,11 +11,12 @@ import {products as productsData, updateProduct} from "./API";
 import Navigation from "./common/Navigation";
 import AsideBar from "./asideBar/AsideBar";
 import {addToCart as cartRequest} from './API'
+import {useDispatch, useSelector} from "react-redux";
+import {getProducts, getProductsAction} from "./reducers/ProductReducer/ProductDispatch";
 
 
 const Main = () => {
 
-    const [products, setProducts] = useState([])
     const [productsList, setProductsList] = useState([])
     const [selectedProductId, setSelectedProductId] = useState([])
     const [selectedProductQty, setSelectedProductQty] = useState([])
@@ -26,11 +27,15 @@ const Main = () => {
 
     const {id} = useParams();
     const {category} = useParams()
+    const history = useHistory()
 
+    const products = useSelector( state => state.products.productList)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         productsData().then(result =>{
-        setProducts(result)})
+            dispatch(getProductsAction(result))
+        })
     },[])
 
 
@@ -130,7 +135,7 @@ const Main = () => {
                                                  selectQty={selectedQty}
                                                  select={markType}
                                                  id={item.id}
-                                                 category={category}
+                                                 // category={category}
                                                  catalog
                                                     />
                              </Grid>

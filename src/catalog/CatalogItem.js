@@ -9,8 +9,7 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
 
     const [itemSelected, setItemSelected] = useState(false)
     const [shown, setShown] = useState(false)
-    const [qtyNumb, setQtyNumb] = useState(0)
-    const [ids, setIds] = useState([])
+    const [qtyNumb, setQtyNumb] = useState(1)
     const history = useHistory()
 
 
@@ -26,7 +25,7 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
     }
 
     const onClick = () => {
-        history.push(`/catalog/${category}/${id}`)
+        history.push(`/catalog/${id}`)
     }
 
     useEffect(() => {
@@ -74,7 +73,7 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
                     variant="contained"
                     color="primary">{catalog ? 'ADD TO INVENTORY' : 'REMOVE'}</Button>
 
-            <Link to={`/catalog/${category}/${id}`}>
+            <Link to={`/catalog/${id}`}>
                 <div className="catalog__photo">
                     <img src={img}/>
                 </div>

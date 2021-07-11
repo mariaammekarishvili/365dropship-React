@@ -2,6 +2,7 @@ import Cost from "./Cost";
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography} from "@material-ui/core";
 import {useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
+import {getProduct} from "../API";
 
 const Modal = ({openId}) => {
 
@@ -10,12 +11,9 @@ const Modal = ({openId}) => {
     const [product, setProduct] = useState([])
 
     useEffect(() => {
-        fetch(`http://fakestoreapi.com/products/${openId}`)
-            .then(res => res.json())
-            .then(res => {
-                setProduct(res)
-                setOpen(openId)
-            })
+       getProduct(openId).then(res => {
+           setProduct(res)
+       })
     },[openId])
 
     const openDialog = () => {
@@ -41,13 +39,13 @@ const Modal = ({openId}) => {
                              <Cost price={Math.round(product.price * 0.2)} text={'PROFIT'}/>
                          </div>
 
-                         <img className={'item-table__img'} src={product.image}/>
+                         <img className={'item-table__img'} src={product.imageUrl}/>
                      </div>
 
                      <div className={'item-table__information'}>
                          <h2 className={'information__titele'}>{product.title}</h2>
-                         <Button variant="contained"
-                                 color="primary">ADD INVENTORY</Button>
+                         {/*<Button variant="contained"*/}
+                         {/*        color="primary">ADD INVENTORY</Button>*/}
                          <h3>Description:</h3>
                          <p className={'information__description'}>{product.description}</p>
                      </div>}

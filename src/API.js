@@ -66,4 +66,3 @@ export const getProduct = async (id) => {
     const result = await axios.get(SERVER_URL_V1 +  `products/${id}`)
     return result.data.data
 }
-
