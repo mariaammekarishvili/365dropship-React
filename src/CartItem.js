@@ -1,15 +1,20 @@
-import './CSS/cart.css'
 import {removeFromCart} from "./API";
-import './CSS/cart.css'
 
-const CartItem = ({id,title,price,qty,img}) => {
-    const apiRemove = (id) =>{
-        removeFromCart(id)
-    }
+const CartItem = ({title,qty,img,price,itemId}) => {
 
-    return(
-
-<div></div>
+    return (
+        <div className={'table__item'}>
+            <div className={'td__img-box td'}><img src={img} className={'td__img'}/></div>
+            <div className={'td__title td'}>{title}</div>
+            <div className={'td__qty td'}>{qty}</div>
+            <div className={'td__price td'}>{price * qty}</div>
+            <div className={'td'}>
+                <button onClick={() =>
+                                    removeFromCart(itemId)}
+                        className={'cart__butt--remove'}>Remove
+                </button>
+            </div>
+        </div>
     )
 }
 

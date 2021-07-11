@@ -9,10 +9,17 @@
     padding: 0 30px;
 }
 .table__item{
-    height: 70px;
+    height: 130px;
     width: 100%;
-    border: solid 1px grey;
-    border-radius: 5px;
+    border-bottom: solid 5px rgba(97, 213, 223, 0.49);
+    display: flex;
+    margin: 10px;
+    box-sizing: border-box;
+}
+.td{
+    margin: auto 0;
+    width: 170px;
+    text-align: center;
 }
 .td__img{
     height: 102px;
@@ -23,5 +30,15 @@
     text-align: center;
 }
 .thead{
-    height: 63px;
+}
+.cart__butt--remove{
+    width: 70px;
+    height: 30px;
+    background: blue;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+.cart__butt--remove:hover{
+    cursor: pointer;
 }
