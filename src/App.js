@@ -1,17 +1,17 @@
 import './CSS/App.css';
 import Navigation from "./common/Navigation";
 import AsideBar from "./asideBar/AsideBar";
-import Main from "./Main";
+import Main from "./catalog/Main";
 import {Route, Switch} from "react-router-dom";
 import Modal from "./catalog/Modal";
 import {Hidden} from "@material-ui/core";
 import ProfilePage from "./ProfilePage";
 import HomePage from "./HomePage";
 import TestCatalog from "./TestCatalog";
-import Cart from "./Cart";
+import Cart from "./Cart/Cart";
 import AddProduct from "./AddProduct";
 import LogIn from "./common/LogIn";
-import SignUp from "./SignUp";
+import SignUp from "./common/SignUp";
 
 function App() {
     const token = localStorage.getItem('token')

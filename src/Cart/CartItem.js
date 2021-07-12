@@ -1,4 +1,4 @@
-import {removeFromCart} from "./API";
+import {removeFromCart} from "../API";
 
 const CartItem = ({title,qty,img,price,itemId}) => {
 

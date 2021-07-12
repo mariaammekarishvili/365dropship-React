@@ -225,7 +225,7 @@ a{
 .header {
   background: #F8F9FA;
   height: 75px;
-
+  min-width: 1200px;
   display: flex;
   justify-content:space-around;
   padding: 0 100px 0 50px ;

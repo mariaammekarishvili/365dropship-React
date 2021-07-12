@@ -1,5 +1,7 @@
 import {useState} from "react";
 import {Button, FormControl, InputLabel, ListSubheader, makeStyles, MenuItem, Select} from "@material-ui/core";
+import {useDispatch, useSelector} from "react-redux";
+import {changeSortState} from "../reducers/SortReducer/SortDispatch";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -9,17 +11,22 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SortSection({onChange}) {
+export default function SortSection() {
 const classes = useStyles();
+
+const dispatch = useDispatch()
 
 
     return(
         <div className={"sort-section"}>
             <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="grouped-select">Sort Type</InputLabel>
+
                 <Select defaultValue=""
-                        onChange={(e) => onChange(e.target.value)}
+                        onChange={(e) =>
+                            dispatch(changeSortState(e.target.value))}
                         id="grouped-select sort">
+
                     <ListSubheader>Price</ListSubheader>
                     <MenuItem value={"priceAsc"}> Low To High</MenuItem>
                     <MenuItem value={"priceDesc"}>High To Low</MenuItem>

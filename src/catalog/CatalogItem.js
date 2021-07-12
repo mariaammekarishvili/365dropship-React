@@ -1,14 +1,21 @@
 import {useEffect, useState} from "react";
-import Modal from "./Modal";
 import Cost from "./Cost";
 import {useParams, Link,useHistory} from "react-router-dom";
 import {Grid, Button} from "@material-ui/core";
 import {addToCart, removeFromCart} from "../API";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    selectProductIdAction,
+    selectProductQtyAction,
+    unselectProductIdAction,
+} from "../reducers/SelectReducer/SelectDispatch";
 
-const CatalogItem = ({title,price,img,selectId,select,description,selectQty,category,id,catalog,getQtyNumb }) => {
+const CatalogItem = ({title,price,img,id,catalog,products}) => {
+    const selectType = useSelector(state => state.select.selectType)
+    const selectedId = useSelector(state => state.select.selectedId)
+    const dispatch = useDispatch()
 
     const [itemSelected, setItemSelected] = useState(false)
-    const [shown, setShown] = useState(false)
     const [qtyNumb, setQtyNumb] = useState(1)
     const history = useHistory()
 
@@ -16,12 +23,13 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
     const checkboxChange = (event) => {
         const checked = event.target.checked
         setItemSelected(checked)
-        selectId(id)
-        selectQty(qtyNumb)
-    }
 
-    const productClick = () => {
-        setShown(!shown)
+        if(event.target.checked){
+            dispatch(selectProductIdAction(id))
+            dispatch(selectProductQtyAction(qtyNumb))
+        }else{
+            dispatch(unselectProductIdAction(id))
+        }
     }
 
     const onClick = () => {
@@ -29,22 +37,22 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
     }
 
     useEffect(() => {
-        if (select === 'select') {
+        if (selectType === 'select') {
             setItemSelected(true)
-            selectId(id)
-            selectQty(qtyNumb)
-        } else if (select === 'clear') {
+        } else if (selectType === 'clear' && selectedId.length === 0) {
             setItemSelected(false)
         } else {
             setItemSelected(itemSelected)
         }
-    }, [select])
+    }, [selectType,selectedId])
 
     const qtyNumberSelect = (e) => {
         if (e.target.value === 'plus') {
             setQtyNumb(qtyNumb + 1)
         } else if (e.target.value === 'minus') {
-            setQtyNumb(qtyNumb - 1)
+            if(qtyNumb > 1){
+                setQtyNumb(qtyNumb - 1)
+            }
         }
     }
 
@@ -65,10 +73,7 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
                     fullWidth={50}
 
                     onClick={() => {
-                        {
-                            catalog ?
-                                addToCart(id, qtyNumb) : removeFromCart(id)
-                        }
+                        addToCart(id, qtyNumb)
                     }}
                     variant="contained"
                     color="primary">{catalog ? 'ADD TO INVENTORY' : 'REMOVE'}</Button>
@@ -78,20 +83,17 @@ const CatalogItem = ({title,price,img,selectId,select,description,selectQty,cate
                     <img src={img}/>
                 </div>
 
-                {catalog ? <div className={'qty'}>
+                 <div className={'qty'}>
                         <button className={'qty__plus'}
                                 value={'plus'}
                                 onClick={qtyNumberSelect}> +
                         </button>
                         <div className={'qty__number'}>{qtyNumb}</div>
                         <button className={'qty__minus'}
-                            onClick={qtyNumb > 0 ? qtyNumberSelect : ''}
+                            onClick={qtyNumberSelect}
                                 value={'minus'}> -
                         </button>
-                    </div>
-                    : <div className={'qty__only'}>
-                        <div className>Qty : {getQtyNumb === 0 ? 1 : getQtyNumb }</div>
-                    </div>}
+                 </div>
 
                 <div className="catalog__title">
                     {title}

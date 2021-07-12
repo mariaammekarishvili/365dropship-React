@@ -1,3 +1,4 @@
+import {CART_FETCH} from "../Actions";
 
 const initialState = {
     cartList: [],
@@ -5,7 +6,7 @@ const initialState = {
 
 export const GetCartReducer = (state = initialState, action) => {
     switch (action.type){
-        case 'CART_FETCH' :
+        case CART_FETCH :
             return{
                 ...state,
                 cartList: action.payload

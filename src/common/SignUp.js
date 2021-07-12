@@ -1,6 +1,6 @@
 import {useState} from "react";
-import './CSS/LogIn-SignUp.css'
-import {signUp} from "./API";
+import '../CSS/LogIn-SignUp.css'
+import {signUp} from "../API";
 import {useHistory} from "react-router-dom";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'

@@ -6,19 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {combineReducers, createStore} from "redux";
-import {ProductReducer} from "./reducers/ProductReducer/ProductReducer";
-import {GetCartReducer} from "./reducers/CartReducer/GetCartReducer";
+import {combineReducer} from "./reducers/CombineReducer";
 
-// combineReducers
-
-const reducers = combineReducers({
-    products: ProductReducer,
-    getCart: GetCartReducer
-
-})
-
-
-const store = createStore(reducers,
+const store = createStore(combineReducer,
    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(

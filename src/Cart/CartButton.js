@@ -1,5 +1,5 @@
 import {Button} from "@material-ui/core";
-import {removeFromCart} from "./API";
+import {removeFromCart} from "../API";
 
 const CartButton = ({info}) => {
     console.log(info)

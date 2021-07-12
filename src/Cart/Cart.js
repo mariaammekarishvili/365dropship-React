@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
-import {cart } from "./API";
+import {cart } from "../API";
 import {Hidden,} from "@material-ui/core";
-import Navigation from "./common/Navigation";
-import AsideBar from "./asideBar/AsideBar";
-import './CSS/AddProduct.css'
-import {removeFromCart} from './API'
+import Navigation from "../common/Navigation";
+import AsideBar from "../asideBar/AsideBar";
+import '../CSS/AddProduct.css'
+import {removeFromCart} from '../API'
 import {useDispatch, useSelector} from "react-redux";
-import {getCartAction} from "./reducers/CartReducer/CartDispatch";
-import './CSS/cart.css'
+import {getCartAction} from "../reducers/CartReducer/CartDispatch";
+import '../CSS/cart.css'
 import CartButton from "./CartButton";
 import CartItem from "./CartItem";
 
