@@ -40,6 +40,11 @@ export const products = async () => {
     return result.data.data
 }
 
+export const deleteProduct = async (productId) => {
+    const result = await axios.delete(SERVER_URL_V1 + `products/${productId}`)
+    return result.data.data
+}
+
 export const removeFromCart = async (productId) => {
     const result = await axios.post(SERVER_URL_V1 + `cart/remove/${productId}`)
     return result.data.data

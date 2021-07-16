@@ -12,6 +12,7 @@ import Cart from "./Cart/Cart";
 import AddProduct from "./AddProduct";
 import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";
+import EditProduct from "./EditProduct";
 
 function App() {
     const token = localStorage.getItem('token')
@@ -45,8 +46,11 @@ function App() {
                 {token ? <ProfilePage/> :  <HomePage/>}
             </Route>
 
-            <Route path='/addProduct/:productId?'>
+            <Route path='/addProduct'>
                 <AddProduct/>
+            </Route>
+            <Route path='/editProduct/:id?'>
+                  <EditProduct/>
             </Route>
           </Switch>
       </div>

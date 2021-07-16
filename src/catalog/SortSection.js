@@ -1,7 +1,8 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Button, FormControl, InputLabel, ListSubheader, makeStyles, MenuItem, Select} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {changeSortState} from "../reducers/SortReducer/SortDispatch";
+import {getProductsAction} from "../reducers/ProductReducer/ProductDispatch";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -13,9 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SortSection() {
 const classes = useStyles();
-
-const dispatch = useDispatch()
-
+    const dispatch = useDispatch()
 
     return(
         <div className={"sort-section"}>

@@ -39,7 +39,7 @@ a{
   border-radius: 4px;
   font-family: 'Gilroy';
   padding: 0 14px;
-  margin: auto 0;
+  margin: auto 5px;
   background: #61D5DF;
   font-size: 12px;
   cursor: pointer;
@@ -228,7 +228,7 @@ a{
   min-width: 1200px;
   display: flex;
   justify-content:space-around;
-  padding: 0 100px 0 50px ;
+  padding: 0 32px 0 13px;
 }
 
 .search-box__input{

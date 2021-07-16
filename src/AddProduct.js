@@ -6,6 +6,7 @@ import {useHistory, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Navigation from "./common/Navigation";
 import {Hidden} from "@material-ui/core";
+import {useSelector} from "react-redux";
 
 const creatProductValidation = yup.object().shape({
     title:          yup.string().min(2).max(20),
@@ -15,30 +16,21 @@ const creatProductValidation = yup.object().shape({
 })
 
 const AddProduct = () => {
-    const {productId} = useParams()
-    const [product, setProduct] = useState({})
     const history = useHistory()
+    const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
 
     useEffect(() => {
-        if(productId){
-            getProduct(productId).then(res => {
-                setProduct(res)
-            })
+        if(isAdmin === false){
+            history.push('/catalog')
         }
-    },[productId])
+    })
 
     const handleSubmit = values => {
-        if(productId){
-            updateProduct(productId,values).then(res => {
-                alert('Update Successful!')
-                history.push('/addProduct')
-            }).catch(err => alert(err.message))
-        } else {
             creatProduct(values).then(res => {
                 console.log(res)
                 alert('Add successfully')
             })
-        }
+        history.push('/catalog')
     }
 
     return(
@@ -46,16 +38,10 @@ const AddProduct = () => {
             <Hidden xsDown><Navigation/></Hidden>
             <div className={'add-form__box'}>
                 <p className={'add-form__title'}>
-                    {productId ? 'Edit' : 'Add'} products</p>
+                    Add products</p>
 
                 <Formik enableReinitialize
-                    initialValues={productId ?
-                        {
-                            title: product.title,
-                            description: product.description,
-                            price: product.price,
-                            imageUrl: product.imageUrl
-                        } :
+                    initialValues={
                         {
                             title: '',
                             description: '',

@@ -1,8 +1,16 @@
-import {CART_FETCH} from "../Actions";
+import {CART_FETCH, CARTS_PRODUCTS_CHANGE} from "../Actions";
 
 export const getCartAction = (data) => {
     return{
         type: CART_FETCH,
+        payload: data
+    }
+
+}
+
+export const changCatProducts = (data) => {
+    return{
+        type: CARTS_PRODUCTS_CHANGE,
         payload: data
     }
 }

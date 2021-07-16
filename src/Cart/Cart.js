@@ -10,6 +10,7 @@ import {getCartAction} from "../reducers/CartReducer/CartDispatch";
 import '../CSS/cart.css'
 import CartButton from "./CartButton";
 import CartItem from "./CartItem";
+import CartHeader from "../common/CartHeader";
 
 const Cart = () => {
     const cartList = useSelector(state => state.getCart.cartList)

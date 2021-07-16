@@ -22,7 +22,7 @@ export const SelectReducer = (state = initialState, action) => {
         case PRODUCT_SELECTION_ID:
             return {
                 ...state,
-                selectedId: state.selectedId.concat([action.payload])
+                selectedId: ([...state.selectedId,action.payload])
             }
         case PRODUCT_UNSELECTING_ID:
 

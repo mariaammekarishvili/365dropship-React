@@ -24,7 +24,7 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
         const checked = event.target.checked
         setItemSelected(checked)
 
-        if(event.target.checked){
+        if(checked){
             dispatch(selectProductIdAction(id))
             dispatch(selectProductQtyAction(qtyNumb))
         }else{

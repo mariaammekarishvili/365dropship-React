@@ -1,0 +1,11 @@
+.modal__butt--grey {
+    background: #bbb8b8;
+}
+.modal__box--butt{
+    text-align: right;
+
+}
+
+#transition-modal-title,#transition-modal-description{
+    color: #7A7A7A;
+ }
