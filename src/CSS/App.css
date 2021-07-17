@@ -216,8 +216,12 @@ a{
 /*main*/
 .main{
   /*width: 100%;*/
-  left:311px;
   position: absolute;
+  right: 0;
+  position: fixed;
+  overflow-y: scroll;
+  left: 312px;
+  height: 100%;
 }
 
 /*main header*/
@@ -225,7 +229,6 @@ a{
 .header {
   background: #F8F9FA;
   height: 75px;
-  min-width: 1200px;
   display: flex;
   justify-content:space-around;
   padding: 0 32px 0 13px;
@@ -244,6 +247,7 @@ a{
   font-size: 20px;
   font-weight: normal;
   display: inline;
+
 }
 .search-box{
   min-width: 30%;
@@ -254,7 +258,7 @@ a{
   box-sizing: border-box;
   cursor: none;
   padding-right:10px ;
-  margin: auto;
+  margin: auto 20px;
   position: relative;
 }
 .search-box__button{

@@ -4,17 +4,51 @@
 .table{
     width: 100%;
 }
+.card__header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+    background: white;
+    padding: 0 35px;
+    box-shadow: 1px 1px 2px 1px rgba(224, 218, 218, 0.5);
+
+}
 
 .cart-item__box{
-    padding: 0 30px;
+    background: #FBFBFB;
+    right: 0;
+    position: fixed;
+    overflow-y: scroll;
+    left: 311px;
+    height: 100%;
 }
 .table__item{
-    height: 130px;
-    width: 100%;
-    border-bottom: solid 5px rgba(97, 213, 223, 0.49);
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 12px;
+    width: 90%;
     display: flex;
-    margin: 10px;
+    margin: 10px auto;
     box-sizing: border-box;
+    border-radius: 7px;
+    background: white;
+    box-shadow: 1px 1px 2px 1px rgb(214 214 215);
+
+}
+.thead{
+    padding: 12px;
+    margin: 10px auto;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-around;
+    display: flex;
+    margin: 0 auto;
+}
+
+.table--width{
+    width: 100%;
 }
 .td{
     margin: auto 0;
