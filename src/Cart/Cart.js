@@ -17,24 +17,23 @@ import {getProductsAction} from "../reducers/ProductReducer/ProductDispatch";
 import {GetCartReducer} from "../reducers/CartReducer/GetCartReducer";
 
 const Cart = () => {
-    const cartList = useSelector( state => state.GetCartReducer.cartList)
+    // const cartList = useSelector( state => state.GetCartReducer.cartList)
+    const products = useSelector( state => state.products.productList)
     const inputText = useSelector(state => state.inputSort.inputText)
     const sortState = useSelector(state => state.inputSort.sortState)
     const dispatch = useDispatch()
     const [list,setList] = useState([])
 
-    useEffect(() => {
-        setList(sortType(cartList.filter((value) => {
-                return value.title.toLowerCase().includes(inputText.toLowerCase())
-            }), sortState))
-        },[list])
 
-
-    useEffect(() => {
+    useEffect( () => {
         cart().then(result => {
-            dispatch(getCartAction(result))
+            let list = (result.cartItem.items.filter((value) => {
+                return value.title.toLowerCase().includes(inputText.toLowerCase())
+            }))
+            dispatch(getProductsAction(list))
         })
-    },[cartList])
+    }, [inputText, products])
+
 
         return (
             <>
@@ -57,7 +56,7 @@ const Cart = () => {
 
                                 </div>
                             </div>
-                            {cartList.cartItem && list.cartItem.items.map(item =>
+                            {products.length >= 0 && products.map(item =>
                                 <CartItem title={item.title}
                                           img={item.image}
                                           qty={item.qty}

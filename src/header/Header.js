@@ -10,10 +10,10 @@ import {getProductsAction} from "../reducers/ProductReducer/ProductDispatch";
 import {useHistory} from "react-router-dom";
 import HeaderModal from "./HeaderModal";
 import {headerModalOpenAction} from "../reducers/CommonReducers/HeaderModalDispatch";
+import SearchBox from "./SearchBox";
 
 const Header = ({products}) => {
 
-    const inputText = useSelector(state => state.inputSort.inputText);
     const selectedId = useSelector(state => state.select.selectedId)
     const selectedQty = useSelector(state => state.select.selectedQty)
     const selectedType = useSelector(state => state.select.selectType)
@@ -100,17 +100,8 @@ const Header = ({products}) => {
             </>
             }
             {/*searchbox*/}
-            <div className="search-box">
-                <input onChange={changeInputText}
-                       className="search-box__input"
-                       id="search"
-                       value={inputText}
-                       type="text"/>
-                <button
-                    className="search-box__button"
-                    type="submit">🔍
-                </button>
-            </div>
+
+            <SearchBox/>
             <Button color={'primary'}
                     onClick={selectedId.length > 0 ? addToCart : ''}>ADD TO INVENTORY</Button>
         </header>

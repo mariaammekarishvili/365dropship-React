@@ -2,7 +2,7 @@ import Header from "../header/Header";
 import SortSection from "./SortSection";
 import CatalogItem from "./CatalogItem";
 import {useEffect} from "react";
-import {useParams} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import Modal from './Modal'
 import {Box, Grid, Hidden} from "@material-ui/core";
 import {products as productsData} from "../API";
@@ -21,18 +21,19 @@ const Main = () =>{
     const sortState = useSelector(state => state.inputSort.sortState)
     const inputText = useSelector(state => state.inputSort.inputText)
     const dispatch = useDispatch();
+    const history = useHistory()
 
     const {id} = useParams();
     const {category} = useParams()
 
-    useEffect(() => {
-        productsData().then(result => {
+    useEffect( () => {
+         productsData().then(result => {
             let list = (sortType(result.filter((value) => {
                 return value.title.toLowerCase().includes(inputText.toLowerCase())
             }), sortState))
             dispatch(getProductsAction(list))
         })
-    }, [sortState, inputText, products])
+    }, [sortState, inputText, products,history])
 
     useEffect(() => {
             const userAdminInformation = JSON.parse((localStorage.getItem('user')))
@@ -58,7 +59,7 @@ const Main = () =>{
                       m={0}
                       spacing={2}
                         >
-                    {products.map(item =>
+                    {products.length > 1 &&  products.map(item =>
                         <Grid item xs={12} sm={6} md={5} lg={4} xl={3}
                               wrap={"wrap"}
                               spacing={1}>

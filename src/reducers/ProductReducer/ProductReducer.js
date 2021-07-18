@@ -1,4 +1,4 @@
-import {PRODUCT_FETCH} from "../Actions";
+import {HISTORY_CHANGING, PRODUCT_FETCH} from "../Actions";
 
 const initialState = {
     productList: [],
@@ -8,6 +8,11 @@ const initialState = {
 export const ProductReducer = (state = initialState, action) => {
     switch(action.type) {
         case PRODUCT_FETCH:
+            return {
+                ...state,
+                productList: action.payload
+            }
+        case HISTORY_CHANGING:
             return {
                 ...state,
                 productList: action.payload

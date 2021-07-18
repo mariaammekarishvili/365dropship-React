@@ -10,14 +10,13 @@ a{
   color: black;
 }
 .add-iv{
+
   width: 150px !important;
   font-size: 10px !important;
   margin: 10px 0  0 10px !important;
   background: #61d5df !important;
 }
 
-  .add-iv:hover{
-  }
 
 
 .content{
@@ -361,6 +360,9 @@ a{
   -ms-user-select: none;
   user-select: none;
 
+}
+.catalog__product:hover + .container, .button:hover {
+  display: inline-block;
 }
 
 /* Hide the browser's default checkbox */

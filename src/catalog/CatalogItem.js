@@ -76,7 +76,8 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
                         addToCart(id, qtyNumb)
                     }}
                     variant="contained"
-                    color="primary">{catalog ? 'ADD TO INVENTORY' : 'REMOVE'}</Button>
+                    color="primary">{catalog ? 'ADD TO INVENTORY' : 'REMOVE'}
+            </Button>
 
             <Link to={`/catalog/${id}`}>
                 <div className="catalog__photo">
