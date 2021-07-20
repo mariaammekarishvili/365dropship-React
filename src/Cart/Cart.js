@@ -1,26 +1,19 @@
 import {useEffect, useState} from "react";
-import {cart, products as productsData} from "../API";
+import {cart} from "../API/CartAPI";
 import {Hidden,} from "@material-ui/core";
 import Navigation from "../common/Navigation";
 import AsideBar from "../asideBar/AsideBar";
 import '../CSS/AddProduct.css'
-import {removeFromCart} from '../API'
 import {useDispatch, useSelector} from "react-redux";
-import {getCartAction} from "../reducers/CartReducer/CartDispatch";
 import '../CSS/cart.css'
-import CartButton from "./CartButton";
 import CartItem from "./CartItem";
-import CartHeader from "../common/CartHeader";
 import SearchBox from "../header/SearchBox";
-import {sortType} from "../SortForReducer";
-import {getProductsAction} from "../reducers/ProductReducer/ProductDispatch";
-import {GetCartReducer} from "../reducers/CartReducer/GetCartReducer";
+import {getProductsAction} from "../reducers/ProductReducer/ProductActions";
 
 const Cart = () => {
-    // const cartList = useSelector( state => state.GetCartReducer.cartList)
     const products = useSelector( state => state.products.productList)
-    const inputText = useSelector(state => state.inputSort.inputText)
-    const sortState = useSelector(state => state.inputSort.sortState)
+    const inputText = useSelector(state => state.products.inputText)
+    const refresh = useSelector(state => state.products.needRefresh)
     const dispatch = useDispatch()
     const [list,setList] = useState([])
 
@@ -32,7 +25,7 @@ const Cart = () => {
             }))
             dispatch(getProductsAction(list))
         })
-    }, [inputText, products])
+    }, [inputText,refresh])
 
 
         return (

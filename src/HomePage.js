@@ -1,9 +1,7 @@
 import {Button, Grid, Modal, Paper} from "@material-ui/core";
 import './CSS/HomePage.css';
 import {Link} from "react-router-dom";
-import {useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {adminInformationAction} from "./reducers/ProfileReducer/ProfileDispatch";
+
 
 const HomePage= () => {
 

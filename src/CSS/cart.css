@@ -25,7 +25,6 @@
 }
 .table__item{
     justify-content: space-around;
-    flex-wrap: wrap;
     padding: 12px;
     width: 90%;
     display: flex;
@@ -35,6 +34,9 @@
     background: white;
     box-shadow: 1px 1px 2px 1px rgb(214 214 215);
 
+}
+.cart__qty{
+    margin: auto 0;
 }
 .thead{
     padding: 12px;

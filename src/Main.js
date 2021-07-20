@@ -1,28 +1,27 @@
-import Header from "../header/Header";
-import SortSection from "./SortSection";
-import CatalogItem from "./CatalogItem";
+import Header from "./header/Header";
+import SortSection from "./catalog/SortSection";
+import CatalogItem from "./catalog/CatalogItem";
 import {useEffect} from "react";
 import {useHistory, useParams} from 'react-router-dom'
-import Modal from './Modal'
+import Modal from './catalog/Modal'
 import {Box, Grid, Hidden} from "@material-ui/core";
-import {products as productsData} from "../API";
-import Navigation from "../common/Navigation";
-import AsideBar from "../asideBar/AsideBar";
+import {products as productsData} from "./API/ProductAPI";
+import Navigation from "./common/Navigation";
+import AsideBar from "./asideBar/AsideBar";
 import {useDispatch, useSelector} from "react-redux";
-import {getProductsAction} from "../reducers/ProductReducer/ProductDispatch";
-import {sortType} from "../SortForReducer";
-import {adminInformationAction} from "../reducers/ProfileReducer/ProfileDispatch";
-
-
+import {getProductsAction} from "./reducers/ProductReducer/ProductActions";
+import {sortType} from "./SortForReducer";
+import {adminInformationAction} from "./reducers/ProfileReducer/ProfileActions";
 
 const Main = () =>{
 
     const products = useSelector( state => state.products.productList)
-    const sortState = useSelector(state => state.inputSort.sortState)
-    const inputText = useSelector(state => state.inputSort.inputText)
+    const sortState = useSelector(state => state.products.sortState)
+    const inputText = useSelector(state => state.products.inputText)
+    const profile = useSelector(state => state.ProfileReducer.id)
+    const refresh = useSelector(state => state.products.needRefresh)
     const dispatch = useDispatch();
     const history = useHistory()
-
     const {id} = useParams();
     const {category} = useParams()
 
@@ -33,11 +32,11 @@ const Main = () =>{
             }), sortState))
             dispatch(getProductsAction(list))
         })
-    }, [sortState, inputText, products,history])
+    }, [sortState, inputText,history,refresh])
 
     useEffect(() => {
             const userAdminInformation = JSON.parse((localStorage.getItem('user')))
-            dispatch(adminInformationAction(userAdminInformation.isAdmin))
+            dispatch(adminInformationAction(userAdminInformation))
     },[])
 
     return (

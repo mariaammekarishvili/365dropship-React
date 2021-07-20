@@ -1,7 +1,7 @@
 import '../CSS/LogIn-SignUp.css'
 import Box from '@material-ui/core/Box';
 import {Button, makeStyles, TextField} from "@material-ui/core";
-import {login} from '../API.js'
+import {login} from '../API/AuthAPI'
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";

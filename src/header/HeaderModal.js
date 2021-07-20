@@ -4,33 +4,19 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {useDispatch, useSelector} from "react-redux";
-import {headerModalOpenAction} from "../reducers/CommonReducers/HeaderModalDispatch";
+import {headerModalOpenAction} from "../reducers/CommonReducers/HeaderModalActions";
 import '../CSS/Header.css'
-import {deleteProduct} from "../API";
-import {unselectAllIdAction} from "../reducers/SelectReducer/SelectDispatch";
-
-const useStyles = makeStyles((theme) => ({
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
-        border: "none"
-    },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-        borderRadius: 5,
-        border: "none"
-    },
-}));
+import {deleteProduct} from "../API/ProductAPI";
+import {refreshStateAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
+import {useStyles} from "../CSS/ModalStyle";
 
 export default function HeaderModal() {
     const classes = useStyles();
     const dispatch = useDispatch()
     const open = useSelector(state => state.headerModal.headerModalOpen)
-    const selectedId = useSelector(state => state.select.selectedId)
+    const selectedId = useSelector(state => state.products.selectedId)
+    const refresh = useSelector(state => state.products.needRefresh)
+
 
     const handleClose = () => {
         dispatch(headerModalOpenAction(false))
@@ -43,6 +29,7 @@ export default function HeaderModal() {
             ).catch(err => alert(err.message))}
         dispatch(headerModalOpenAction(false))
         dispatch(unselectAllIdAction([]))
+        dispatch(refreshStateAction(!refresh))
         }
 
 

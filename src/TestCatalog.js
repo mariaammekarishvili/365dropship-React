@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {products as productsData} from "./API";
+import {products as productsData} from "./API/URL";
 
 
 const TestCatalog = () => {

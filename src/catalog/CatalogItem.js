@@ -2,17 +2,17 @@ import {useEffect, useState} from "react";
 import Cost from "./Cost";
 import {useParams, Link,useHistory} from "react-router-dom";
 import {Grid, Button} from "@material-ui/core";
-import {addToCart, removeFromCart} from "../API";
+import {addToCart, removeFromCart} from "../API/CartAPI";
 import {useDispatch, useSelector} from "react-redux";
 import {
     selectProductIdAction,
     selectProductQtyAction,
     unselectProductIdAction,
-} from "../reducers/SelectReducer/SelectDispatch";
+} from "../reducers/ProductReducer/ProductActions";
 
 const CatalogItem = ({title,price,img,id,catalog,products}) => {
-    const selectType = useSelector(state => state.select.selectType)
-    const selectedId = useSelector(state => state.select.selectedId)
+    const selectType = useSelector(state => state.products.selectType)
+    const selectedId = useSelector(state => state.products.selectedId)
     const dispatch = useDispatch()
 
     const [itemSelected, setItemSelected] = useState(false)

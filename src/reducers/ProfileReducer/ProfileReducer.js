@@ -1,7 +1,9 @@
-import {ADMIN_INFORMATION_FETCH} from "../Actions";
+import {ADMIN_INFORMATION_FETCH, USER_INFORMATION_FETCH} from "../ActionsTypes";
 
 const initialState = {
-    isAdmin : false
+    isAdmin : false,
+    id : 1,
+    fullInformation: [],
 }
 
 export const ProfileReducer = (state = initialState, action) => {
@@ -9,7 +11,13 @@ export const ProfileReducer = (state = initialState, action) => {
         case ADMIN_INFORMATION_FETCH :
             return{
                 ...state,
-                isAdmin: action.payload
+                isAdmin: action.secondPayload,
+                id : action.firstPayload
+            }
+        case USER_INFORMATION_FETCH:
+            return {
+                ...state,
+                fullInformation: action.payload
             }
         default:
             return state;

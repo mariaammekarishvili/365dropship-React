@@ -1,4 +1,4 @@
-import {CART_FETCH, CARTS_PRODUCTS_CHANGE} from "../Actions";
+import {CART_FETCH, CARTS_PRODUCTS_CHANGE} from "../ActionsTypes";
 
 const initialState = {
     cartList: [],

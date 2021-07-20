@@ -1,4 +1,4 @@
-import {HEADER_MODAL_RUN} from "../Actions";
+import {HEADER_MODAL_RUN} from "../ActionsTypes";
 
 export const headerModalOpenAction = (data) => {
     return{

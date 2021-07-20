@@ -2,11 +2,11 @@ import Cost from "./Cost";
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography} from "@material-ui/core";
 import {useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
-import {getProduct} from "../API";
+import {getProduct} from "../API/ProductAPI";
 
 const Modal = ({openId}) => {
 
-    const [open, setOpen] = useState(openId)
+    const [open, setOpen] = useState(false)
     const history = useHistory()
     const [product, setProduct] = useState([])
 
@@ -14,17 +14,16 @@ const Modal = ({openId}) => {
        getProduct(openId).then(res => {
            setProduct(res)
        })
+       if(openId){
+           setOpen(true)
+       }
     },[openId])
 
-    const openDialog = () => {
-        setOpen(true);
-    }
     const closeDialog = () => {
         setProduct({})
         history.goBack()
         setOpen(false)
     }
-
 
     return(
      <>
@@ -44,8 +43,6 @@ const Modal = ({openId}) => {
 
                      <div className={'item-table__information'}>
                          <h2 className={'information__titele'}>{product.title}</h2>
-                         {/*<Button variant="contained"*/}
-                         {/*        color="primary">ADD INVENTORY</Button>*/}
                          <h3>Description:</h3>
                          <p className={'information__description'}>{product.description}</p>
                      </div>}

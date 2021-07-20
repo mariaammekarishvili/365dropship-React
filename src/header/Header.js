@@ -1,22 +1,19 @@
-import React, {useState, useEffec, useEffect} from 'react';
 import {Button} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {SortReducer} from "../reducers/SortReducer/SortReducer";
-import {inputSortAction} from "../reducers/SortReducer/SortDispatch";
-import {MARK_TYPE_CHANGE} from "../reducers/Actions";
-import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../reducers/SelectReducer/SelectDispatch";
-import {addToCart, addToCart as cartRequest} from "../API";
-import {getProductsAction} from "../reducers/ProductReducer/ProductDispatch";
+import {editProductAction, inputSortAction} from "../reducers/ProductReducer/ProductActions";
+import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
+import { addToCart as cartRequest} from "../API/CartAPI";
 import {useHistory} from "react-router-dom";
 import HeaderModal from "./HeaderModal";
-import {headerModalOpenAction} from "../reducers/CommonReducers/HeaderModalDispatch";
+import {headerModalOpenAction} from "../reducers/CommonReducers/HeaderModalActions";
 import SearchBox from "./SearchBox";
+import ProductEditModal from "../ProductEditModal";
 
 const Header = ({products}) => {
 
-    const selectedId = useSelector(state => state.select.selectedId)
-    const selectedQty = useSelector(state => state.select.selectedQty)
-    const selectedType = useSelector(state => state.select.selectType)
+    const selectedId = useSelector(state => state.products.selectedId)
+    const selectedQty = useSelector(state => state.products.selectedQty)
+    const selectedType = useSelector(state => state.products.selectType)
     const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
     const dispatch = useDispatch();
     const history = useHistory()
@@ -24,10 +21,10 @@ const Header = ({products}) => {
     const handleOpen = () => {
         dispatch(headerModalOpenAction(true));
     };
+    const handleOpenForEdit = () => {
+        dispatch(editProductAction(true));
+    };
 
-    const changeInputText = (e) => {
-        dispatch(inputSortAction(e.target.value))
-    }
 
     const selectTypeChange = (e) => {
         if (e.target.value === 'select') {
@@ -59,12 +56,6 @@ const Header = ({products}) => {
         dispatch(unselectAllIdAction([]))
     }
 
-    const editProduct = () => {
-        if (selectedId.length === 1) {
-            history.push(`/editProduct/${selectedId[0]}`)
-        }
-    }
-
 
     return (
         <header className="header">
@@ -88,9 +79,14 @@ const Header = ({products}) => {
                 <button type="button"
                         className={'button'}
                         value={'select'}
-                        onClick={selectedId.length === 1 ? editProduct : ''}>EDIT PRODUCT
+                        onClick={selectedId.length > 0 ? '' : handleOpenForEdit}>ADD PRODUCT
                 </button>
-
+                <button type="button"
+                        className={'button'}
+                        value={'select'}
+                        onClick={selectedId.length === 1 ? handleOpenForEdit : ''}>EDIT PRODUCT
+                </button>
+                <ProductEditModal/>
                 <button type="button"
                         className={'button'}
                         value={'select'}

@@ -1,8 +1,8 @@
-import {inputSortAction} from "../reducers/SortReducer/SortDispatch";
+import {inputSortAction} from "../reducers/ProductReducer/ProductActions";
 import {useDispatch, useSelector} from "react-redux";
 
 const SearchBox = () => {
-    const inputText = useSelector(state => state.inputSort.inputText);
+    const inputText = useSelector(state => state.products.inputText);
     const dispatch = useDispatch()
 
     const changeInputText = (e) => {
