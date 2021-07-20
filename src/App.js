@@ -1,7 +1,7 @@
 import './CSS/App.css';
 import Main from "./Main";
 import {Route, Switch} from "react-router-dom";
-import ProfilePage from "./ProfilePage";
+import ProfilePage from "./ProfilePage/ProfilePage";
 import HomePage from "./HomePage";
 import Cart from "./Cart/Cart";
 import LogIn from "./common/LogIn";
