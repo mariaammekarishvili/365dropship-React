@@ -27,8 +27,9 @@ const Header = ({products}) => {
 
 
     const selectTypeChange = (e) => {
-        if (e.target.value === 'select') {
+        if (e.target.value === 'select' && products.listing !== selectedId.length) {
             dispatch(selectAllAction('select'))
+            dispatch(unselectAllIdAction([]))
             for (let i = 0; i < products.length; i++) {
                 dispatch(selectProductIdAction(products[i].id))
             }

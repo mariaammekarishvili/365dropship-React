@@ -36,19 +36,21 @@ const Cart = () => {
 
                 <div className={'cart-item__box'}>
                     <div className={'card__header'}>
-                        <h2>SHOPPING CART </h2>
+                        <h2>SHOPPING CART ({products.length}) </h2>
                         <SearchBox/>
                     </div>
                         <table className={'table--width'}>
-                            <div >
-                                <div className={'thead'}>
-                                    <th className={'td'} scope="col">Picture</th>
-                                    <th className={'td'} scope="col">Title</th>
-                                    <th className={'td'} scope="col">Quantity</th>
-                                    <th className={'td'} scope="col">Price</th>
+                            {/*<div >*/}
+                            {/*    <div className={'thead'}>*/}
+                            {/*        <th className={'td'} scope="col">Picture</th>*/}
+                            {/*        <th className={'td'} scope="col">Title</th>*/}
+                            {/*        <th className={'td'} scope="col">Quantity</th>*/}
+                            {/*        <th className={'td'} scope="col">Price</th>*/}
+                            {/*        <th className={'td button-box'} scope="col"><div>          </div> </th>*/}
 
-                                </div>
-                            </div>
+
+                            {/*    </div>*/}
+                            {/*</div>*/}
                             {products.length >= 0 && products.map(item =>
                                 <CartItem title={item.title}
                                           img={item.image}

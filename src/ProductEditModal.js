@@ -11,7 +11,7 @@ import {headerModalOpenAction} from "./reducers/CommonReducers/HeaderModalAction
 import Backdrop from "@material-ui/core/Backdrop";
 import {useStyles} from "./CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";
-import {editProductAction, refreshStateAction} from "./reducers/ProductReducer/ProductActions";
+import {editProductAction, refreshStateAction, unselectAllIdAction} from "./reducers/ProductReducer/ProductActions";
 
 
 const creatProductValidation = yup.object().shape({
@@ -63,6 +63,7 @@ const ProductEditModal = () => {
             })
         }
         history.push('/catalog')
+        dispatch(unselectAllIdAction([]))
     }
 
 return(
