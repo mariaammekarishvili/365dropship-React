@@ -12,7 +12,9 @@ import Backdrop from "@material-ui/core/Backdrop";
 import {useStyles} from "./CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";
 import {editProductAction, refreshStateAction, unselectAllIdAction} from "./reducers/ProductReducer/ProductActions";
-
+import price from '../src/img/price-tag.png'
+import title from '../src/img/title.png'
+import link from '../src/img/link.png'
 
 const creatProductValidation = yup.object().shape({
     title:          yup.string().min(2).max(20),
@@ -105,16 +107,19 @@ return(
                         validationSchema={creatProductValidation}
             >
                <Form className={'add-pr__form'} >
-                        <p>Product Title:</p>
+                        <p>Title:</p>
+                   <div>
                         <Field placeholder='Title'
                         name='title'
                         className={'add-form__input'}
                         />
+                       <img className={'icon title-icon'} src={title}/>
+                   </div>
                         <ErrorMessage name={'title'}
                         className={'ErrorMessage'}
                         component={'div'}/>
 
-                        <p>Product Description:</p>
+                        <p>Description:</p>
                         <Field placeholder='Description'
                         component='textarea'
                         name='description'
@@ -124,20 +129,26 @@ return(
                         className={'ErrorMessage'}
                         component={'div'}/>
 
-                        <p>Enter price $:</p>
+                        <p>price $:</p>
+                   <div>
                         <Field placeholder='Price'
                         name='price'
                         className={'add-form__input'}
                         />
+                        <img className={'icon'} src={price} />
+                   </div>
                         <ErrorMessage name={'price'}
                         className={'ErrorMessage'}
                         component={'div'}/>
 
-                        <p>Add Picture URL:</p>
+                        <p>Picture URL:</p>
+                   <div>
                         <Field placeholder='Image URL'
                         name='imageUrl'
                         className={'add-form__input'}
                         />
+                        <img className={'icon'} src={link}/>
+                   </div>
                         <ErrorMessage name={'imageUrl'}
                         className={'ErrorMessage'}
                         component={'div'}/>
