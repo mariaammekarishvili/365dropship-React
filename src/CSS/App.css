@@ -485,16 +485,15 @@ hr{
   flex-direction: column ;
   justify-content: space-between;
   background: #FBFBFB;
-  padding: 30px;
+  padding: 20px;
 }
 .item__cost{
   display: flex;
 
 }
 .item-table__img{
-  margin: auto auto;
-  max-width: 90%;
-  max-height: 60%;
+  margin: 10px auto;
+  max-width: 100%;
 }
 
 .cost__box{
@@ -554,6 +553,9 @@ hr{
 }
 .item-table__information>h2{
   flex-grow: 1;
+  margin: 0 0 23px 0;
+  font-size: 27px;
+  color: #3f3d3d;
 }
 .item-table__information>button{
   position: revert;
@@ -570,6 +572,10 @@ hr{
 }
 .information__description{
   flex-grow: 2;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 12.6em;
 }
 /*----*/
 .Navigation-item__img{
@@ -612,13 +618,21 @@ hr{
   margin-top: 7px;
   color: #7A7A7A;
 }
-.qty>*{
+.qty>div, .qty>button{
   width: 30px;
   text-align: center;
   border: 1px solid #e8e9ea;
   color: #a8a8a8;
   background: #FBFBFB;
   cursor: pointer;
+}
+.modal_qty{
+  text-align: left;
+  width: 47%;
+  margin: 2px 0 18px 0;
+}
+.qty>span{
+  margin-right: 10px;
 }
 
 .qty__number{
