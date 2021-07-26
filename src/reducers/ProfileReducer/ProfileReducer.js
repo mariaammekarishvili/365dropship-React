@@ -1,9 +1,10 @@
-import {ADMIN_INFORMATION_FETCH, USER_INFORMATION_FETCH} from "../ActionsTypes";
-
+import {ADMIN_INFORMATION_FETCH, OPEN_PROFILE_EDIT_MODAL, USER_INFORMATION_FETCH} from "../ActionsTypes";
+const id = JSON.parse((localStorage.getItem('user')))
 const initialState = {
     isAdmin : false,
-    id : 1,
+    id : 0,
     fullInformation: [],
+    modalOpen: false,
 }
 
 export const ProfileReducer = (state = initialState, action) => {
@@ -19,6 +20,12 @@ export const ProfileReducer = (state = initialState, action) => {
                 ...state,
                 fullInformation: action.payload
             }
+        case OPEN_PROFILE_EDIT_MODAL:
+            return {
+                ...state,
+                modalOpen: action.payload
+            }
+
         default:
             return state;
     }

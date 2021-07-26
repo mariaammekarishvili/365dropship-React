@@ -22,16 +22,29 @@
 /*}*/
 
 .logout__but{
-    background: #6d6b6b;
+    background: #e03e3e;
     color: white;
-    height: 33px;
-    width: 70px;
-    border-radius: 5px;
+    height: 32px;
+    width: auto;
+    border-radius: 4px;
     border: none;
-    position: absolute;
-    right: 30px;
-    top: 30px;
+    padding: 0 14px;
+    font-size: 12px;
 }
+.profile__header--butt{
+    position: absolute;
+    right: 81px;
+    top: 23px;
+}
+.profile-edit__butt{
+    position: relative;
+    top: 39px;
+    z-index: 100;
+    right: 0;
+    left: 990px;
+    background: rgba(214, 219, 219, 0.5);
+}
+
 /*.profile__box>p>span{*/
 /*    color: black;*/
 /*    margin-left: 10px;*/
@@ -47,7 +60,7 @@
     display: flex;
     text-align: left;
     flex-direction: column;
-    margin-left: 50px;
+    margin-left: 80px;
     width: 500px;
 }
 .profile__box{
@@ -109,9 +122,9 @@
 .user-status{
     color: #7A7A7A;
     height: 50px;
-    width: 100px;
     margin: 5px;
     padding: 14px;
+    display: flex;
 }
 .user-status__box{
     display: flex;
@@ -121,7 +134,7 @@
     color: #62B5F6;
     background: #E3F2FD;
     height: 50px;
-    width: 129px;
+    width:auto;
     margin: 5px;
     padding: 14px;
 }
@@ -153,5 +166,9 @@
 }
 .information{
     font-weight: normal;
+}
 
+.check-icon{
+    height: 16px;
+    margin: auto 4px auto 0;
 }

@@ -10,8 +10,8 @@ const LogOut = () => {
         history.push('/')
     }
 
-    return(
-        <button size={"medium"} className={'logout__but'} onClick={logOutAction} color={'default'}>Log Out</button>
+    return (
+        <button size={"medium"} className={'logout__but '} onClick={logOutAction} color={'default'}>Log Out</button>
     )
 }
 

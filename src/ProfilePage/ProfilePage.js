@@ -2,17 +2,19 @@ import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import {Hidden, Typography} from "@material-ui/core";
-import LogOut from "../common/LogOut";
+import LogOut from "./LogOut";
 import Navigation from "../common/Navigation";
 import '../CSS/Profile.css'
 import '../CSS/AddProduct.css'
 import {useDispatch, useSelector} from "react-redux";
 import {getUserInformation, userInformation} from "../API/UserAPI";
-import {adminInformationAction, fetchFullInfoAction} from "../reducers/ProfileReducer/ProfileActions";
+import {adminInformationAction, fetchFullInfoAction, openEditAction} from "../reducers/ProfileReducer/ProfileActions";
 import {RatingStars} from "./RatingStars";
 import {UserStatus} from "./UserStatus";
 import {About} from "./About";
 import {Link} from "react-router-dom";
+import {ProfileEditButton} from "./ProfileEditButton";
+import ProfileModal from "./ProfileModal";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,19 +32,24 @@ const ProfilePage = () => {
     const userId = useSelector(state => state.ProfileReducer.id)
     const userInformation = useSelector(state => state.ProfileReducer.fullInformation)
     const products = useSelector( state => state.products.productList)
-    // const userInformation = JSON.parse((localStorage.getItem('user')))
+    const isOpen = useSelector( state => state.ProfileReducer.modalOpen)
+    const refresh = useSelector(state => state.products.needRefresh)
+
+    console.log(userInformation)
+
+    console.log(isOpen)
 
     useEffect(() => {
         const userAdminInformation = JSON.parse((localStorage.getItem('user')))
         dispatch(adminInformationAction(userAdminInformation))
-    },[])
+    },[refresh])
+
 
     useEffect(() => {
         getUserInformation(userId).then(r => {
             dispatch(fetchFullInfoAction(r))
         })
-    },[])
-    console.log(userInformation)
+    },[refresh])
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -54,6 +61,8 @@ const ProfilePage = () => {
             <div className={'card__header'}>
                 <h2>Profile Page</h2>
             </div>
+            <ProfileEditButton/>
+            <ProfileModal/>
             <div className={'profile__box'}>
                 <div className={'Service-information'}>
                     <div className={'profile__picture'}></div>
@@ -97,7 +106,10 @@ const ProfilePage = () => {
 
 
             {/*    <button className={'button'}> Edit Profile</button>*/}
+              <div className={'profile__header--butt'}>
+
                 <LogOut/>
+              </div>
             {/*</div>*/}
 
 

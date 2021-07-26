@@ -1,71 +1,47 @@
-import {useEffect, useState} from "react";
-import Navigation from "./common/Navigation";
-import {Fade, Hidden} from "@material-ui/core";
+import {Fade} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {creatProduct, getProduct, updateProduct} from "./API/ProductAPI";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
-import './CSS/AddProduct.css'
-import {useHistory, useParams} from "react-router-dom";
-import {headerModalOpenAction} from "./reducers/CommonReducers/HeaderModalActions";
+import '../CSS/AddProduct.css'
+import {useHistory} from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
-import {useStyles} from "./CSS/ModalStyle";
+import {useStyles} from "../CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";
-import {editProductAction, refreshStateAction, unselectAllIdAction} from "./reducers/ProductReducer/ProductActions";
-import price from '../src/img/price-tag.png'
-import title from '../src/img/title.png'
-import link from '../src/img/link.png'
 
-const creatProductValidation = yup.object().shape({
-    title:          yup.string().min(2).max(20),
-    description:    yup.string().min(8).max(300),
-    price:          yup.number().integer().min(20),
-    imageUrl:       yup.string().url()
+import {openEditAction} from "../reducers/ProfileReducer/ProfileActions";
+import {editUserInformation} from "../API/UserAPI";
+import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
+
+const editProfileValidation = yup.object().shape({
+    firstName:          yup.string().min(4).max(20),
+    lastName:    yup.string().min(4).max(20),
+    email:          yup.string().email(),
+    password:       yup.string().min(6),
+    passwordConfirmation: yup.string()
+        .oneOf([yup.ref('password'), null], 'The characters are different')
 })
+
 const ProductEditModal = () => {
     const classes = useStyles();
-    const [product, setProduct] = useState({})
     const history = useHistory()
     const dispatch = useDispatch()
-    const open = useSelector(state => state.products.editProductMode)
     const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
-    const productId = useSelector(state => state.products.selectedId[0])
+    const userInformation = useSelector(state => state.ProfileReducer.fullInformation)
+    const open = useSelector( state => state.ProfileReducer.modalOpen)
+    const userId = useSelector(state => state.ProfileReducer.id)
     const refresh = useSelector(state => state.products.needRefresh)
 
 
-    console.log(open)
+
+
     const handleClose = () => {
-        dispatch(editProductAction(false))
+        dispatch(openEditAction(false))
     }
 
-
-    useEffect(() => {
-        if(productId){
-            getProduct(productId).then(res => {
-                setProduct(res)
-            })
-            if(isAdmin === false){
-                history.push('/catalog')
-            }
-        }},[productId])
-
     const handleSubmit = values => {
-        if(productId){
-            updateProduct(productId,values).then(res => {
-                alert('Update Successful!')
-                dispatch(refreshStateAction(!refresh))
-                dispatch(editProductAction(false))
-            }).catch(err => alert(err.message))
-        } else {
-            creatProduct(values).then(res => {
-                console.log(res)
-                alert('Add successfully')
-                dispatch(refreshStateAction(!refresh))
-                dispatch(editProductAction(false))
-            })
-        }
-        history.push('/catalog')
-        dispatch(unselectAllIdAction([]))
+        editUserInformation(767,values).then(r =>
+        alert('happy')).catch(err => alert(err.message))
+        dispatch(refreshStateAction(!refresh))
     }
 
     return(
@@ -86,76 +62,86 @@ const ProductEditModal = () => {
                     <div className={classes.paper}>
 
                         <p className={'add-form__title'}>
-                            {productId ? 'Edit' : 'Add'} products</p>
+                            Profile Edit</p>
                         <hr className={'modal__hr'}/>
 
                         <Formik enableReinitialize
-                                initialValues={productId ?
+                                initialValues={
                                     {
-                                        title: product.title,
-                                        description: product.description,
-                                        price: product.price,
-                                        imageUrl: product.imageUrl
-                                    } :
-                                    {
-                                        title: '',
-                                        description: '',
-                                        price: '',
-                                        imageUrl: ''
-                                    }}
-                                onSubmit={handleSubmit}
-                                validationSchema={creatProductValidation}
+                                        firstName: userInformation.firstName,
+                                        lastName: userInformation.lastName,
+                                        email: userInformation.email,
+                                        password: '',
+                                        passwordConfirmation: ''
+                                    }
+                                }
+                                // onSubmit={handleSubmit}
+                                validationSchema={editProfileValidation}
                         >
                             <Form className={'add-pr__form'} >
-                                <p>Title:</p>
+                                <p>First Name:</p>
                                 <div>
-                                    <Field placeholder='Title'
-                                           name='title'
+                                    <Field placeholder='First Name'
+                                           name='firstName'
                                            className={'add-form__input'}
                                     />
-                                    <img className={'icon title-icon'} src={title}/>
+                                    <img className={'icon'} />
                                 </div>
-                                <ErrorMessage name={'title'}
+                                <ErrorMessage name={'firstName'}
                                               className={'ErrorMessage'}
                                               component={'div'}/>
 
-                                <p>Description:</p>
-                                <Field placeholder='Description'
-                                       component='textarea'
-                                       name='description'
-                                       className={'add-form__input textarea'}
+                                <p>Last Name:</p>
+                                <Field placeholder='Last Name'
+                                       name='lastName'
+                                       className={'add-form__input'}
                                 />
-                                <ErrorMessage name={'description'}
+                                <ErrorMessage name={'lastName'}
                                               className={'ErrorMessage'}
                                               component={'div'}/>
 
-                                <p>price $:</p>
+                                <p>E-mail:</p>
                                 <div>
-                                    <Field placeholder='Price'
-                                           name='price'
+                                    <Field placeholder='E-male'
+                                           name='email'
                                            className={'add-form__input'}
                                     />
-                                    <img className={'icon'} src={price} />
+                                    <img className={'icon'}  />
                                 </div>
-                                <ErrorMessage name={'price'}
+                                <ErrorMessage name={'email'}
                                               className={'ErrorMessage'}
                                               component={'div'}/>
 
-                                <p>Picture URL:</p>
+                                <p>Password:</p>
                                 <div>
-                                    <Field placeholder='Image URL'
-                                           name='imageUrl'
+                                    <Field placeholder='Password'
+                                           type={'password'}
+                                           name='password'
                                            className={'add-form__input'}
                                     />
-                                    <img className={'icon'} src={link}/>
+                                    <img className={'icon'} />
                                 </div>
-                                <ErrorMessage name={'imageUrl'}
+                                <ErrorMessage name={'password'}
+                                              className={'ErrorMessage'}
+                                              component={'div'}/>
+
+                                <p>Confirm Password:</p>
+                                <div>
+                                    <Field placeholder='Confirm Password'
+                                           type={'password'}
+                                           name='passwordConfirmation'
+                                           className={'add-form__input'}
+                                    />
+                                    <img className={'icon'} />
+                                </div>
+                                <ErrorMessage name={'passwordConfirmation'}
                                               className={'ErrorMessage'}
                                               component={'div'}/>
 
                                 <button type={'submit'}
-                                        className={'form__button add-form__button'}>
-                                    Submit
+                                        className={'form__button add-form__button'}
+                                        onClick={handleSubmit}>
+                                    Save
                                 </button>
                             </Form>
                         </Formik>

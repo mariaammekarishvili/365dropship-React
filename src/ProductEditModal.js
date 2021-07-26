@@ -113,7 +113,7 @@ return(
                         name='title'
                         className={'add-form__input'}
                         />
-                       <img className={'icon title-icon'} src={title}/>
+                       <img className={'icon '} src={title}/>
                    </div>
                         <ErrorMessage name={'title'}
                         className={'ErrorMessage'}
