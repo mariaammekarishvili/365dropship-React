@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
 import {getProduct} from "../API/ProductAPI";
 import {About} from "../ProfilePage/About";
+import {addToCart} from "../API/CartAPI";
 
 const Modal = ({openId}) => {
 
@@ -29,6 +30,9 @@ const Modal = ({openId}) => {
                 setQtyNumb(qtyNumb - 1)
             }
         }
+    }
+    const addRequest = () => {
+        addToCart(openId,qtyNumb).then(r => alert('happy') )
     }
 
     const closeDialog = () => {
@@ -71,8 +75,11 @@ const Modal = ({openId}) => {
                              </div>
                          </div>
 
-                         <Button color={"primary"} variant={'contained'}>ADD TO INVENTORY</Button>
-                         {/*<h3>Description:</h3>*/}
+                         <Button color={"primary"}
+                                 variant={'contained'}
+                                 onClick={addRequest}>
+                             ADD TO INVENTORY</Button>
+
                          <About description/>
                          <p className={'information__description'}>{product.description}</p>
                      </div>
