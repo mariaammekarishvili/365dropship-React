@@ -7,10 +7,12 @@ import {useHistory} from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
 import {useStyles} from "../CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";
-
 import {openEditAction} from "../reducers/ProfileReducer/ProfileActions";
 import {editUserInformation} from "../API/UserAPI";
 import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
+import mail from '../img/email.png';
+import name from '../img/name.png'
+import pass from '../img/key.png'
 
 const editProfileValidation = yup.object().shape({
     firstName:          yup.string().min(4).max(20),
@@ -83,7 +85,7 @@ const ProductEditModal = () => {
                                            name='firstName'
                                            className={'add-form__input'}
                                     />
-                                    <img className={'icon'} />
+                                    <img className={'icon'}  src={name}/>
                                 </div>
                                 <ErrorMessage name={'firstName'}
                                               className={'ErrorMessage'}
@@ -104,7 +106,7 @@ const ProductEditModal = () => {
                                            name='email'
                                            className={'add-form__input'}
                                     />
-                                    <img className={'icon'}  />
+                                    <img className={'icon'}  src={mail} />
                                 </div>
                                 <ErrorMessage name={'email'}
                                               className={'ErrorMessage'}
@@ -117,7 +119,7 @@ const ProductEditModal = () => {
                                            name='password'
                                            className={'add-form__input'}
                                     />
-                                    <img className={'icon'} />
+                                    <img className={'icon passw_icon'} src={pass} />
                                 </div>
                                 <ErrorMessage name={'password'}
                                               className={'ErrorMessage'}

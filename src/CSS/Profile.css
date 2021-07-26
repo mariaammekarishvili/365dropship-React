@@ -167,7 +167,9 @@
 .information{
     font-weight: normal;
 }
-
+.passw_icon{
+background: #E8F0FE;
+}
 .check-icon{
     height: 16px;
     margin: auto 4px auto 0;
