@@ -17,8 +17,6 @@ const editProfileValidation = yup.object().shape({
     lastName:    yup.string().min(4).max(20),
     email:          yup.string().email(),
     password:       yup.string().min(6),
-    passwordConfirmation: yup.string()
-        .oneOf([yup.ref('password'), null], 'The characters are different')
 })
 
 const ProductEditModal = () => {
@@ -38,10 +36,11 @@ const ProductEditModal = () => {
         dispatch(openEditAction(false))
     }
 
-    const handleSubmit = values => {
-        editUserInformation(767,values).then(r =>
+    const handleSubmit = async values => {
+        await editUserInformation(userId,values.firstName,values.lastName,values.email,values.password).then(r =>
         alert('happy')).catch(err => alert(err.message))
         dispatch(refreshStateAction(!refresh))
+        handleClose()
     }
 
     return(
@@ -72,10 +71,9 @@ const ProductEditModal = () => {
                                         lastName: userInformation.lastName,
                                         email: userInformation.email,
                                         password: '',
-                                        passwordConfirmation: ''
                                     }
                                 }
-                                // onSubmit={handleSubmit}
+                                onSubmit={handleSubmit}
                                 validationSchema={editProfileValidation}
                         >
                             <Form className={'add-pr__form'} >
@@ -125,22 +123,9 @@ const ProductEditModal = () => {
                                               className={'ErrorMessage'}
                                               component={'div'}/>
 
-                                <p>Confirm Password:</p>
-                                <div>
-                                    <Field placeholder='Confirm Password'
-                                           type={'password'}
-                                           name='passwordConfirmation'
-                                           className={'add-form__input'}
-                                    />
-                                    <img className={'icon'} />
-                                </div>
-                                <ErrorMessage name={'passwordConfirmation'}
-                                              className={'ErrorMessage'}
-                                              component={'div'}/>
-
                                 <button type={'submit'}
                                         className={'form__button add-form__button'}
-                                        onClick={handleSubmit}>
+                                >
                                     Save
                                 </button>
                             </Form>

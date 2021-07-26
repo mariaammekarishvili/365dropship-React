@@ -99,8 +99,8 @@ const Header = ({products}) => {
             {/*searchbox*/}
 
             <SearchBox/>
-            <Button color={'primary'}
-                    onClick={selectedId.length > 0 ? addToCart : ''}>ADD TO INVENTORY</Button>
+            <button className={'button'}
+                    onClick={selectedId.length > 0 ? addToCart : ''}>ADD TO INVENTORY</button>
         </header>
     )
 }

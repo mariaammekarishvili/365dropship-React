@@ -34,19 +34,16 @@ const ProfilePage = () => {
     const products = useSelector( state => state.products.productList)
     const isOpen = useSelector( state => state.ProfileReducer.modalOpen)
     const refresh = useSelector(state => state.products.needRefresh)
+    const infoFromLocStore = JSON.parse((localStorage.getItem('user')))
 
-    console.log(userInformation)
-
-    console.log(isOpen)
-
+    console.log(refresh)
     useEffect(() => {
-        const userAdminInformation = JSON.parse((localStorage.getItem('user')))
-        dispatch(adminInformationAction(userAdminInformation))
+        dispatch(adminInformationAction(infoFromLocStore))
     },[refresh])
 
 
     useEffect(() => {
-        getUserInformation(userId).then(r => {
+        getUserInformation(infoFromLocStore.id).then(r => {
             dispatch(fetchFullInfoAction(r))
         })
     },[refresh])

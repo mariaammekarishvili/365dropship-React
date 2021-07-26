@@ -32,10 +32,6 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
         }
     }
 
-    const onClick = () => {
-        history.push(`/catalog/${id}`)
-    }
-
     useEffect(() => {
         if (selectType === 'select') {
             setItemSelected(true)
