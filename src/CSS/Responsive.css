@@ -1,0 +1,19 @@
+@media screen and (max-width: 959px) {
+    .main,.cart-item__box{
+        left: 54px !important;
+        border-left: 1px solid #d9e2e3 ;
+    }
+}
+@media screen and (max-width: 599px) {
+    .main,.cart-item__box,.profile-page{
+        left: 0 !important;
+        border: none;
+    }
+}
+
+@media only screen and (min-width: 2000px){
+    .item-table{
+        height: 700px ;
+        width: 1200px ;
+    }
+}

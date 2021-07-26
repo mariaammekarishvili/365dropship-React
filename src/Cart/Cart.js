@@ -52,7 +52,8 @@ const Cart = () => {
                             {/*    </div>*/}
                             {/*</div>*/}
                             {products.length >= 0 && products.map(item =>
-                                <CartItem title={item.title}
+                                <CartItem key={item.id}
+                                          title={item.title}
                                           img={item.image}
                                           qty={item.qty}
                                           price={item.price}

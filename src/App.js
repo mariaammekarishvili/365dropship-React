@@ -1,4 +1,5 @@
 import './CSS/App.css';
+import './CSS/Responsive.css'
 import Main from "./Main";
 import {Route, Switch} from "react-router-dom";
 import ProfilePage from "./ProfilePage/ProfilePage";
