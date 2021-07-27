@@ -5,7 +5,7 @@ import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import {Messages} from "../Messages";
 import {useDispatch} from "react-redux";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const signUpValidation = yup.object().shape({
     firstName:          yup.string().min(4).max(20),

@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import {Hidden, Typography} from "@material-ui/core";
+import {Hidden} from "@material-ui/core";
 import LogOut from "./LogOut";
 import Navigation from "../common/Navigation";
 import '../CSS/Profile.css'
 import '../CSS/AddProduct.css'
 import {useDispatch, useSelector} from "react-redux";
-import {getUserInformation, userInformation} from "../API/UserAPI";
-import {adminInformationAction, fetchFullInfoAction, openEditAction} from "../reducers/ProfileReducer/ProfileActions";
+import {getUserInformation} from "../API/UserAPI";
+import {adminInformationAction, fetchFullInfoAction} from "../reducers/ProfileReducer/ProfileActions";
 import {RatingStars} from "./RatingStars";
 import {UserStatus} from "./UserStatus";
 import {About} from "./About";

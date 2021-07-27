@@ -1,6 +1,6 @@
 import {Button} from "@material-ui/core";
 import {removeFromCart} from "../API/CartAPI";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import { successMessageAction} from "../reducers/CommonReducers/CommonAction";
 import {useDispatch} from "react-redux";
 
 const CartButton = ({info}) => {

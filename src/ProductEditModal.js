@@ -6,8 +6,7 @@ import {creatProduct, getProduct, updateProduct} from "./API/ProductAPI";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import './CSS/AddProduct.css'
-import {useHistory, useParams} from "react-router-dom";
-import {headerModalOpenAction} from "./reducers/CommonReducers/HeaderModalActions";
+import {useHistory} from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
 import {useStyles} from "./CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";

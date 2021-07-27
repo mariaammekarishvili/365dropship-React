@@ -6,7 +6,7 @@ import {getProduct} from "../API/ProductAPI";
 import {About} from "../ProfilePage/About";
 import {addToCart} from "../API/CartAPI";
 import {useDispatch} from "react-redux";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const Modal = ({openId}) => {
 

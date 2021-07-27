@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import Cost from "./Cost";
-import {useParams, Link,useHistory} from "react-router-dom";
+import {Link,useHistory} from "react-router-dom";
 import {Grid, Button} from "@material-ui/core";
 import {addToCart, removeFromCart} from "../API/CartAPI";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,7 +9,7 @@ import {
     selectProductQtyAction,
     unselectProductIdAction,
 } from "../reducers/ProductReducer/ProductActions";
-import {failedMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {failedMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const CatalogItem = ({title,price,img,id,catalog,products}) => {
     const selectType = useSelector(state => state.products.selectType)

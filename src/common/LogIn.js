@@ -5,7 +5,7 @@ import {login} from '../API/AuthAPI'
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 import {useDispatch} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
