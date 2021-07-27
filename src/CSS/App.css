@@ -261,8 +261,8 @@ a{
   border: #ffff 1px solid;
   cursor: pointer;
   position: absolute;
-  top: 7px;
-  right: 5px;
+  top: 9px;
+  right: 6px;
 }
 .header__para{
   width: auto;
@@ -376,6 +376,9 @@ a{
   background-color: #eee;
   border-radius: 20px;
 
+}
+.search__icon{
+  width: 19px;
 }
 
 /* On mouse-over, add a grey background color */
