@@ -2,6 +2,7 @@ import {removeFromCart, updateCart} from "../API/CartAPI";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
+import {successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
 
 const CartItem = ({title,qty,img,price,itemId}) => {
     const refresh = useSelector(state => state.products.needRefresh)
@@ -34,7 +35,8 @@ const CartItem = ({title,qty,img,price,itemId}) => {
                         className={'button '}>Save changes
                 </button>
                 <button onClick={() =>{removeFromCart(itemId).then(r =>
-                    dispatch(refreshStateAction(!refresh)))}}
+                    dispatch(refreshStateAction(!refresh)))
+                    dispatch(successMessageAction(true))}}
                         className={'button modal__butt--grey'}>Remove
                 </button>
             </div>
