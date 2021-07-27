@@ -5,12 +5,15 @@ import {useHistory} from 'react-router-dom'
 import {getProduct} from "../API/ProductAPI";
 import {About} from "../ProfilePage/About";
 import {addToCart} from "../API/CartAPI";
+import {useDispatch} from "react-redux";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
 
 const Modal = ({openId}) => {
 
     const [open, setOpen] = useState(false)
     const [qtyNumb, setQtyNumb] = useState(1)
     const [product, setProduct] = useState([])
+    const dispatch = useDispatch()
     const history = useHistory()
 
     useEffect(() => {
@@ -32,11 +35,12 @@ const Modal = ({openId}) => {
         }
     }
     const addRequest = () => {
-        addToCart(openId,qtyNumb).then(r => alert('happy') )
+        addToCart(openId,qtyNumb).then(r => dispatch(successMessageAction(true)))
+            .catch(err => dispatch(failedMessageAction(true)))
     }
 
     const closeDialog = () => {
-        setProduct({})
+        setProduct([])
         history.goBack()
         setOpen(false)
     }
