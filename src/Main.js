@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getProductsAction} from "./reducers/ProductReducer/ProductActions";
 import {sortType} from "./SortForReducer";
 import {adminInformationAction} from "./reducers/ProfileReducer/ProfileActions";
+import {Messages} from "./Messages";
 
 const Main = () =>{
 
@@ -74,6 +75,7 @@ const Main = () =>{
                 </Grid>
             </Box>
         </main>
+            <Messages/>
             </>
     )
 }

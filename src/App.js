@@ -7,12 +7,13 @@ import HomePage from "./HomePage";
 import Cart from "./Cart/Cart";
 import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";
+import {Messages} from "./Messages";
 
 function App() {
     const token = localStorage.getItem('token')
   return (
       <div className="content">
-
+          <Messages/>
 
           <Switch>
 
@@ -39,6 +40,9 @@ function App() {
             <Route path='/profile'>
                 {token ? <ProfilePage/> :  <HomePage/>}
             </Route>
+              <Route path='/m'>
+                  <Messages/>
+              </Route>
           </Switch>
       </div>
   );

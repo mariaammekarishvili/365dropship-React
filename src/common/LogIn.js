@@ -5,6 +5,8 @@ import {login} from '../API/AuthAPI'
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {useDispatch} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,7 +28,7 @@ Form.propTypes = {children: PropTypes.node};
 const LogIn = () => {
 
     const history = useHistory()
-
+    const dispatch = useDispatch()
     const classes = useStyles();
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -38,7 +40,7 @@ const LogIn = () => {
                 loggedIn()
             })
             .catch(err=>{
-                alert('Username or Password is incorrect')
+                dispatch(failedMessageAction(true))
                 })
     }
 

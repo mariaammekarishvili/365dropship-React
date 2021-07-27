@@ -16,8 +16,11 @@ a{
   margin: 10px 0  0 10px !important;
   background: #61d5df !important;
 }
-
-
+.message{
+  position: absolute !important;
+  bottom:50px !important;
+  left: 176px !important;
+}
 
 .content{
   justify-content: center;
@@ -237,7 +240,7 @@ a{
 
 }
 .search-box{
-  min-width: 30%;
+  min-width: 9%;
   height: 40px;
   background: #ffff;
   border-radius: 10px;

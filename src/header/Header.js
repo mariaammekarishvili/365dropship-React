@@ -8,6 +8,8 @@ import HeaderModal from "./HeaderModal";
 import {headerModalOpenAction} from "../reducers/CommonReducers/HeaderModalActions";
 import SearchBox from "./SearchBox";
 import ProductEditModal from "../ProductEditModal";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {Messages} from "../Messages";
 
 const Header = ({products}) => {
 
@@ -50,8 +52,8 @@ const Header = ({products}) => {
             for (let i = 0; i < selectedId.length; i++) {
                 const response = await cartRequest(selectedId[i], selectedQty[i])
                     .then(res => {
-                        alert('Add Successfully')
-                    }).catch(err => alert(err.message))
+                        dispatch(successMessageAction(true))
+                    }).catch(err => dispatch(failedMessageAction(true)))
             }
         }
         dispatch(unselectAllIdAction([]))
@@ -60,7 +62,6 @@ const Header = ({products}) => {
 
     return (
         <header className="header">
-
             <button type="button"
                     className={'button'}
                     value={'select'}

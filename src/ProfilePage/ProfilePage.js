@@ -36,7 +36,6 @@ const ProfilePage = () => {
     const refresh = useSelector(state => state.products.needRefresh)
     const infoFromLocStore = JSON.parse((localStorage.getItem('user')))
 
-    console.log(refresh)
     useEffect(() => {
         dispatch(adminInformationAction(infoFromLocStore))
     },[refresh])
@@ -48,9 +47,6 @@ const ProfilePage = () => {
         })
     },[refresh])
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
 
     return (
         <div className={"profile-page add-form__box"}>
@@ -92,25 +88,10 @@ const ProfilePage = () => {
 
                 </div>
             </div>
-            {/*<div className={'profile__box add-form__Form'}>*/}
-            {/*    <div className={'profile__picture'}></div>*/}
-
-            {/*    <p>First Name: <span>{userInformation.firstName}</span> </p>*/}
-            {/*    <p>Last Name:  <span>{userInformation.lastName}</span></p>*/}
-            {/*    <p>E-mail:  <span>{userInformation.email}</span></p>*/}
-            {/*    <p>Admin Status:  <span>{userInformation.isAdmin ? 'Yes' : 'No'}</span></p>*/}
-            {/*    <p>Active From:  <span>{userInformation.createdAt}</span></p>*/}
-
-
-            {/*    <button className={'button'}> Edit Profile</button>*/}
               <div className={'profile__header--butt'}>
 
                 <LogOut/>
               </div>
-            {/*</div>*/}
-
-
-
         </div>
     )
 }
