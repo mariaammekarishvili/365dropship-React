@@ -30,8 +30,11 @@ const CartItem = ({title,qty,img,price,itemId}) => {
             <div className={'td__price td'}>{price * qty} $</div>
             <div className={'td button-box'}>
                 <button
-                    onClick={() => updateCart(itemId, newQty).then(r =>
-                        dispatch(refreshStateAction(!refresh)))}
+                    onClick={() => {
+                        updateCart(itemId, newQty).then(r =>
+                            dispatch(refreshStateAction(!refresh)))
+                        dispatch(successMessageAction(true))
+                    }}
                         className={'button '}>Save changes
                 </button>
                 <button onClick={() =>{removeFromCart(itemId).then(r =>
