@@ -8,6 +8,7 @@ import Cart from "./Cart/Cart";
 import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";
 import {Messages} from "./Messages";
+import BackdropLoader from "./BackdropLoader";
 
 function App() {
     const token = localStorage.getItem('token')
@@ -41,7 +42,7 @@ function App() {
                 {token ? <ProfilePage/> :  <HomePage/>}
             </Route>
               <Route path='/m'>
-                  <Messages/>
+                  <BackdropLoader/>
               </Route>
           </Switch>
       </div>
