@@ -19,7 +19,7 @@ import {
 import price from '../src/img/price-tag.png'
 import title from '../src/img/title.png'
 import link from '../src/img/link.png'
-import {failedMessageAction, successMessageAction} from "./reducers/CommonReducers/CommonAction";
+import {failedMessageAction, headerModalOpenAction, successMessageAction} from "./reducers/CommonReducers/CommonAction";
 
 const creatProductValidation = yup.object().shape({
     title:          yup.string().min(2).max(20),
@@ -36,13 +36,13 @@ const ProductEditModal = () => {
     const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
     const productId = useSelector(state => state.products.selectedId[0])
     const refresh = useSelector(state => state.products.needRefresh)
+    const approveOpen = useSelector(state => state.headerModal.headerModalOpen)
+
+    const [remove,setRemove] = useState(false)
 
 
     const handleClose = () => {
         dispatch(editProductAction(false))
-        if(!open){
-            dispatch(unselectProductIdAction([]))
-        }
     }
 
 
@@ -57,22 +57,20 @@ const ProductEditModal = () => {
             }},[productId])
 
     const handleSubmit = values => {
-        if(productId){
+        if(productId && !approveOpen){
             updateProduct(productId,values).then(res => {
                 dispatch(successMessageAction(true))
                 dispatch(refreshStateAction(!refresh))
                 dispatch(editProductAction(false))
             }).catch(err => dispatch(failedMessageAction(true)))
-        } else {
+        } else if (!approveOpen) {
             creatProduct(values).then(res => {
-                console.log(res)
-                alert('Add successfully')
+                dispatch(successMessageAction(true))
                 dispatch(refreshStateAction(!refresh))
                 dispatch(editProductAction(false))
             })
         }
         history.push('/catalog')
-        dispatch(unselectAllIdAction([]))
     }
 
 return(
@@ -82,7 +80,11 @@ return(
             aria-describedby="transition-modal-description"
             className={classes.modal}
             open={open}
-            onClose={handleClose}
+            onClose={() => {
+                dispatch(editProductAction(false))
+                dispatch(unselectAllIdAction([]))
+                dispatch(headerModalOpenAction(false))
+            }}
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
@@ -159,11 +161,20 @@ return(
                         <ErrorMessage name={'imageUrl'}
                         className={'ErrorMessage'}
                         component={'div'}/>
-
+                    <div className={'add-form--box__but'}>
                         <button type={'submit'}
                         className={'form__button add-form__button'}>
                         Submit
                         </button>
+                        {productId && <button type={'delete'} className={'add-form__button butt-red'}
+                                              onClick={()=> {
+                                                  dispatch(headerModalOpenAction(true))
+                                                  setRemove(true)
+                                              }}>
+                            Remove
+                        </button>}
+
+                    </div>
                </Form>
             </Formik>
             </div>

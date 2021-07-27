@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border: solid #9BE4EB; */
+    border: none;
     min-width: 500px;
     left: 50px;
     position: relative;
@@ -105,4 +105,13 @@ textarea{
 .title-icon{
     width: 30px;
     top: 10px;
+}
+.butt-red{
+    background: red;
+    margin: 10px;
+    color: white;
+}
+.add-form--box__but{
+    text-align: center;
+    width: 80%;
 }

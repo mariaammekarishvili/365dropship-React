@@ -3,7 +3,11 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {useDispatch, useSelector} from "react-redux";
-import {headerModalOpenAction} from "../reducers/CommonReducers/CommonAction";
+import {
+    failedMessageAction,
+    headerModalOpenAction,
+    successMessageAction
+} from "../reducers/CommonReducers/CommonAction";
 import '../CSS/Header.css'
 import {deleteProduct} from "../API/ProductAPI";
 import {refreshStateAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
@@ -24,10 +28,9 @@ export default function HeaderModal() {
     const removeProduct = async() => {
         for(let i = 0; i < selectedId.length; i++){
             const response = await deleteProduct(selectedId[i]).then(r =>
-                alert('Product Delete')
-            ).catch(err => alert(err.message))}
+                dispatch(successMessageAction(true))
+            ).catch(err => dispatch(failedMessageAction(true)))}
         dispatch(headerModalOpenAction(false))
-        dispatch(unselectAllIdAction([]))
         dispatch(refreshStateAction(!refresh))
         }
 
