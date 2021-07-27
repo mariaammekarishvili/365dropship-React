@@ -11,7 +11,6 @@ import {Messages} from "./Messages";
 import BackdropLoader from "./BackdropLoader";
 
 function App() {
-    const token = localStorage.getItem('token')
   return (
       <div className="content">
           <Messages/>
