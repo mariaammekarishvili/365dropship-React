@@ -3,6 +3,9 @@ import {signUp} from "../API/AuthAPI";
 import {useHistory} from "react-router-dom";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
+import {Messages} from "../Messages";
+import {useDispatch} from "react-redux";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
 
 const signUpValidation = yup.object().shape({
     firstName:          yup.string().min(4).max(20),
@@ -15,15 +18,16 @@ const signUpValidation = yup.object().shape({
 
 const SignUp = () => {
     const history = useHistory()
+    const dispatch = useDispatch()
 
     const singUpAction = values => {
             signUp(values)
             .then(result => {
-               alert('successes')
+               dispatch(successMessageAction(true))
                 history.push('/')
             })
             .catch(err=>{
-                alert('Username or Password is incorrect')
+                dispatch(failedMessageAction(true))
             })
     }
 
