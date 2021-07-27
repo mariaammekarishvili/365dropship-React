@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import {useDispatch} from "react-redux";
+import {runLoadingAction} from "./reducers/CommonReducers/CommonAction";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -13,12 +15,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleBackdrop() {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    const dispatch = useDispatch()
+    const open = useState(state => state.Common.runLoading)
     const handleClose = () => {
-        setOpen(false);
+        dispatch(runLoadingAction(false))
     };
     const handleToggle = () => {
-        setOpen(!open);
+        dispatch(runLoadingAction(true))
     };
 
     return (

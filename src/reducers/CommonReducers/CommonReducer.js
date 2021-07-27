@@ -1,10 +1,10 @@
-import {FAILED_REQUEST, HEADER_MODAL_RUN, SUCCESS_REQUEST} from "../ActionsTypes";
+import {FAILED_REQUEST, HEADER_MODAL_RUN, RUN_LOADING, SUCCESS_REQUEST} from "../ActionsTypes";
 
 const initialState = {
     successMessage : false,
     failedMessage : false,
     headerModalOpen: false,
-
+    runLoading : false,
 }
 
 export const CommonReducer = (state = initialState, action) => {
@@ -23,6 +23,11 @@ export const CommonReducer = (state = initialState, action) => {
             return {
                 ...state,
                 headerModalOpen: action.payload
+            }
+        case RUN_LOADING:
+            return {
+                ...state,
+                runLoading: action.payload
             }
         default:
             return state

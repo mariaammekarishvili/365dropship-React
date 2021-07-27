@@ -11,4 +11,5 @@ export const combineReducer = combineReducers({
     headerModal: CommonReducer,
     ProfileReducer: ProfileReducer,
     Messages: CommonReducer,
+    Common: CommonReducer
 })
