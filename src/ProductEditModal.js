@@ -10,10 +10,16 @@ import {useHistory} from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
 import {useStyles} from "./CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";
-import {editProductAction, refreshStateAction, unselectAllIdAction} from "./reducers/ProductReducer/ProductActions";
+import {
+    editProductAction,
+    refreshStateAction,
+    unselectAllIdAction,
+    unselectProductIdAction
+} from "./reducers/ProductReducer/ProductActions";
 import price from '../src/img/price-tag.png'
 import title from '../src/img/title.png'
 import link from '../src/img/link.png'
+import {failedMessageAction, successMessageAction} from "./reducers/CommonReducers/CommonAction";
 
 const creatProductValidation = yup.object().shape({
     title:          yup.string().min(2).max(20),
@@ -32,9 +38,11 @@ const ProductEditModal = () => {
     const refresh = useSelector(state => state.products.needRefresh)
 
 
-    console.log(open)
     const handleClose = () => {
         dispatch(editProductAction(false))
+        if(!open){
+            dispatch(unselectProductIdAction([]))
+        }
     }
 
 
@@ -51,10 +59,10 @@ const ProductEditModal = () => {
     const handleSubmit = values => {
         if(productId){
             updateProduct(productId,values).then(res => {
-                alert('Update Successful!')
+                dispatch(successMessageAction(true))
                 dispatch(refreshStateAction(!refresh))
                 dispatch(editProductAction(false))
-            }).catch(err => alert(err.message))
+            }).catch(err => dispatch(failedMessageAction(true)))
         } else {
             creatProduct(values).then(res => {
                 console.log(res)

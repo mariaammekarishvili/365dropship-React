@@ -5,7 +5,9 @@ import cart from '../img/cart.png'
 import more from '../img/more.png'
 import {addToCart, removeFromCart} from "../API/CartAPI";
 import {useDispatch, useSelector} from "react-redux";
+import '../CSS/CatalogItem.css'
 import {
+    editProductAction,
     selectProductIdAction,
     selectProductQtyAction,
     unselectProductIdAction,
@@ -67,7 +69,12 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
             </label>
 
             <div className={'catalog__item--butts'}>
-                <img src={more} className={'catalog__item-butt--icon'}/>
+                <img src={more}
+                     className={'catalog__item-butt--icon more-icon'}
+                     onClick={() => {
+                         dispatch(editProductAction(true))
+                         dispatch(selectProductIdAction(id))
+                     }}/>
 
 
 
