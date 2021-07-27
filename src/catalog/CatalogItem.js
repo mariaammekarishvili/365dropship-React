@@ -9,6 +9,7 @@ import {
     selectProductQtyAction,
     unselectProductIdAction,
 } from "../reducers/ProductReducer/ProductActions";
+import {failedMessageAction} from "../reducers/CommonReducers/SnackbarActions";
 
 const CatalogItem = ({title,price,img,id,catalog,products}) => {
     const selectType = useSelector(state => state.products.selectType)
@@ -69,7 +70,8 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
                     fullWidth={50}
 
                     onClick={() => {
-                        addToCart(id, qtyNumb)
+                        addToCart(id, qtyNumb).then(r => dispatch(selectProductIdAction(true)))
+                            .catch(err => dispatch(failedMessageAction(true)))
                     }}
                     variant="contained"
                     color="primary">{catalog ? 'ADD TO INVENTORY' : 'REMOVE'}

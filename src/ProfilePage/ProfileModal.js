@@ -13,6 +13,7 @@ import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
 import mail from '../img/email.png';
 import name from '../img/name.png'
 import pass from '../img/key.png'
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
 
 const editProfileValidation = yup.object().shape({
     firstName:          yup.string().min(4).max(20),
@@ -40,7 +41,7 @@ const ProductEditModal = () => {
 
     const handleSubmit = async values => {
         await editUserInformation(userId,values.firstName,values.lastName,values.email,values.password).then(r =>
-        alert('happy')).catch(err => alert(err.message))
+        dispatch(successMessageAction(true))).catch(err => dispatch(failedMessageAction(true)))
         dispatch(refreshStateAction(!refresh))
         handleClose()
     }
