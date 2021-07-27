@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import Cost from "./Cost";
 import {Link,useHistory} from "react-router-dom";
-import {Grid, Button} from "@material-ui/core";
+import cart from '../img/cart.png'
+import more from '../img/more.png'
 import {addToCart, removeFromCart} from "../API/CartAPI";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -9,7 +10,7 @@ import {
     selectProductQtyAction,
     unselectProductIdAction,
 } from "../reducers/ProductReducer/ProductActions";
-import {failedMessageAction} from "../reducers/CommonReducers/CommonAction";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const CatalogItem = ({title,price,img,id,catalog,products}) => {
     const selectType = useSelector(state => state.products.selectType)
@@ -65,18 +66,20 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
                 <span className="checkmark"></span>
             </label>
 
-            <Button className={'add-iv'}
-                    size={"small"}
-                    fullWidth={50}
+            <div className={'catalog__item--butts'}>
+                <img src={more} className={'catalog__item-butt--icon'}/>
 
-                    onClick={() => {
-                        addToCart(id, qtyNumb).then(r => dispatch(selectProductIdAction(true)))
-                            .catch(err => dispatch(failedMessageAction(true)))
-                    }}
-                    variant="contained"
-                    color="primary">{catalog ? 'ADD TO INVENTORY' : 'REMOVE'}
-            </Button>
 
+
+            <button className={'add-iv'}
+
+                   > <img className={'catalog__item-butt--icon'} src={cart}
+                          onClick={() => {
+                addToCart(id, qtyNumb).then(r => dispatch(successMessageAction(true)))
+                    .catch(err => dispatch(failedMessageAction(true)))
+            }}/>
+            </button>
+            </div>
             <Link to={`/catalog/${id}`}>
                 <div className="catalog__photo">
                     <img src={img}/>

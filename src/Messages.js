@@ -43,13 +43,13 @@ export  const Messages = () => {
             {/*<Button variant="outlined" onClick={handleClick}>*/}
             {/*    Open success snackbar*/}
             {/*</Button>*/}
-            <Snackbar className={'message'} open={successOpen} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar className={'message'} open={successOpen} autoHideDuration={2000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success">
                     This is a success message!
                 </Alert>
             </Snackbar>
 
-            <Snackbar className={'message'} open={failedOpen} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar className={'message'} open={failedOpen} autoHideDuration={2000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">
                     This is an error message!
                 </Alert>
