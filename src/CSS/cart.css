@@ -10,11 +10,20 @@
     justify-content: space-between;
     height: 75px;
     background: white;
-    padding: 0 35px;
+    padding: 0 22px;
     box-shadow: 1px 1px 2px 1px rgba(224, 218, 218, 0.5);
 
 }
-
+.cart__title--icon{
+    height: 50px;
+}
+.cart__title{
+    display: flex;
+    margin: auto 0;
+}
+.cart__title>h2{
+    margin: auto 10px;
+}
 .cart-item__box{
     background: #FBFBFB;
     right: 0;

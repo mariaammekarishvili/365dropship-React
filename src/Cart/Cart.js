@@ -9,13 +9,13 @@ import '../CSS/cart.css'
 import CartItem from "./CartItem";
 import SearchBox from "../header/SearchBox";
 import {getProductsAction} from "../reducers/ProductReducer/ProductActions";
+import headerCart from '../img/shopping-cart.png'
 
 const Cart = () => {
     const products = useSelector( state => state.products.productList)
     const inputText = useSelector(state => state.products.inputText)
     const refresh = useSelector(state => state.products.needRefresh)
     const dispatch = useDispatch()
-    const [list,setList] = useState([])
 
 
     useEffect( () => {
@@ -36,7 +36,7 @@ const Cart = () => {
 
                 <div className={'cart-item__box'}>
                     <div className={'card__header'}>
-                        <h2>SHOPPING CART ({products.length}) </h2>
+                        <div className={'cart__title'}><img className={'cart__title--icon'} src={headerCart}/><h2>SHOPPING CART ({products.length}) </h2> </div>
                         <SearchBox/>
                     </div>
                         <table className={'table--width'}>

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import Cost from "./Cost";
 import {Link,useHistory} from "react-router-dom";
-import cart from '../img/cart.png'
+import cart from '../img/grocery-cart.png'
 import more from '../img/more.png'
 import {addToCart, removeFromCart} from "../API/CartAPI";
 import {useDispatch, useSelector} from "react-redux";
@@ -17,6 +17,7 @@ import {failedMessageAction, successMessageAction} from "../reducers/CommonReduc
 const CatalogItem = ({title,price,img,id,catalog,products}) => {
     const selectType = useSelector(state => state.products.selectType)
     const selectedId = useSelector(state => state.products.selectedId)
+    const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
     const dispatch = useDispatch()
 
     const [itemSelected, setItemSelected] = useState(false)
@@ -69,13 +70,14 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
             </label>
 
             <div className={'catalog__item--butts'}>
+                {isAdmin &&
                 <img src={more}
                      className={'catalog__item-butt--icon more-icon'}
                      onClick={() => {
                          dispatch(editProductAction(true))
                          dispatch(selectProductIdAction(id))
                      }}/>
-
+                }
 
 
             <button className={'add-iv'}

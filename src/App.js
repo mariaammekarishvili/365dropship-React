@@ -31,15 +31,15 @@ function App() {
               </Route>
 
               <Route path='/catalog/:id?'>
-                  {token ? <Main/> :  <HomePage/>}
+                  <Main/>
               </Route>
 
               <Route path='/cart'>
-                  {token ? <Cart/> :  <HomePage/>}
+                 <Cart/>
               </Route>
 
             <Route path='/profile'>
-                {token ? <ProfilePage/> :  <HomePage/>}
+               <ProfilePage/>
             </Route>
               <Route path='/m'>
                   <BackdropLoader/>
