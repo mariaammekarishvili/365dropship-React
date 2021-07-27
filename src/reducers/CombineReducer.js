@@ -3,7 +3,7 @@ import {ProductReducer} from "./ProductReducer/ProductReducer";
 import {GetCartReducer} from "./CartReducer/GetCartReducer";
 import {HeaderModalReducer} from "./CommonReducers/HeaderModalReducer";
 import {ProfileReducer} from "./ProfileReducer/ProfileReducer";
-import {SnackbarReducer} from "./CommonReducers/SnackbarReducer";
+import {CommonReducer} from "./CommonReducers/CommonReducer";
 
 
 export const combineReducer = combineReducers({
@@ -11,5 +11,5 @@ export const combineReducer = combineReducers({
     getCart: GetCartReducer,
     headerModal: HeaderModalReducer,
     ProfileReducer: ProfileReducer,
-    Messages: SnackbarReducer,
+    Messages: CommonReducer,
 })

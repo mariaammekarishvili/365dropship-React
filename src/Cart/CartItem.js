@@ -2,7 +2,7 @@ import {removeFromCart, updateCart} from "../API/CartAPI";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
-import {successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const CartItem = ({title,qty,img,price,itemId}) => {
     const refresh = useSelector(state => state.products.needRefresh)

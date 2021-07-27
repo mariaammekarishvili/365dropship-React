@@ -5,10 +5,10 @@ import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../re
 import { addToCart as cartRequest} from "../API/CartAPI";
 import {useHistory} from "react-router-dom";
 import HeaderModal from "./HeaderModal";
-import {headerModalOpenAction} from "../reducers/CommonReducers/HeaderModalActions";
+import {headerModalOpenAction} from "../reducers/CommonReducers/CommonAction";
 import SearchBox from "./SearchBox";
 import ProductEditModal from "../ProductEditModal";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 import {Messages} from "../Messages";
 
 const Header = ({products}) => {

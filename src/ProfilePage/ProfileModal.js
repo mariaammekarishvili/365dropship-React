@@ -13,7 +13,7 @@ import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
 import mail from '../img/email.png';
 import name from '../img/name.png'
 import pass from '../img/key.png'
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/SnackbarActions";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const editProfileValidation = yup.object().shape({
     firstName:          yup.string().min(4).max(20),

@@ -40,17 +40,6 @@ const Cart = () => {
                         <SearchBox/>
                     </div>
                         <table className={'table--width'}>
-                            {/*<div >*/}
-                            {/*    <div className={'thead'}>*/}
-                            {/*        <th className={'td'} scope="col">Picture</th>*/}
-                            {/*        <th className={'td'} scope="col">Title</th>*/}
-                            {/*        <th className={'td'} scope="col">Quantity</th>*/}
-                            {/*        <th className={'td'} scope="col">Price</th>*/}
-                            {/*        <th className={'td button-box'} scope="col"><div>          </div> </th>*/}
-
-
-                            {/*    </div>*/}
-                            {/*</div>*/}
                             {products.length >= 0 && products.map(item =>
                                 <CartItem key={item.id}
                                           title={item.title}
