@@ -9,10 +9,8 @@ import {headerModalOpenAction} from "../reducers/CommonReducers/CommonAction";
 import SearchBox from "./SearchBox";
 import ProductEditModal from "../ProductEditModal";
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
-import {Messages} from "../Messages";
 
 const Header = ({products}) => {
-
     const selectedId = useSelector(state => state.products.selectedId)
     const selectedQty = useSelector(state => state.products.selectedQty)
     const selectedType = useSelector(state => state.products.selectType)
@@ -20,9 +18,6 @@ const Header = ({products}) => {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    const handleOpen = () => {
-        dispatch(headerModalOpenAction(true));
-    };
     const handleOpenForEdit = () => {
         dispatch(editProductAction(true));
     };
@@ -81,19 +76,9 @@ const Header = ({products}) => {
                 <button type="button"
                         className={'button'}
                         value={'select'}
-                        onClick={selectedId.length > 0 ? '' : handleOpenForEdit}>ADD PRODUCT
-                </button>
-                <button type="button"
-                        className={'button'}
-                        value={'select'}
-                        onClick={selectedId.length === 1 ? handleOpenForEdit : ''}>EDIT PRODUCT
+                        onClick={handleOpenForEdit}>ADD PRODUCT
                 </button>
                 <ProductEditModal/>
-                <button type="button"
-                        className={'button'}
-                        value={'select'}
-                        onClick={selectedId.length > 0 ? handleOpen : ''}>REMOVE
-                </button>
                 <HeaderModal/>
             </>
             }
@@ -101,7 +86,7 @@ const Header = ({products}) => {
 
             <SearchBox/>
             <button className={'button'}
-                    onClick={selectedId.length > 0 ? addToCart : ''}>ADD TO INVENTORY</button>
+                    onClick={selectedId.length > 0 && addToCart}>ADD TO INVENTORY</button>
         </header>
     )
 }
