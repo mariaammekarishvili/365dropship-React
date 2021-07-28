@@ -21,20 +21,11 @@ const Main = () =>{
     const inputText = useSelector(state => state.products.inputText)
     const profile = useSelector(state => state.ProfileReducer.id)
     const refresh = useSelector(state => state.products.needRefresh)
-    const token = localStorage.getItem('token')
     const dispatch = useDispatch();
     const history = useHistory()
     const {id} = useParams();
     const {category} = useParams()
 
-
-    useEffect(() => {
-        if(token){
-            history.push('/catalog')
-        }else{
-            history.push('/')
-        }
-    })
     useEffect( () => {
          productsData().then(result => {
             let list = (sortType(result.filter((value) => {
@@ -43,11 +34,6 @@ const Main = () =>{
             dispatch(getProductsAction(list))
         })
     }, [sortState, inputText,history,refresh])
-
-    useEffect(() => {
-            const userAdminInformation = JSON.parse((localStorage.getItem('user')))
-            dispatch(adminInformationAction(userAdminInformation))
-    },[])
 
     return (
         <>

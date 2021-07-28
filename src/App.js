@@ -1,7 +1,7 @@
 import './CSS/App.css';
 import './CSS/Responsive.css'
 import Main from "./Main";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, useHistory} from "react-router-dom";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import HomePage from "./HomePage";
 import Cart from "./Cart/Cart";
@@ -9,9 +9,12 @@ import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";
 import {Messages} from "./Messages";
 import BackdropLoader from "./BackdropLoader";
+import {useSelector} from "react-redux";
 
 function App() {
-  return (
+    const profile = useSelector(state => state.ProfileReducer.id)
+    const history = useHistory()
+    return (
       <div className="content">
           <Messages/>
 
@@ -22,7 +25,7 @@ function App() {
             </Route>
 
             <Route path={'/login'}>
-                <LogIn/>
+                  <LogIn/>
             </Route>
 
               <Route path={'/signup'}>
@@ -30,15 +33,15 @@ function App() {
               </Route>
 
               <Route path='/catalog/:id?'>
-                  <Main/>
+                  {profile ? <Main/> : history.push('/')}
               </Route>
 
               <Route path='/cart'>
-                 <Cart/>
+                  {profile ? <Cart/> : history.push('/')}
               </Route>
 
             <Route path='/profile'>
-               <ProfilePage/>
+                {profile ? <ProfilePage/> : history.push('/')}
             </Route>
               <Route path='/m'>
                   <BackdropLoader/>

@@ -7,6 +7,7 @@ import * as PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 import {useDispatch} from "react-redux";
+import {adminInformationAction} from "../reducers/ProfileReducer/ProfileActions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,6 +52,8 @@ const LogIn = () => {
 
     const loggedIn = () => {
         history.push('/catalog')
+        const userAdminInformation = JSON.parse((localStorage.getItem('user')))
+        dispatch(adminInformationAction(userAdminInformation))
     }
 
     return(
