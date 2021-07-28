@@ -12,7 +12,7 @@ import BackdropLoader from "./BackdropLoader";
 import {useSelector} from "react-redux";
 
 function App() {
-    const profile = useSelector(state => state.ProfileReducer.id)
+    const profile = localStorage.getItem('user')
     const history = useHistory()
     return (
       <div className="content">

@@ -14,4 +14,7 @@ export const editUserInformation = async (id,firstName,lastName,email,password) 
     const res = await axios.put(SERVER_URL_V1 + `users/${id}`,{firstName,lastName,email,password})
     return res.data.data
 }
-console.log(editUserInformation(478,'mariam','mekarishvili','mariam@gmail.com','123456'))
+export const getAllUser = async () => {
+    const res = await axios.get(SERVER_URL_V1 + 'users')
+    return res.data.data
+}

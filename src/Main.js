@@ -35,6 +35,11 @@ const Main = () =>{
         })
     }, [sortState, inputText,history,refresh])
 
+    useEffect(() => {
+            const userAdminInformation = JSON.parse((localStorage.getItem('user')))
+            dispatch(adminInformationAction(userAdminInformation))
+    },[])
+
     return (
         <>
          <Hidden xsDown><Navigation/></Hidden>
