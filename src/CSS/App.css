@@ -19,7 +19,18 @@ a{
   width: 28px;
   cursor: pointer;
 }
-
+.users__table--box{
+  toggle-group: 0;
+  left: 54px;
+  width: auto !important;
+  right: 0;
+  position: fixed;
+  overflow-y: scroll;
+  height: 100%;
+}
+.user__table--head{
+  background: #F8F9FA;
+}
 .content{
   justify-content: center;
   display: flex;

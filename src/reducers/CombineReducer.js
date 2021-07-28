@@ -3,6 +3,8 @@ import {ProductReducer} from "./ProductReducer/ProductReducer";
 import {GetCartReducer} from "./CartReducer/GetCartReducer";
 import {ProfileReducer} from "./ProfileReducer/ProfileReducer";
 import {CommonReducer} from "./CommonReducers/CommonReducer";
+import {UserReducer} from "./UsersReducer/UsersReducer";
+
 
 
 export const combineReducer = combineReducers({
@@ -11,5 +13,6 @@ export const combineReducer = combineReducers({
     headerModal: CommonReducer,
     ProfileReducer: ProfileReducer,
     Messages: CommonReducer,
-    Common: CommonReducer
+    Common: CommonReducer,
+    users: UserReducer,
 })

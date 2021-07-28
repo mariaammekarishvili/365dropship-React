@@ -39,3 +39,5 @@ export const SUCCESS_REQUEST = 'SUCCESS_REQUEST'
 export const FAILED_REQUEST = 'FAILED_REQUEST'
 
 export const RUN_LOADING = 'RUN_LOADING'
+
+export const FETCH_ALL_USER = 'FETCH_ALL_USER'

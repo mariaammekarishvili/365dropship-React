@@ -8,8 +8,7 @@ import Cart from "./Cart/Cart";
 import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";
 import {Messages} from "./Messages";
-import BackdropLoader from "./BackdropLoader";
-import {useSelector} from "react-redux";
+import UsersInformationPage from "./UsersInformationPage";
 
 function App() {
     const profile = localStorage.getItem('user')
@@ -44,7 +43,7 @@ function App() {
                 {profile ? <ProfilePage/> : history.push('/')}
             </Route>
               <Route path='/m'>
-                  <BackdropLoader/>
+                  <UsersInformationPage/>
               </Route>
           </Switch>
       </div>
