@@ -11,8 +11,6 @@ export const login = async (email, password) => {
         const result = await axios.post(SERVER_URL + 'login',{email, password})
         localStorage.setItem('user', JSON.stringify(result.data.data) )
         localStorage.setItem('token',(result.data.data.token) )
-
-        console.log(result)
     }catch (err){
         throw new Error(err)
     }}

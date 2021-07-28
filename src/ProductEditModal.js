@@ -63,7 +63,7 @@ const ProductEditModal = () => {
                 dispatch(refreshStateAction(!refresh))
                 dispatch(editProductAction(false))
             }).catch(err => dispatch(failedMessageAction(true)))
-        } else if (!approveOpen) {
+        } else if (!productId && !approveOpen) {
             creatProduct(values).then(res => {
                 dispatch(successMessageAction(true))
                 dispatch(refreshStateAction(!refresh))
