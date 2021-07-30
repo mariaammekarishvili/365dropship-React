@@ -8,7 +8,7 @@ import Cart from "./Cart/Cart";
 import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";
 import {Messages} from "./Messages";
-import UsersInformationPage from "./UsersInformationPage";
+import UsersInformationPage from "./UsersPage/UsersInformationPage";
 
 function App() {
     const profile = localStorage.getItem('user')
