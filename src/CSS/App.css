@@ -362,9 +362,6 @@ a{
   user-select: none;
 
 }
-.catalog__product:hover + .container, .button:hover {
-  display: inline-block;
-}
 
 /* Hide the browser's default checkbox */
 .container input {

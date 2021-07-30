@@ -1,12 +1,6 @@
-/*.users__table{*/
-/*    display: flex;*/
-/*    box-shadow: 1px 1px 2px 1px rgb(224 218 218 / 50%);*/
-/*    background: white;*/
-/*    position: relative;*/
-/*    left: 22px;*/
-/*    padding: 50px;*/
-/*    max-width: 1200px;*/
-/*}*/
+.users__icon{
+    margin: 6px 12px 0 19px;
+}
 
 .userPage__title{
     display: flex;
@@ -15,13 +9,12 @@
     width: 100%;
     position: absolute;
     left: 54px;
-    /* padding: 10px 17px 0; */
     box-shadow: 1px 1px 2px 1px rgb(224 218 218 / 50%);
     height: 73px;
 
 }
 .users__table--box{
-    top: 94px;
+    top: 75px;
     padding: 0;
 }
 
