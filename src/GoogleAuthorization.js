@@ -1,9 +1,5 @@
 import GoogleLogin from 'react-google-login'
 import React,{Component} from "react";
-import {GoogleInfoRunReducer} from "./GoogleInfoRunReducer";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchFullInfoAction} from "./reducers/ProfileReducer/ProfileActions";
-
 
 export class  GoogleAuthorization extends Component {
 

@@ -18,3 +18,8 @@ export const getAllUser = async () => {
     const res = await axios.get(SERVER_URL_V1 + 'users')
     return res.data.data
 }
+
+export const userDelete = async (id) => {
+    const res = await axios.delete(SERVER_URL_V1 + `users/${id}`)
+    return res.data.data
+}

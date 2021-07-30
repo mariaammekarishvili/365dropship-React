@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getAllUser} from "./API/UserAPI";
+import {getAllUser, userDelete} from "./API/UserAPI";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllUserInfo, getAllUserInfoAction} from "./reducers/UsersReducer/UsersAction";
 import React from 'react';
@@ -14,6 +14,8 @@ import Paper from '@material-ui/core/Paper';
 import Navigation from "./common/Navigation";
 import {Hidden} from "@material-ui/core";
 import headerCart from "./img/shopping-cart.png";
+import {failedMessageAction, successMessageAction} from "./reducers/CommonReducers/CommonAction";
+import {refreshStateAction} from "./reducers/ProductReducer/ProductActions";
 
 const useStyles = makeStyles({
     table: {
@@ -21,34 +23,25 @@ const useStyles = makeStyles({
     },
 });
 
-// const rows = [
-//     createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//     createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//     createData('Eclair', 262, 16.0, 24, 6.0),
-//     createData('Cupcake', 305, 3.7, 67, 4.3),
-//     createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
-
-
 const UsersInformationPage = () => {
     const dispatch = useDispatch()
     const [allUser,serAllUser ]= useState([])
+    const refresh = useSelector(state => state.products.needRefresh)
     const classes = useStyles();
 
     useEffect(() => {
         getAllUser().then(r => {
             const list = r.slice(0, 50)
             serAllUser(list)
-            console.log(allUser)
         })
-    },[])
+    },[refresh])
 
 
         return (
             <>
             <Hidden xsDown><Navigation/></Hidden>
                 <div className={'cart__title'}><img className={'cart__title--icon'} src={headerCart}/><h2>Users ({allUser.length}) </h2> </div>
-
+            <div className={'users__table'}>
                 <TableContainer className={'users__table--box'} component={Paper}>
                 <br/>
                 <Table className={classes.table} aria-label="simple table">
@@ -59,6 +52,8 @@ const UsersInformationPage = () => {
                             <TableCell align="right">Last Name</TableCell>
                             <TableCell align="right">E-mail(g)</TableCell>
                             <TableCell align="right">Admin</TableCell>
+                            <TableCell align="right"> </TableCell>
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -71,11 +66,22 @@ const UsersInformationPage = () => {
                                 <TableCell align="right">{row.lastName}</TableCell>
                                 <TableCell align="right">{row.email}</TableCell>
                                 <TableCell align="right">{`${row.isAdmin}`}</TableCell>
+                                <TableCell align="right">
+                                    <button className={'button'}
+                                            onClick={() => {
+                                                userDelete(row.id).then(r => dispatch(successMessageAction(true)))
+                                                    .catch(err => failedMessageAction(true))
+                                                dispatch(refreshStateAction(!refresh))
+                                            }}
+                                    >Remove</button>
+                                </TableCell>
+
                             </TableRow>
                         ))}
                     </TableBody>
-                </Table>
-            </TableContainer>
+                 </Table>
+                </TableContainer>
+            </div>
             </>
         );
 }
