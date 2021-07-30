@@ -1,7 +1,7 @@
 import {Button, Grid, Modal, Paper} from "@material-ui/core";
-import './CSS/HomePage.css';
+import '../CSS/HomePage.css';
 import {Link} from "react-router-dom";
-import {GoogleAuthorization} from "./GoogleAuthorization";
+import {GoogleAuthorization} from "../GoogleAuthorization";
 
 
 const HomePage= () => {
@@ -12,19 +12,20 @@ const HomePage= () => {
                 <div className={'hm-page__nav-img'}>
                     <img src={'https://mk0q365dropshipe482k.kinstacdn.com/wp-content/uploads/2020/06/group-30.png'}/>
                 </div>
-                <div>ABOUT</div>
-                <Link to={'/catalog'}> <div className={'a'}>CATALOG</div> </Link>
-                <div>PRICING</div>
-                <div>SUPPLIERS</div>
-                {/*<div>HELP CENTER</div>*/}
-                {/*<div>BLOG</div>*/}
-                <GoogleAuthorization/>
-                <div className={'hm-page__nav-button'}>
-                    <Button variant="outlined" color="primary">
-                    Sign Up Now
-                    </Button>
+                <div className={'home-page__navigation navigation__item--right'}>
+                    <div>ABOUT</div>
+                    <Link to={'/catalog'}> <div className={'a'}>CATALOG</div> </Link>
+                    <div>SUPPLIERS</div>
+                    <div>HELP CENTER</div>
+                    <div>BLOG</div>
+                    <GoogleAuthorization/>
+                    <div>Log In</div>
+                    <div className={'hm-page__nav-button'}>
+                        <Button variant="outlined" color="primary">
+                            Sign Up Now
+                        </Button>
+                    </div>
                 </div>
-                <div>Log In</div>
             </div>
 
             <div className={'home-page__tabla'}>

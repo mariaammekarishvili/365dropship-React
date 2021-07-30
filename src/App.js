@@ -3,7 +3,7 @@ import './CSS/Responsive.css'
 import Main from "./Main";
 import {Route, Switch, useHistory} from "react-router-dom";
 import ProfilePage from "./ProfilePage/ProfilePage";
-import HomePage from "./HomePage";
+import HomePage from "./HomePage/HomePage";
 import Cart from "./Cart/Cart";
 import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";

@@ -15,7 +15,7 @@ export class  GoogleAuthorization extends Component {
         <div>
             <GoogleLogin
                 clientId={'612021615226-0p5kckuqvj8eju72qhinm9sf7unb6bn1.apps.googleusercontent.com'}
-                buttonText={'Login'}
+                buttonText={'Sign in with Google'}
                 onSuccess={this.responseGoogle}
                 onFailure={this.responseGoogle}
                 cookiePolicy={'single_host_origin'}
