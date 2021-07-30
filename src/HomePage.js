@@ -1,6 +1,7 @@
 import {Button, Grid, Modal, Paper} from "@material-ui/core";
 import './CSS/HomePage.css';
 import {Link} from "react-router-dom";
+import {GoogleAuthorization} from "./GoogleAuthorization";
 
 
 const HomePage= () => {
@@ -15,8 +16,9 @@ const HomePage= () => {
                 <Link to={'/catalog'}> <div className={'a'}>CATALOG</div> </Link>
                 <div>PRICING</div>
                 <div>SUPPLIERS</div>
-                <div>HELP CENTER</div>
-                <div>BLOG</div>
+                {/*<div>HELP CENTER</div>*/}
+                {/*<div>BLOG</div>*/}
+                <GoogleAuthorization/>
                 <div className={'hm-page__nav-button'}>
                     <Button variant="outlined" color="primary">
                     Sign Up Now

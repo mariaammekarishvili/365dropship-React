@@ -14,6 +14,7 @@ import {About} from "./About";
 import {Link} from "react-router-dom";
 import {ProfileEditButton} from "./ProfileEditButton";
 import ProfileModal from "./ProfileModal";
+import ProfPic from "../img/profile.jpg"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,15 +34,27 @@ const ProfilePage = () => {
     const products = useSelector( state => state.products.productList)
     const isOpen = useSelector( state => state.ProfileReducer.modalOpen)
     const refresh = useSelector(state => state.products.needRefresh)
-    const infoFromLocStore = JSON.parse((localStorage.getItem('user')))
-
+    const user = JSON.parse((localStorage.getItem('user')))
+    console.log(userInformation)
     useEffect(() => {
-        dispatch(adminInformationAction(infoFromLocStore))
+        if(user.imageUrl){
+            dispatch(fetchFullInfoAction({
+                    firstName: user.givenName,
+                    lastName: user.familyName,
+                    email: user.email,
+                    img: user.imageUrl,
+                    id: user.googleId
+                }
+            ))
+        }else{
+            dispatch(adminInformationAction(user))
+        }
+
     },[refresh])
 
 
     useEffect(() => {
-        getUserInformation(infoFromLocStore.id).then(r => {
+        getUserInformation(user.id).then(r => {
             dispatch(fetchFullInfoAction(r))
         })
     },[refresh])
@@ -57,7 +70,12 @@ const ProfilePage = () => {
             <ProfileModal/>
             <div className={'profile__box'}>
                 <div className={'Service-information'}>
-                    <div className={'profile__picture'}></div>
+                    <div className={''}>
+                        {userInformation.img ?
+                            <img className={'profile__picture'} src={userInformation.img}/>
+                            : <img className={'profile__picture'} src={ProfPic}/>}
+
+                    </div>
                     <p className={'description'}>Registration Information</p>
                     <span className={'service__type'}>Active from : </span>
                     <span className={'information'}>{userInformation.createdAt}</span>
@@ -70,7 +88,7 @@ const ProfilePage = () => {
                 </div>
                 <div className={'profile-information'}>
                     <h3 className={'user__name'}>{userInformation.firstName}  {userInformation.lastName}</h3>
-                    <p className={'status'}>Dropship User</p>
+                    <p className={'status'}>{user.imageUrl ? 'Gmail User' : 'Dropship User'}</p>
                     <p className={'rating__title'}>rating</p>
                     <RatingStars/>
                     <UserStatus/>
@@ -81,7 +99,7 @@ const ProfilePage = () => {
                     <p className={'about_title'}>Update At:       <span className={'information'}>   {userInformation.updatedAt}</span></p>
                     <p className={'about_title'}>Phone:  <span className={'about_informt'}> </span></p>
                     <p className={'about_title'}>E-mail:  <span className={'about_informt'}>{userInformation.email}</span></p>
-                    <p className={'about_title'}>ID:  <span className={'information'}>{userInformation.id}</span></p>
+                    <p className={'about_title'}>ID:  <span className={'information'}>{userInformation.id}127</span></p>
 
 
 

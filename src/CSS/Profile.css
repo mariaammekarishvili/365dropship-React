@@ -1,18 +1,24 @@
 .profile__picture{
     background-size: cover;
-    background: url("../img/profile.jpg") no-repeat center;
+    /*background: url("../img/profile.jpg") no-repeat center;*/
     border-radius: 50%;
     width: 185px;
     height: 194px;
     border: 5px solid #9AE4EA;
 }
 .profile-page{
-    position: fixed;
+    position: absolute;
     left: 54px;
     border-left: solid 1px #9BE4EB;
     background: #F8F9FA;
     right: 0;
     height: 100vh;
+    top: 0;
+    bottom:0;
+    width: 100vw; /* viewport width */
+    height: 100vh; /* viewport height */
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 /*.profile__box{*/
 /*    display: flex;*/
@@ -38,7 +44,7 @@
 }
 .profile-edit__butt{
     position: relative;
-    top: 39px;
+    top: 59px;
     z-index: 100;
     right: 0;
     left: 990px;
@@ -67,10 +73,10 @@
     display: flex;
     box-shadow: 1px 1px 2px 1px rgba(224, 218, 218, 0.5);
     background: white;
-    position: fixed;
-    left: 100px;
-    top: 90px;
+    position: relative;
+    left: 22px;
     padding: 50px;
+    max-width: 1200px;
 }
 .profile__but{
     width: 80px;
