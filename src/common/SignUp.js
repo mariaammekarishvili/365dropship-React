@@ -3,7 +3,6 @@ import {signUp} from "../API/AuthAPI";
 import {useHistory} from "react-router-dom";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
-import {Messages} from "../Messages";
 import {useDispatch} from "react-redux";
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 

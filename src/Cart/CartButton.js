@@ -14,7 +14,8 @@ const CartButton = ({info}) => {
 
     return(
         <Button onClick={apiRemove({info})}
-                color={'default'}>Remove</Button>
+                color={'default'}>Remove
+        </Button>
     )
 }
 

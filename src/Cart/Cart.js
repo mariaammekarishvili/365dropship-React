@@ -36,7 +36,10 @@ const Cart = () => {
 
                 <div className={'cart-item__box'}>
                     <div className={'card__header'}>
-                        <div className={'cart__title'}><img className={'cart__title--icon'} src={headerCart}/><h2>SHOPPING CART ({products.length}) </h2> </div>
+                        <div className={'cart__title'}>
+                            <img className={'cart__title--icon'} src={headerCart}/>
+                            <h2>SHOPPING CART ({products.length}) </h2>
+                        </div>
                         <SearchBox/>
                     </div>
                         <table className={'table--width'}>

@@ -1,5 +1,4 @@
 import '../CSS/LogIn-SignUp.css'
-import Box from '@material-ui/core/Box';
 import {Button, makeStyles, TextField} from "@material-ui/core";
 import {login} from '../API/AuthAPI'
 import {useEffect, useState} from "react";
@@ -30,7 +29,6 @@ const LogIn = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    const classes = useStyles();
     const [email,setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -75,7 +73,8 @@ const LogIn = () => {
 
            <p className={'log-in__permeation'}>
                By creating an account, you agree with the Terms & Conditions and Privacy Policy</p>
-           <Form><input type="checkbox"/>
+           <Form>
+               <input type="checkbox"/>
                <label htmlFor="vehicle1">Subscribe to Newslette</label>
            </Form>
            <input className={'log-in__input form__button'}

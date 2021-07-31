@@ -18,12 +18,9 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
     const selectType = useSelector(state => state.products.selectType)
     const selectedId = useSelector(state => state.products.selectedId)
     const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
-    const dispatch = useDispatch()
-
     const [itemSelected, setItemSelected] = useState(false)
     const [qtyNumb, setQtyNumb] = useState(1)
-    const history = useHistory()
-
+    const dispatch = useDispatch()
 
     const checkboxChange = (event) => {
         const checked = event.target.checked
@@ -80,14 +77,14 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
                 }
 
 
-            <button className={'add-iv'}
-
-                   > <img className={'catalog__item-butt--icon'} src={cart}
+            <button className={'add-iv'}>
+                <img className={'catalog__item-butt--icon'} src={cart}
                           onClick={() => {
                 addToCart(id, qtyNumb).then(r => dispatch(successMessageAction(true)))
                     .catch(err => dispatch(failedMessageAction(true)))
             }}/>
             </button>
+
             </div>
             <Link to={`/catalog/${id}`}>
                 <div className="catalog__photo">
