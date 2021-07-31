@@ -18,10 +18,18 @@ const AsideBar = () => {
             <aside className="aside-bar">
                 <AsideFilter title={'Choose Niche'}/>
                 <AsideFilter title={'Choose Category'} light check={showCategory}/>
-                {category && <Link to='/catalog/electronics/'><AsideCategory title={'Electronics'}/></Link>}
-                {category && <Link to='/catalog/jewelery/'><AsideCategory title={'Jewelery'}/></Link>}
-                {category && <Link to="/catalog/men's%20clothing/"><AsideCategory title={'Men\'s clothing'}/></Link>}
-                {category && <Link to="/catalog/women's%20clothing/"><AsideCategory title={'women\'s clothing'}/></Link>}
+                {category && <Link to='/catalog/electronics/'>
+                    <AsideCategory title={'Electronics'}/>
+                </Link>}
+                {category && <Link to='/catalog/jewelery/'>
+                    <AsideCategory title={'Jewelery'}/>
+                </Link>}
+                {category && <Link to="/catalog/men's%20clothing/">
+                    <AsideCategory title={'Men\'s clothing'}/>
+                </Link>}
+                {category && <Link to="/catalog/women's%20clothing/">
+                    <AsideCategory title={'women\'s clothing'}/>
+                </Link>}
                 <AsideSelect title={'Ship from'}/>
                 <AsideSelect title={'Ship to'}/>
                 <AsideSelect title={'Select supplier'}/>

@@ -11,7 +11,9 @@ const CartItem = ({title,qty,img,price,itemId}) => {
 
     return (
         <div className={'table__item'} >
-            <div className={'td__img-box td'}><img src={img} className={'td__img'}/></div>
+            <div className={'td__img-box td'}>
+                <img src={img} className={'td__img'}/>
+            </div>
             <div className={'td__title td'}>{title}</div>
             <div className={'qty cart__qty'}>
                 <button className={'qty__plus'}
