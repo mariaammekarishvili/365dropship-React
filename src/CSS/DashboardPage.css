@@ -1,0 +1,38 @@
+.dashboard-page{
+    position: absolute;
+    left: 54px;
+    border-left: solid 1px #61d5df;
+    background: #F8F9FA;
+    width: 100%;
+    text-align: center;
+}
+.dashboard-page>hr{
+    margin: 50px 0;
+    color: #DDE3EE;
+}
+.dashboard__first-section{
+    margin: 50px auto;
+    width: 90%;
+    background: white;
+    border-radius: 8px;
+    min-height: 350px;
+    padding: 30px;
+}
+.dashboard__first-section-1th{
+    display: flex;
+    justify-content: space-around;
+}
+.dashboard__first-section-1th>p{
+    font-family: Gilroy-med;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 24px;
+    line-height: 1.63;
+    text-align: center;
+    color: #49547d;
+}
+.dashboard__first-section>h3{
+    text-align: left;
+    color: #3f3d3d;
+    margin-bottom: 30px;
+}

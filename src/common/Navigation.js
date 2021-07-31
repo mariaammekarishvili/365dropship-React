@@ -17,7 +17,7 @@ const Navigation = () => {
             <Link to={'/profile'}>
                 <NavigationItem img={profile} round/>
             </Link>
-            
+
             <Link to={'/dashboard'}>
                 <NavigationItem img={dashboard}/>
             </Link>
