@@ -15,6 +15,7 @@ import SignUp from "./common/SignUp";
 import {Messages} from "./Messages";
 import UsersInformationPage from "./UsersPage/UsersInformationPage";
 import {useState} from "react";
+import {AboutPage} from "./AboutPage/AboutPage";
 
 function App() {
     const profile = useState(localStorage.getItem('user'))
@@ -46,11 +47,16 @@ function App() {
                   {profile ? <Cart/> : history.push('/')}
               </Route>
 
-            <Route path='/profile'>
+              <Route path='/profile'>
                 {profile ? <ProfilePage/> : history.push('/')}
-            </Route>
-              <Route path='/users'>  
+              </Route>
+
+              <Route path='/users'>
                   <UsersInformationPage/>
+              </Route>
+
+              <Route path='/m'>
+                  <AboutPage/>
               </Route>
           </Switch>
       </div>
