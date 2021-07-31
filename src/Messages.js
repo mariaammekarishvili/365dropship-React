@@ -22,7 +22,6 @@ export  const Messages = () => {
     const failedOpen = useSelector(state => state.Messages.failedMessage)
     const dispatch = useDispatch()
 
-
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -33,22 +32,23 @@ export  const Messages = () => {
 
     return (
         <div className={classes.root}>
-            <Snackbar className={'message'} open={successOpen} autoHideDuration={2000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success">
+            <Snackbar className={'message'}
+                      open={successOpen} autoHideDuration={2000}
+                      onClose={handleClose}>
+                <Alert onClose={handleClose} s
+                       everity="success">
                     This is a success message!
                 </Alert>
             </Snackbar>
 
-            <Snackbar className={'message'} open={failedOpen} autoHideDuration={2000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error">
+            <Snackbar className={'message'}
+                      open={failedOpen} autoHideDuration={2000}
+                      onClose={handleClose}>
+                <Alert onClose={handleClose} s
+                       everity="error">
                     This is an error message!
                 </Alert>
             </Snackbar>
-
-            {/*<Alert severity="error">This is an error message!</Alert>*/}
-            {/*<Alert severity="warning">This is a warning message!</Alert>*/}
-            {/*<Alert severity="info">This is an information message!</Alert>*/}
-            {/*<Alert severity="success">This is a success message!</Alert>*/}
         </div>
     );
 }
