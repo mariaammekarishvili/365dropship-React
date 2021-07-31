@@ -15,7 +15,6 @@ export const About = ({description}) => {
                     <img className={'about_icon'} src={icon}/>
                     <p className={'about_script'}>About</p>
                 </>
-
             }
         </div>
             <hr/>

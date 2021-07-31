@@ -11,7 +11,10 @@ const LogOut = () => {
     }
 
     return (
-        <button size={"medium"} className={'logout__but '} onClick={logOutAction} color={'default'}>Log Out</button>
+        <button size={"medium"}
+                className={'logout__but '}
+                onClick={logOutAction}
+                color={'default'}>Log Out</button>
     )
 }
 

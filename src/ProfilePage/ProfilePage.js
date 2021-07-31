@@ -26,16 +26,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 const ProfilePage = () => {
 
-    const classes = useStyles();
     const dispatch = useDispatch()
-    const [value, setValue] = React.useState('Controlled');
-    const userId = useSelector(state => state.ProfileReducer.id)
     const userInformation = useSelector(state => state.ProfileReducer.fullInformation)
     const products = useSelector( state => state.products.productList)
-    const isOpen = useSelector( state => state.ProfileReducer.modalOpen)
     const refresh = useSelector(state => state.products.needRefresh)
     const user = JSON.parse((localStorage.getItem('user')))
-    console.log(userInformation)
     useEffect(() => {
         if(user.imageUrl){
             dispatch(fetchFullInfoAction({
@@ -49,7 +44,6 @@ const ProfilePage = () => {
         }else{
             dispatch(adminInformationAction(user))
         }
-
     },[refresh])
 
 
@@ -81,10 +75,14 @@ const ProfilePage = () => {
                     <span className={'information'}>{userInformation.createdAt}</span>
                     <p className={'description'}>Service Information</p>
                     <div className={'service_box'}>
-                        <span className={'service__type'}>Product In Catalog : <br/><span className={'information'}>{products.length} items</span></span>
-                        <Link to={'/catalog'}><button className={'button profile__but'}>See Catalog</button></Link>
+                        <span className={'service__type'}>Product In Catalog :
+                            <br/>
+                            <span className={'information'}>{products.length} items</span>
+                        </span>
+                        <Link to={'/catalog'}>
+                            <button className={'button profile__but'}>See Catalog</button>
+                        </Link>
                     </div>
-
                 </div>
                 <div className={'profile-information'}>
                     <h3 className={'user__name'}>{userInformation.firstName}  {userInformation.lastName}</h3>
@@ -94,14 +92,24 @@ const ProfilePage = () => {
                     <UserStatus/>
                     <About/>
                     <p className={'rating__title'}>personal information</p>
-                    <p className={'about_title'}>First Name: <span className={'about_informt'}>{userInformation.firstName}</span> </p>
-                    <p className={'about_title'}>Last Name:  <span className={'about_informt'}>{userInformation.lastName}</span></p>
-                    <p className={'about_title'}>Update At:       <span className={'information'}>   {userInformation.updatedAt}</span></p>
-                    <p className={'about_title'}>Phone:  <span className={'about_informt'}> </span></p>
-                    <p className={'about_title'}>E-mail:  <span className={'about_informt'}>{userInformation.email}</span></p>
-                    <p className={'about_title'}>ID:  <span className={'information'}>{userInformation.id}127</span></p>
-
-
+                    <p className={'about_title'}>First Name:
+                        <span className={'about_informt'}>{userInformation.firstName}</span>
+                    </p>
+                    <p className={'about_title'}>Last Name:
+                        <span className={'about_informt'}>{userInformation.lastName}</span>
+                    </p>
+                    <p className={'about_title'}>Update At:
+                        <span className={'information'}>   {userInformation.updatedAt}</span>
+                    </p>
+                    <p className={'about_title'}>Phone:
+                        <span className={'about_informt'}> </span>
+                    </p>
+                    <p className={'about_title'}>E-mail:
+                        <span className={'about_informt'}>{userInformation.email}</span>
+                    </p>
+                    <p className={'about_title'}>ID:
+                        <span className={'information'}>{userInformation.id}127</span>
+                    </p>
 
                 </div>
             </div>

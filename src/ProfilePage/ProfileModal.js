@@ -23,17 +23,12 @@ const editProfileValidation = yup.object().shape({
 })
 
 const ProductEditModal = () => {
-    const classes = useStyles();
-    const history = useHistory()
-    const dispatch = useDispatch()
-    const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
     const userInformation = useSelector(state => state.ProfileReducer.fullInformation)
     const open = useSelector( state => state.ProfileReducer.modalOpen)
     const userId = useSelector(state => state.ProfileReducer.id)
     const refresh = useSelector(state => state.products.needRefresh)
-
-
-
+    const classes = useStyles();
+    const dispatch = useDispatch()
 
     const handleClose = () => {
         dispatch(openEditAction(false))

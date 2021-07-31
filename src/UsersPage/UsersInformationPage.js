@@ -30,7 +30,7 @@ const UsersInformationPage = () => {
             serAllUser(list)
         })
     },[refresh])
-    
+
         return (
           <>
             <Hidden xsDown><Navigation/></Hidden>
