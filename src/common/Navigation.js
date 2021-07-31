@@ -17,8 +17,10 @@ const Navigation = () => {
             <Link to={'/profile'}>
                 <NavigationItem img={profile} round/>
             </Link>
-
-            <NavigationItem img={dashboard}/>
+            
+            <Link to={'/dashboard'}>
+                <NavigationItem img={dashboard}/>
+            </Link>
 
             <Link to={'/catalog'}>
                 <NavigationItem img={catalog}/>
@@ -30,7 +32,9 @@ const Navigation = () => {
                 <NavigationItem img={cart}/>
             </Link>
 
-            <NavigationItem img={orders}/>
+            <Link to={'/about'}>
+                <NavigationItem img={orders}/>
+            </Link>
 
             <NavigationItem img={transaction}/>
 

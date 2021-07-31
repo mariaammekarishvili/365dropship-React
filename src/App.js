@@ -16,6 +16,7 @@ import {Messages} from "./Messages";
 import UsersInformationPage from "./UsersPage/UsersInformationPage";
 import {useState} from "react";
 import {AboutPage} from "./AboutPage/AboutPage";
+import {DashboardPage, dashboardPage} from "./DashboardPage/DashboardPage";
 
 function App() {
     const profile = useState(localStorage.getItem('user'))
@@ -55,9 +56,13 @@ function App() {
                   <UsersInformationPage/>
               </Route>
 
-              <Route path='/m'>
+              <Route path='/about'>
                   <AboutPage/>
               </Route>
+              <Route path='/dashboard'>
+                  <DashboardPage/>
+              </Route>
+
           </Switch>
       </div>
   );
