@@ -15,7 +15,6 @@ import {adminInformationAction} from "./reducers/ProfileReducer/ProfileActions";
 import {Messages} from "./Messages";
 
 const Main = () =>{
-
     const products = useSelector( state => state.products.productList)
     const sortState = useSelector(state => state.products.sortState)
     const inputText = useSelector(state => state.products.inputText)

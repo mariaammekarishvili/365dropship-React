@@ -2,6 +2,9 @@ import './CSS/App.css';
 import './CSS/Responsive.css'
 import './CSS/AsideBar.css'
 import './CSS/Catalog.css'
+import './CSS/Navigation.css'
+import './CSS/cart.css'
+
 import Main from "./Main";
 import {Route, Switch, useHistory} from "react-router-dom";
 import ProfilePage from "./ProfilePage/ProfilePage";

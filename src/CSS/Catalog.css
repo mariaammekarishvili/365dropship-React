@@ -304,3 +304,57 @@ hr{
     overflow: hidden;
     max-height: 12.6em;
 }
+
+.qty{
+    text-align: right;
+    height: 25px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 7px;
+}
+.qty__only{
+    text-align: right;
+    height: 25px;
+    margin-right: 20px;
+    margin-top: 7px;
+    color: #7A7A7A;
+}
+.qty>div, .qty>button{
+    width: 30px;
+    text-align: center;
+    border: 1px solid #e8e9ea;
+    color: #a8a8a8;
+    background: #FBFBFB;
+    cursor: pointer;
+}
+.modal_qty{
+    text-align: left;
+    width: 47%;
+    margin: 2px 0 18px 0;
+}
+.qty>span{
+    margin-right: 10px;
+}
+
+.qty__number{
+    text-align: center;
+    box-sizing: border-box;
+    padding: 2px;
+
+}
+
+.qty__plus{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: none;
+}
+.qty__minus{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: none;
+}
+
+.get_qty{
+    border-radius: 5px;
+}

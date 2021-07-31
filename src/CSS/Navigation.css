@@ -1,0 +1,16 @@
+.Navigation-item__img{
+    width: 20px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.Navigation-item__img:hover{
+    border: #F7FDFD solid 1px;
+}
+.Navigation-item__img--round{
+    border-radius: 50%;
+    width: 30px;
+    height: 32px;
+    border: solid 1px #B8ECF1;
+    padding: 2px;
+    margin: 10px 0;
+}

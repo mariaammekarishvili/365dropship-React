@@ -1,11 +1,9 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import {failedMessageAction, successMessageAction} from "./reducers/CommonReducers/CommonAction";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch, useSelector} from "react-redux";
-import {failedMessageAction, successMessageAction} from "./reducers/CommonReducers/CommonAction";
-
+import React from 'react';
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -33,12 +31,8 @@ export  const Messages = () => {
         dispatch(successMessageAction(false));
     };
 
-
     return (
         <div className={classes.root}>
-            {/*<Button variant="outlined" onClick={handleClick}>*/}
-            {/*    Open success snackbar*/}
-            {/*</Button>*/}
             <Snackbar className={'message'} open={successOpen} autoHideDuration={2000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success">
                     This is a success message!
