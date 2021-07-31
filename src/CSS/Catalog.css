@@ -258,6 +258,7 @@ hr{
 .item-table__img{
     margin: auto auto;
     max-width: 100%;
+    padding: 3px 0;
 }
 
 .cost__box{

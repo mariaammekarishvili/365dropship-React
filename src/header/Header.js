@@ -3,9 +3,9 @@ import {editProductAction, inputSortAction} from "../reducers/ProductReducer/Pro
 import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
 import { addToCart as cartRequest} from "../API/CartAPI";
 import {useHistory} from "react-router-dom";
-import HeaderModal from "./HeaderModal";
+import ItemRemoveModal from "../ProdactChangesModals/ItemRemoveModal";
 import SearchBox from "./SearchBox";
-import ProductEditModal from "../ProductEditModal";
+import ProductEditModal from "../ProdactChangesModals/ProductEditModal";
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const Header = ({products}) => {
@@ -74,7 +74,7 @@ const Header = ({products}) => {
                         onClick={handleOpenForEdit}>ADD PRODUCT
                 </button>
                 <ProductEditModal/>
-                <HeaderModal/>
+                <ItemRemoveModal/>
             </>
             }
             {/*searchbox*/}

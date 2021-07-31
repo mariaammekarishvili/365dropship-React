@@ -1,13 +1,18 @@
 import {removeFromCart, updateCart} from "../API/CartAPI";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
 import {successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const CartItem = ({title,qty,img,price,itemId}) => {
     const refresh = useSelector(state => state.products.needRefresh)
-    const [newQty,setNewQty] = useState(qty)
+    const [change,setChange] = useState(false)
+    const [newQty,setNewQty] = useState([])
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        setNewQty(qty)
+    },[])
 
     return (
         <div className={'table__item'} >
@@ -24,7 +29,7 @@ const CartItem = ({title,qty,img,price,itemId}) => {
                 <div className={'qty__number'}>{newQty}</div>
                 <button className={'qty__minus'}
                         onClick={() =>
-                            setNewQty(newQty-1)}
+                            newQty > 1 && setNewQty(newQty-1)}
                         value={qty}> -
                 </button>
             </div>
