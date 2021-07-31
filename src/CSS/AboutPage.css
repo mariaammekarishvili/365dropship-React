@@ -1,0 +1,13 @@
+.google-map{
+    width: 600px;
+    height: 385px;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    border: none;
+}
+.about-page{
+    /*position: absolute;*/
+    left: 54px;
+    border-left: #61d5df 1px solid;
+}
