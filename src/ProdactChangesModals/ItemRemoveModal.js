@@ -10,7 +10,7 @@ import {
 } from "../reducers/CommonReducers/CommonAction";
 import '../CSS/Header.css'
 import {deleteProduct} from "../API/ProductAPI";
-import {refreshStateAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
+import {editProductAction, refreshStateAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
 import {useStyles} from "../CSS/ModalStyle";
 import {useHistory} from "react-router-dom";
 
@@ -29,6 +29,7 @@ export default function ItemRemoveModal() {
         for(let i = 0; i < selectedId.length; i++){
             const response = await deleteProduct(selectedId[i]).then(r => {
                     dispatch(successMessageAction(true))
+                     dispatch(editProductAction(false))
                     history.push('/catalog')
                 }
             ).catch(err => dispatch(failedMessageAction(true)))}

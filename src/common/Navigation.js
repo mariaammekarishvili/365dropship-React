@@ -34,7 +34,7 @@ const Navigation = () => {
 
             <NavigationItem img={transaction}/>
 
-            <Link to={'/addProduct'}>
+            <Link to={'/users'}>
                 <NavigationItem img={stores}/>
             </Link>
 

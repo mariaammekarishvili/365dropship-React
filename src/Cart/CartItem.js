@@ -26,7 +26,8 @@ const CartItem = ({title,qty,img,price,itemId}) => {
                         onClick={() =>
                             setNewQty(newQty+1)}> +
                 </button>
-                <div className={'qty__number'}>{newQty}</div>
+                <div className={'qty__number'}>{newQty ? newQty : qty}
+                </div>
                 <button className={'qty__minus'}
                         onClick={() =>
                             newQty > 1 && setNewQty(newQty-1)}

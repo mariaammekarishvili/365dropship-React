@@ -49,7 +49,7 @@ function App() {
             <Route path='/profile'>
                 {profile ? <ProfilePage/> : history.push('/')}
             </Route>
-              <Route path='/m'>
+              <Route path='/users'>
                   <UsersInformationPage/>
               </Route>
           </Switch>
