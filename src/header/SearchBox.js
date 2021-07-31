@@ -18,7 +18,10 @@ const SearchBox = () => {
                    value={inputText}
                    type="text"/>
             <button className="search-box__button"
-                    type="submit"><img className={'search__icon'} src={search}/></button>
+                    type="submit">
+                <img className={'search__icon'}
+                     src={search}/>
+            </button>
         </div>
     )
 }

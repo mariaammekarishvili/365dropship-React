@@ -1,11 +1,9 @@
-import {Button} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {editProductAction, inputSortAction} from "../reducers/ProductReducer/ProductActions";
 import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
 import { addToCart as cartRequest} from "../API/CartAPI";
 import {useHistory} from "react-router-dom";
 import HeaderModal from "./HeaderModal";
-import {headerModalOpenAction} from "../reducers/CommonReducers/CommonAction";
 import SearchBox from "./SearchBox";
 import ProductEditModal from "../ProductEditModal";
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
@@ -16,12 +14,10 @@ const Header = ({products}) => {
     const selectedType = useSelector(state => state.products.selectType)
     const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
     const dispatch = useDispatch();
-    const history = useHistory()
 
     const handleOpenForEdit = () => {
         dispatch(editProductAction(true));
     };
-
 
     const selectTypeChange = (e) => {
         if (e.target.value === 'select' && products.listing !== selectedId.length) {
@@ -34,7 +30,6 @@ const Header = ({products}) => {
             dispatch(selectAllAction('clear'))
             dispatch(unselectAllIdAction([]))
         } else {
-
         }
     }
 
@@ -83,7 +78,6 @@ const Header = ({products}) => {
             </>
             }
             {/*searchbox*/}
-
             <SearchBox/>
             <button className={'button'}
                     onClick={selectedId.length > 0 && addToCart}>ADD TO INVENTORY</button>

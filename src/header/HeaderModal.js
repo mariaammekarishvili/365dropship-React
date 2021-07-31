@@ -20,7 +20,6 @@ export default function HeaderModal() {
     const selectedId = useSelector(state => state.products.selectedId)
     const refresh = useSelector(state => state.products.needRefresh)
 
-
     const handleClose = () => {
         dispatch(headerModalOpenAction(false))
     }
@@ -33,7 +32,6 @@ export default function HeaderModal() {
         dispatch(headerModalOpenAction(false))
         dispatch(refreshStateAction(!refresh))
         }
-
 
 
     return (
@@ -55,8 +53,12 @@ export default function HeaderModal() {
                         <h2 id="transition-modal-title">Remove Item</h2>
                         <p id="transition-modal-description">Are you sure you want to delete the product?</p>
                     <div className={'modal__box--butt'}>
-                        <button onClick={handleClose} className={'modal__butt--grey button'}>No</button>
-                        <button onClick={removeProduct} className={'modal__butt--clasic button'}>Yes</button>
+                        <button onClick={handleClose}
+                                className={'modal__butt--grey button'}>No
+                        </button>
+                        <button onClick={removeProduct}
+                                className={'modal__butt--clasic button'}>Yes
+                        </button>
                     </div>
                     </div>
                 </Fade>
