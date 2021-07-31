@@ -1,13 +1,42 @@
 .google-map{
-    width: 600px;
+    width: 90%;
     height: 385px;
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
     border: none;
+    margin: 31px;
+    text-align: center;
 }
 .about-page{
-    /*position: absolute;*/
+    position: absolute;
     left: 54px;
     border-left: #61d5df 1px solid;
+    width: 100%;
+    background: #FCFCFD;
+    padding: 0 30px;
+}
+.about-page--flex{
+    display: flex;
+    justify-content: space-around;
+}
+.about-page__text{
+    padding: 30px 0;
+    width: 500px;
+}
+.about-page__text>h2{
+    color: #464644;
+    font-size: 44px;
+    font-weight: bold;
+}
+.about-page__text>h2>span{
+    border-bottom: 4px solid #61d5df;
+}
+.about-page__text>p{
+    color: #7A7A7A;
+    font-size: 20px;
+}
+.about-page__pic{
+    height: 500px;
+    width: 540px;
+    border-radius: 7px;
+    background: white;
+    margin-top: 40px;
 }
