@@ -1,38 +1,17 @@
-import {Button, Grid, Modal, Paper} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import '../CSS/HomePage.css';
-import {Link} from "react-router-dom";
-import {GoogleAuthorization} from "../GoogleAuthorization";
+import {Link, } from "react-router-dom";
+import {HomePageNavigation} from "./HomePageNavigation";
+import {HomePageMain} from "./HomePageMain";
 
 
 const HomePage= () => {
-
     return(
         <div className={'home-page'}>
-            <div className={'home-page__navigation'}>
-                <div className={'hm-page__nav-img'}>
-                    <img src={'https://mk0q365dropshipe482k.kinstacdn.com/wp-content/uploads/2020/06/group-30.png'}/>
-                </div>
-                <div className={'home-page__navigation navigation__item--right'}>
-                    <div>ABOUT</div>
-                    <Link to={'/catalog'}> <div className={'a'}>CATALOG</div> </Link>
-                    <div>SUPPLIERS</div>
-                    <div>HELP CENTER</div>
-                    <div>BLOG</div>
-                    <GoogleAuthorization/>
-                    <div>Log In</div>
-                    <div className={'hm-page__nav-button'}>
-                        <Button variant="outlined" color="primary">
-                            Sign Up Now
-                        </Button>
-                    </div>
-                </div>
-            </div>
+           <HomePageNavigation/>
+           <HomePageMain/>
 
-            <div className={'home-page__tabla'}>
-                <h1>DROPSHIP</h1>
-                <h1>KNOWLEDGE BASE</h1>
-                <h3>EVERYTHING YOU NEED TO KNOW IN ONE PLACE</h3>
-            </div>
+
             <div className={'home-page_butt-container'}>
                 <Link to={'/signup'}>
                     <Button  variant="contained"
@@ -42,6 +21,7 @@ const HomePage= () => {
                     Sign Up Now
                     </Button><span> </span>
                 </Link>
+
                 <Link to={'/login'}>
                     <Button variant="outlined"
                             size="large"
@@ -49,6 +29,8 @@ const HomePage= () => {
                         Log In
                     </Button>
                 </Link>
+
+
             </div>
         </div>
     )

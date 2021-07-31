@@ -41,3 +41,5 @@ export const FAILED_REQUEST = 'FAILED_REQUEST'
 export const RUN_LOADING = 'RUN_LOADING'
 
 export const FETCH_ALL_USER = 'FETCH_ALL_USER'
+
+export const OPEN_SIMPLE_MODAL = 'OPEN_SIMPLE_MODAL'

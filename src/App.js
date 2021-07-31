@@ -1,5 +1,7 @@
 import './CSS/App.css';
 import './CSS/Responsive.css'
+import './CSS/AsideBar.css'
+import './CSS/Catalog.css'
 import Main from "./Main";
 import {Route, Switch, useHistory} from "react-router-dom";
 import ProfilePage from "./ProfilePage/ProfilePage";
@@ -9,10 +11,12 @@ import LogIn from "./common/LogIn";
 import SignUp from "./common/SignUp";
 import {Messages} from "./Messages";
 import UsersInformationPage from "./UsersPage/UsersInformationPage";
+import {useState} from "react";
 
 function App() {
-    const profile = localStorage.getItem('user')
+    const profile = useState(localStorage.getItem('user'))
     const history = useHistory()
+
     return (
       <div className="content">
           <Messages/>

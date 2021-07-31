@@ -17,11 +17,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-// <Button onClick={handleClick({ vertical: 'bottom', horizontal: 'left' })}>Bottom-Left</Button>
 
 export  const Messages = () => {
     const classes = useStyles();
-    // const [open, setOpen] = React.useState(false);
     const successOpen = useSelector(state => state.Messages.successMessage)
     const failedOpen = useSelector(state => state.Messages.failedMessage)
     const dispatch = useDispatch()
@@ -34,8 +32,6 @@ export  const Messages = () => {
         dispatch(failedMessageAction(false));
         dispatch(successMessageAction(false));
     };
-
-    console.log(successOpen)
 
 
     return (

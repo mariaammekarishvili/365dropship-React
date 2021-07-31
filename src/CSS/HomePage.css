@@ -8,12 +8,13 @@
 }
 
 .home-page__navigation{
-    position: static;
     top: 0;
     height: 80px;
     display: flex;
-    min-width: 100%;
+    justify-content: space-between;
     background: rgba(53, 60, 85, 0.7);
+    width: 101%;
+    position: absolute;
 
 }
 
@@ -34,7 +35,9 @@
     color: #61d5df !important;
 }
 .navigation__item--right{
-    text-align: right;
+    justify-content: right;
+    position: relative;
+    right: 0;
 }
 .a{
     text-decoration: none;

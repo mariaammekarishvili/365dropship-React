@@ -19,12 +19,10 @@ const Main = () =>{
     const products = useSelector( state => state.products.productList)
     const sortState = useSelector(state => state.products.sortState)
     const inputText = useSelector(state => state.products.inputText)
-    const profile = useSelector(state => state.ProfileReducer.id)
     const refresh = useSelector(state => state.products.needRefresh)
     const dispatch = useDispatch();
     const history = useHistory()
     const {id} = useParams();
-    const {category} = useParams()
 
     useEffect( () => {
          productsData().then(result => {

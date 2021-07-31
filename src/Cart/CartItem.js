@@ -7,7 +7,6 @@ import {successMessageAction} from "../reducers/CommonReducers/CommonAction";
 const CartItem = ({title,qty,img,price,itemId}) => {
     const refresh = useSelector(state => state.products.needRefresh)
     const [newQty,setNewQty] = useState(qty)
-    const [edit,setEdit] = useState(false)
     const dispatch = useDispatch()
 
     return (

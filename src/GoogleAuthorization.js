@@ -5,14 +5,13 @@ export class  GoogleAuthorization extends Component {
 
     responseGoogle=(response)=>{
         localStorage.setItem('user', JSON.stringify(response.profileObj) )
-        localStorage.setItem('token',(response.tokenObj.access_token) )
-        console.log(response.tokenObj.access_token)
-        console.log(response.profileObj)
-
+        localStorage.setItem('token',(response.tokenObj.access_token))
     }
     render() {
-      return(
-        <div>
+
+        return(
+        <div onClick={() => {
+        }}>
             <GoogleLogin
                 clientId={'612021615226-0p5kckuqvj8eju72qhinm9sf7unb6bn1.apps.googleusercontent.com'}
                 buttonText={'Sign in with Google'}

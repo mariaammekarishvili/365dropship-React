@@ -1,5 +1,5 @@
 import type from "react";
-import {FAILED_REQUEST, HEADER_MODAL_RUN, RUN_LOADING, SUCCESS_REQUEST} from "../ActionsTypes";
+import {FAILED_REQUEST, HEADER_MODAL_RUN, OPEN_SIMPLE_MODAL, RUN_LOADING, SUCCESS_REQUEST} from "../ActionsTypes";
 
 export const successMessageAction = (data) => {
     return{
@@ -25,6 +25,13 @@ export const headerModalOpenAction = (data) => {
 export const runLoadingAction = (data) => {
     return{
         type: RUN_LOADING,
+        payload: data
+    }
+}
+
+export const openSimpleModalAction = (data) => {
+    return{
+        type: OPEN_SIMPLE_MODAL,
         payload: data
     }
 }
