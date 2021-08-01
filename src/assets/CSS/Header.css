@@ -9,3 +9,11 @@
 #transition-modal-title,#transition-modal-description{
     color: #7A7A7A;
  }
+
+.header {
+    background: #F8F9FA;
+    height: 75px;
+    display: flex;
+    justify-content:space-around;
+    padding: 0 30px 0 13px;
+}

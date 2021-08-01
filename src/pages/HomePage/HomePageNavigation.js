@@ -14,16 +14,24 @@ export const HomePageNavigation = () => {
                     <img src={'https://mk0q365dropshipe482k.kinstacdn.com/wp-content/uploads/2020/06/group-30.png'}/>
                 </div>
                 <div className={'home-page__navigation navigation__item--right'}>
-                    <div>ABOUT</div>
-                    <Link to={profile ? '/catalog' : '/'}>
+                    <Link to={'/about'}>
+                        <div>ABOUT</div>
+                    </Link>
+                    <Link to={'/catalog'}>
                         <div className={'a'}
                         >CATALOG</div>
                     </Link>
-                    <div>SUPPLIERS</div>
+                    <Link to={'/catalog'}>
+                        <div>SUPPLIERS</div>
+                    </Link>
                     <div>HELP CENTER</div>
-                    <div>BLOG</div>
+                    <Link to={'/dashboard'}>
+                         <div>BLOG</div>
+                    </Link>
                     <GoogleAuthorization/>
-                    <div>Log In</div>
+                    <Link to={'/login'}>
+                         <div>Log In</div>
+                    </Link>
                     <div className={'hm-page__nav-button'}>
                         <Button variant="outlined" color="primary">
                             Sign Up Now

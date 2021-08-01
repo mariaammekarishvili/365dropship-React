@@ -17,7 +17,12 @@
     position: absolute;
 
 }
-
+.home-page--center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .home-page__navigation>div{
     margin: auto 15px;
     font-size: 18px;
@@ -25,7 +30,15 @@
     color: white;
 }
 
-.home-page__navigation>div:hover,.a:hover{
+.home-page__navigation>a>div{
+    margin: 28px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+
+.home-page__navigation>a>div:hover,.a:hover{
     color: #61d5df;
 }
 .hm-page__nav-img{
@@ -38,16 +51,17 @@
     justify-content: right;
     position: relative;
     right: 0;
+    width: auto;
+    margin: 0 100px!important;
+    background: none;
 }
 .a{
-    text-decoration: none;
     color: white;
     margin: 26% 15px;
     font-size: 18px;
     font-weight: bold;
 }
 .home-page__tabla{
-    margin: 200px auto 10px auto;
     height: 210px;
     width: 800px;
     background: rgba(53, 60, 85, 0.8);
@@ -55,6 +69,9 @@
     color: white;
     padding: 20px 10px;
 
+}
+a{
+    text-decoration: none;
 }
 .home-page__tabla>h1{
     margin: 1px;

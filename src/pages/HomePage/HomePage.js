@@ -9,6 +9,7 @@ const HomePage= () => {
     return(
         <div className={'home-page'}>
            <HomePageNavigation/>
+            <div className={'home-page--center'}>
            <HomePageMain/>
 
 
@@ -30,7 +31,7 @@ const HomePage= () => {
                     </Button>
                 </Link>
 
-
+            </div>
             </div>
         </div>
     )
