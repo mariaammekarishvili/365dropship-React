@@ -7,12 +7,12 @@ import Modal from './pages/catalog/Modal'
 import {Box, Grid, Hidden} from "@material-ui/core";
 import {products as productsData} from "./API/ProductAPI";
 import Navigation from "./components/common/Navigation";
-import AsideBar from "./asideBar/AsideBar";
+import AsideBar from "./components/asideBar/AsideBar";
 import {useDispatch, useSelector} from "react-redux";
 import {getProductsAction} from "./reducers/ProductReducer/ProductActions";
-import {sortType} from "./SortForReducer";
+import {sortType} from "./pages/catalog/SortForReducer";
 import {adminInformationAction} from "./reducers/ProfileReducer/ProfileActions";
-import {Messages} from "./Messages";
+import {Messages} from "./components/Messages";
 
 const Main = () =>{
     const products = useSelector( state => state.products.productList)

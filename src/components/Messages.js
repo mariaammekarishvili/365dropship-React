@@ -1,4 +1,4 @@
-import {failedMessageAction, successMessageAction} from "./reducers/CommonReducers/CommonAction";
+import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
