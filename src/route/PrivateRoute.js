@@ -1,16 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import {isLogin} from "../utils";
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    const user = useState(localStorage.getItem('user'))
-    const [IsLogin, setIsLogin] = useState(false)
-    if(user){
-        setIsLogin(true)
-    }
 
     return (
         <Route {...rest} render={props => (
-            (IsLogin) ?
+            isLogin() ?
                 <Component {...props} />
                 : <Redirect to="/login" />
         )} />

@@ -18,6 +18,7 @@ import {useState} from "react";
 import {AboutPage} from "./pages/AboutPage/AboutPage";
 import {DashboardPage, dashboardPage} from "./pages/DashboardPage/DashboardPage";
 import PublicRoute from "./route/PublicRoute";
+import PrivateRoute from "./route/PrivateRoute";
 
 function App() {
     const profile = useState(localStorage.getItem('user'))
@@ -28,42 +29,15 @@ function App() {
           <Messages/>
 
           <Switch>
-              <PublicRoute restricted={false} component={<HomePage/>} path={'/'} exact/>
-            {/*<Route exact path='/' >*/}
-            {/*    <HomePage/>*/}
-            {/*</Route>*/}
-
-            <Route path={'/login'}>
-                  <LogIn/>
-            </Route>
-
-              <Route path={'/signup'}>
-                  <SignUp/>
-              </Route>
-
-              <Route path='/catalog/:id?'>
-                  {profile ? <Main/> : history.push('/')}
-              </Route>
-
-              <Route path='/cart'>
-                  {profile ? <Cart/> : history.push('/')}
-              </Route>
-
-              <Route path='/profile'>
-                {profile ? <ProfilePage/> : history.push('/')}
-              </Route>
-
-              <Route path='/users'>
-                  <UsersInformationPage/>
-              </Route>
-
-              <Route path='/about'>
-                  <AboutPage/>
-              </Route>
-              <Route path='/dashboard'>
-                  <DashboardPage/>
-              </Route>
-
+              <PublicRoute restricted={false} component={HomePage} path="/" exact />
+              <PublicRoute restricted={true} component={LogIn} path="/login" exact />
+              <PublicRoute restricted={true} component={SignUp} path="/signup" exact />
+              <PrivateRoute component={Main} path="/catalog/:id?" exact />
+              <PrivateRoute component={Cart} path="/cart" exact />
+              <PrivateRoute component={ProfilePage} path="/profile" exact />
+              <PrivateRoute component={UsersInformationPage} path="/users" exact />
+              <PrivateRoute component={AboutPage} path="/about" exact />
+              <PrivateRoute component={DashboardPage} path="/dashboard" exact />
           </Switch>
       </div>
   );
