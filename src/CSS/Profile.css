@@ -76,6 +76,7 @@
     left: 22px;
     padding: 50px;
     max-width: 1200px;
+    flex-wrap: wrap;
 }
 .profile__but{
     width: 80px;

@@ -21,14 +21,14 @@ export const DashboardPage = () => {
                         <img src={'https://app.365dropship.com/assets/images/svg/wizard4.svg'}/>
 
                     </div>
-                    <div className={'dashboard__first-section-1th'}>
+                    <div className={'dashboard__first-section-1th dashboard__numb'}>
                         <p>1.</p>
                         <p>2.</p>
                         <p>3.</p>
                         <p>4.</p>
                     </div>
                 </div>
-                <img className={'dashboard__map dashboard__first-section'} src={map}/>
+               <Hidden xsDown><img className={'dashboard__map dashboard__first-section'} src={map}/></Hidden>
             </div>
 
         </>

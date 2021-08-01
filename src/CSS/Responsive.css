@@ -3,6 +3,20 @@
         left: 54px !important;
         border-left: 1px solid #d9e2e3 ;
     }
+    .profile__box{
+        flex-direction: column;
+    }
+    .profile-information{
+        margin-left: 0 !important;
+        margin-top: 20px;
+    }
+    .dashboard__numb{
+        display: none !important;
+    }
+    .dashboard__first-section-1th>img{
+        margin-top: 40px !important;
+    }
+
 }
 @media screen and (max-width: 599px) {
     .main,.cart-item__box,.profile-page{

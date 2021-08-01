@@ -7,6 +7,7 @@ import ItemRemoveModal from "../ProdactChangesModals/ItemRemoveModal";
 import SearchBox from "./SearchBox";
 import ProductEditModal from "../ProdactChangesModals/ProductEditModal";
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
+import {Hidden} from "@material-ui/core";
 
 const Header = ({products}) => {
     const selectedId = useSelector(state => state.products.selectedId)
@@ -57,14 +58,16 @@ const Header = ({products}) => {
 
     return (
         <header className="header">
-            <button type="button"
+           <Hidden smDown>
+               <button type="button"
                     className={'button'}
                     value={'select'}
                     onClick={selectTypeChange}>SELECT ALL
-            </button>
-
-            <p className={'header__para'}>selected {selectedId.length} out of {products.length} products </p>
-
+               </button>
+           </Hidden>
+            <Hidden xsDown>
+                <p className={'header__para'}>selected {selectedId.length} out of {products.length} products </p>
+            </Hidden>
             {(selectedId.length > 0) && <button type="button"
                                                 className={'button'}
                                                 value={'clear'}
@@ -84,8 +87,10 @@ const Header = ({products}) => {
             }
             {/*searchbox*/}
             <SearchBox/>
-            <button className={'button'}
-                    onClick={selectedId.length > 0 && addToCart}>ADD TO INVENTORY</button>
+            <Hidden xsDown>
+                <button className={'button'}
+                        onClick={selectedId.length > 0 && addToCart}>ADD TO INVENTORY</button>
+            </Hidden>
         </header>
     )
 }

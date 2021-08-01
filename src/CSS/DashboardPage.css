@@ -20,6 +20,7 @@
 .dashboard__first-section-1th{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .dashboard__first-section-1th>p{
     font-family: Gilroy-med;
