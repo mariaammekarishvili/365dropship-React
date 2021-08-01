@@ -17,6 +17,7 @@ import UsersInformationPage from "./pages/UsersPage/UsersInformationPage";
 import {useState} from "react";
 import {AboutPage} from "./pages/AboutPage/AboutPage";
 import {DashboardPage, dashboardPage} from "./pages/DashboardPage/DashboardPage";
+import PublicRoute from "./route/PublicRoute";
 
 function App() {
     const profile = useState(localStorage.getItem('user'))
@@ -27,10 +28,10 @@ function App() {
           <Messages/>
 
           <Switch>
-
-            <Route exact path='/' >
-                <HomePage/>
-            </Route>
+              <PublicRoute restricted={false} component={<HomePage/>} path={'/'} exact/>
+            {/*<Route exact path='/' >*/}
+            {/*    <HomePage/>*/}
+            {/*</Route>*/}
 
             <Route path={'/login'}>
                   <LogIn/>

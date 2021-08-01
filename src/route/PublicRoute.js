@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { isLogin } from '../utils';
 
 const PublicRoute = ({component: Component, restricted, ...rest}) => {
+    const user = useState(localStorage.getItem('user'))
+    const [IsLogin, setIsLogin] = useState(false)
+    if(user){
+        setIsLogin(true)
+    }
+
     return (
         <Route {...rest} render={props => (
-            isLogin() && restricted ?
-                <Redirect to="/dashboard" />
+           (IsLogin) && restricted ?
+                <Redirect to="/catalog" />
                 : <Component {...props} />
         )} />
     );
