@@ -7,8 +7,9 @@ export const DashboardPage = () => {
 
     return(
         <>
-            <Hidden xsDown><Navigation/></Hidden>
+
             <div className={'dashboard-page'}>
+                <Hidden xsDown><Navigation/></Hidden>
                 <hr/>
                 <div className={'dashboard__first-section'}>
                     <h3>{userInformation.firstName}  {userInformation.lastName}</h3>

@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
-import {GoogleAuthorization} from "../GoogleAuthorization";
+import  "../GoogleAuthorization";
 import {Button} from "@material-ui/core";
+import {render} from 'react-router-dom';
+import GoogleAuthorization from "../GoogleAuthorization";
 
 export const HomePageNavigation = () => {
     const profile = localStorage.getItem('user')
