@@ -2,6 +2,7 @@ import '../CSS/DashboardPage.css'
 import Navigation from "../common/Navigation";
 import {Hidden} from "@material-ui/core";
 import {useSelector} from "react-redux";
+import {DashboardSlider} from "./DashboardSlider";
 export const DashboardPage = () => {
     const userInformation = useSelector(state => state.ProfileReducer.fullInformation)
 
@@ -27,6 +28,7 @@ export const DashboardPage = () => {
                         <p>4.</p>
                     </div>
                 </div>
+                <DashboardSlider/>
             </div>
 
         </>

@@ -2,7 +2,6 @@
 .add-form__box{
     position: absolute;
     left: 54px;
-    border-left: solid 1px #9BE4EB;
     box-shadow: 2px 2px  #F6F6F7;
     background: #F8F9FA;
     min-width: 1200px;
