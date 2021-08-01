@@ -1,4 +1,4 @@
-import Header from "./header/Header";
+import Header from "./components/header/Header";
 import SortSection from "./catalog/SortSection";
 import CatalogItem from "./catalog/CatalogItem";
 import {useEffect} from "react";
@@ -6,7 +6,7 @@ import {useHistory, useParams} from 'react-router-dom'
 import Modal from './catalog/Modal'
 import {Box, Grid, Hidden} from "@material-ui/core";
 import {products as productsData} from "./API/ProductAPI";
-import Navigation from "./common/Navigation";
+import Navigation from "./components/common/Navigation";
 import AsideBar from "./asideBar/AsideBar";
 import {useDispatch, useSelector} from "react-redux";
 import {getProductsAction} from "./reducers/ProductReducer/ProductActions";

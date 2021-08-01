@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {clearProductsAction} from "../reducers/ProductReducer/ProductActions";
+import {clearProductsAction} from "../../reducers/ProductReducer/ProductActions";
 
 const NavigationItem = ({img,round}) => {
     const dispatch = useDispatch()

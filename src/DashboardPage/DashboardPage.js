@@ -1,5 +1,5 @@
 import '../assets/CSS/DashboardPage.css'
-import Navigation from "../common/Navigation";
+import Navigation from "../components/common/Navigation";
 import {Hidden} from "@material-ui/core";
 import {useSelector} from "react-redux";
 import map from '../assets/img/map.PNG'

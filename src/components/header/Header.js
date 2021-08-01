@@ -1,12 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
-import {editProductAction, inputSortAction, refreshStateAction} from "../reducers/ProductReducer/ProductActions";
-import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
-import { addToCart as cartRequest} from "../API/CartAPI";
+import {editProductAction, inputSortAction, refreshStateAction} from "../../reducers/ProductReducer/ProductActions";
+import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../../reducers/ProductReducer/ProductActions";
+import { addToCart as cartRequest} from "../../API/CartAPI";
 import {useHistory} from "react-router-dom";
 import ItemRemoveModal from "../ProdactChangesModals/ItemRemoveModal";
 import SearchBox from "./SearchBox";
 import ProductEditModal from "../ProdactChangesModals/ProductEditModal";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
+import {failedMessageAction, successMessageAction} from "../../reducers/CommonReducers/CommonAction";
 import {Hidden} from "@material-ui/core";
 
 const Header = ({products}) => {

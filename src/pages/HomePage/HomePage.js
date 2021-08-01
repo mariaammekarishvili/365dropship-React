@@ -1,5 +1,5 @@
 import {Button} from "@material-ui/core";
-import '../assets/CSS/HomePage.css';
+import '../../assets/CSS/HomePage.css';
 import {Link, } from "react-router-dom";
 import {HomePageNavigation} from "./HomePageNavigation";
 import {HomePageMain} from "./HomePageMain";

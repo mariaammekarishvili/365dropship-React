@@ -3,7 +3,7 @@ import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography} f
 import {useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
 import {getProduct} from "../API/ProductAPI";
-import {About} from "../ProfilePage/About";
+import {About} from "../pages/ProfilePage/About";
 import {addToCart} from "../API/CartAPI";
 import {useDispatch} from "react-redux";
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";

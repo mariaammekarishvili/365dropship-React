@@ -1,5 +1,5 @@
-import icon from '../assets/img/p.png'
-import desc from '../assets/img/description.png'
+import icon from '../../assets/img/p.png'
+import desc from '../../assets/img/description.png'
 
 export const About = ({description}) => {
     return(

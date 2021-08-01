@@ -1,12 +1,12 @@
-import '../assets/CSS/LogIn-SignUp.css'
+import '../../assets/CSS/LogIn-SignUp.css'
 import {Button, makeStyles, TextField} from "@material-ui/core";
-import {login} from '../API/AuthAPI'
+import {login} from '../../API/AuthAPI'
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
+import {failedMessageAction, successMessageAction} from "../../reducers/CommonReducers/CommonAction";
 import {useDispatch} from "react-redux";
-import {adminInformationAction} from "../reducers/ProfileReducer/ProfileActions";
+import {adminInformationAction} from "../../reducers/ProfileReducer/ProfileActions";
 
 const useStyles = makeStyles((theme) => ({
     root: {

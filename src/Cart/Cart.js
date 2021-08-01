@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
 import {cart} from "../API/CartAPI";
 import {Hidden,} from "@material-ui/core";
-import Navigation from "../common/Navigation";
+import Navigation from "../components/common/Navigation";
 import AsideBar from "../asideBar/AsideBar";
 import '../assets/CSS/AddProduct.css'
 import {useDispatch, useSelector} from "react-redux";
 import '../assets/CSS/cart.css'
 import CartItem from "./CartItem";
-import SearchBox from "../header/SearchBox";
+import SearchBox from "../components/header/SearchBox";
 import {getProductsAction} from "../reducers/ProductReducer/ProductActions";
 import headerCart from '../assets/img/shopping-cart.png'
 

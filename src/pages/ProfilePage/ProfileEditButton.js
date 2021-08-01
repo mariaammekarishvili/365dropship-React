@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {openEditAction} from "../reducers/ProfileReducer/ProfileActions";
+import {openEditAction} from "../../reducers/ProfileReducer/ProfileActions";
 
 export const ProfileEditButton = () => {
     const dispatch = useDispatch()

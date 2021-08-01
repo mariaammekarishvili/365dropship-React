@@ -1,5 +1,5 @@
 import {useHistory} from "react-router-dom";
-import '../assets/CSS/Profile.css'
+import '../../assets/CSS/Profile.css'
 
 const LogOut = () => {
     const history = useHistory()

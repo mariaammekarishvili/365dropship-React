@@ -1,8 +1,8 @@
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import {userDelete} from "../API/UserAPI";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
-import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
+import {userDelete} from "../../API/UserAPI";
+import {failedMessageAction, successMessageAction} from "../../reducers/CommonReducers/CommonAction";
+import {refreshStateAction} from "../../reducers/ProductReducer/ProductActions";
 import TableBody from "@material-ui/core/TableBody";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";

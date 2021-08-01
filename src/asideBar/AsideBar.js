@@ -1,6 +1,6 @@
 import AsideFilter from "./AsideFilter";
 import AsideSelect from "./AsideSelect";
-import Button from "../common/Button";
+import Button from "../components/common/Button";
 import {useState} from "react";
 import AsideCategory from "./AsideCategory";
 import {Link, useParams} from "react-router-dom";

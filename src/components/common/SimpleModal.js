@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {openSimpleModalAction} from "../reducers/CommonReducers/CommonAction";
+import {openSimpleModalAction} from "../../reducers/CommonReducers/CommonAction";
 import {Fade} from "@material-ui/core";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from '@material-ui/core/styles';

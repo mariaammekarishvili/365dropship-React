@@ -2,19 +2,19 @@ import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Hidden} from "@material-ui/core";
 import LogOut from "./LogOut";
-import Navigation from "../common/Navigation";
-import '../assets/CSS/Profile.css'
-import '../assets/CSS/AddProduct.css'
+import Navigation from "../../components/common/Navigation";
+import '../../assets/CSS/Profile.css'
+import '../../assets/CSS/AddProduct.css'
 import {useDispatch, useSelector} from "react-redux";
-import {getUserInformation} from "../API/UserAPI";
-import {adminInformationAction, fetchFullInfoAction} from "../reducers/ProfileReducer/ProfileActions";
+import {getUserInformation} from "../../API/UserAPI";
+import {adminInformationAction, fetchFullInfoAction} from "../../reducers/ProfileReducer/ProfileActions";
 import {RatingStars} from "./RatingStars";
 import {UserStatus} from "./UserStatus";
 import {About} from "./About";
 import {Link} from "react-router-dom";
 import {ProfileEditButton} from "./ProfileEditButton";
 import ProfileModal from "./ProfileModal";
-import ProfPic from "../assets/img/profile.jpg"
+import ProfPic from "../../assets/img/profile.jpg"
 
 const useStyles = makeStyles((theme) => ({
     root: {

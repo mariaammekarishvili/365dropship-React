@@ -1,6 +1,6 @@
-import '../assets/CSS/Profile.css'
-import star from '../assets/img/star-ico.ico'
-import emptyStar from '../assets/img/star-empty.ico'
+import '../../assets/CSS/Profile.css'
+import star from '../../assets/img/star-ico.ico'
+import emptyStar from '../../assets/img/star-empty.ico'
 export const RatingStars = () => {
    return(
         <div className={'rating-stars'}>

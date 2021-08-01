@@ -7,13 +7,13 @@ import './assets/CSS/cart.css'
 
 import Main from "./Main";
 import {Route, Switch, useHistory} from "react-router-dom";
-import ProfilePage from "./ProfilePage/ProfilePage";
-import HomePage from "./HomePage/HomePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import HomePage from "./pages/HomePage/HomePage";
 import Cart from "./Cart/Cart";
-import LogIn from "./common/LogIn";
-import SignUp from "./common/SignUp";
+import LogIn from "./components/common/LogIn";
+import SignUp from "./components/common/SignUp";
 import {Messages} from "./Messages";
-import UsersInformationPage from "./UsersPage/UsersInformationPage";
+import UsersInformationPage from "./pages/UsersPage/UsersInformationPage";
 import {useState} from "react";
 import {AboutPage} from "./pages/AboutPage/AboutPage";
 import {DashboardPage, dashboardPage} from "./DashboardPage/DashboardPage";
