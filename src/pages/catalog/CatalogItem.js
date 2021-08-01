@@ -1,18 +1,18 @@
 import {useEffect, useState} from "react";
 import Cost from "./Cost";
 import {Link,useHistory} from "react-router-dom";
-import cart from '../assets/img/grocery-cart.png'
-import more from '../assets/img/more.png'
-import {addToCart, removeFromCart} from "../API/CartAPI";
+import cart from '../../assets/img/grocery-cart.png'
+import more from '../../assets/img/more.png'
+import {addToCart, removeFromCart} from "../../API/CartAPI";
 import {useDispatch, useSelector} from "react-redux";
-import '../assets/CSS/CatalogItem.css'
+import '../../assets/CSS/CatalogItem.css'
 import {
     editProductAction,
     selectProductIdAction,
     selectProductQtyAction,
     unselectProductIdAction,
-} from "../reducers/ProductReducer/ProductActions";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
+} from "../../reducers/ProductReducer/ProductActions";
+import {failedMessageAction, successMessageAction} from "../../reducers/CommonReducers/CommonAction";
 
 const CatalogItem = ({title,price,img,id,catalog,products}) => {
     const selectType = useSelector(state => state.products.selectType)

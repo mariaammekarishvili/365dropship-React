@@ -16,7 +16,7 @@ import {Messages} from "./Messages";
 import UsersInformationPage from "./pages/UsersPage/UsersInformationPage";
 import {useState} from "react";
 import {AboutPage} from "./pages/AboutPage/AboutPage";
-import {DashboardPage, dashboardPage} from "./DashboardPage/DashboardPage";
+import {DashboardPage, dashboardPage} from "./pages/DashboardPage/DashboardPage";
 
 function App() {
     const profile = useState(localStorage.getItem('user'))

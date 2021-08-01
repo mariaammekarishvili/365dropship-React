@@ -1,9 +1,9 @@
 import Header from "./components/header/Header";
-import SortSection from "./catalog/SortSection";
-import CatalogItem from "./catalog/CatalogItem";
+import SortSection from "./pages/catalog/SortSection";
+import CatalogItem from "./pages/catalog/CatalogItem";
 import {useEffect} from "react";
 import {useHistory, useParams} from 'react-router-dom'
-import Modal from './catalog/Modal'
+import Modal from './pages/catalog/Modal'
 import {Box, Grid, Hidden} from "@material-ui/core";
 import {products as productsData} from "./API/ProductAPI";
 import Navigation from "./components/common/Navigation";

@@ -1,6 +1,6 @@
 import {Button, FormControl, InputLabel, ListSubheader, makeStyles, MenuItem, Select} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {changeSortState} from "../reducers/ProductReducer/ProductActions";
+import {changeSortState} from "../../reducers/ProductReducer/ProductActions";
 
 
 const useStyles = makeStyles((theme) => ({

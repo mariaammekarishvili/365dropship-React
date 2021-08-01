@@ -2,11 +2,11 @@ import Cost from "./Cost";
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography} from "@material-ui/core";
 import {useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
-import {getProduct} from "../API/ProductAPI";
-import {About} from "../pages/ProfilePage/About";
-import {addToCart} from "../API/CartAPI";
+import {getProduct} from "../../API/ProductAPI";
+import {About} from "../ProfilePage/About";
+import {addToCart} from "../../API/CartAPI";
 import {useDispatch} from "react-redux";
-import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
+import {failedMessageAction, successMessageAction} from "../../reducers/CommonReducers/CommonAction";
 
 const Modal = ({openId}) => {
 
