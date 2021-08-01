@@ -5,6 +5,7 @@ import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import {useDispatch} from "react-redux";
 import {failedMessageAction, successMessageAction} from "../../reducers/CommonReducers/CommonAction";
+import {HomeLogo} from "./HomeLogo";
 
 const signUpValidation = yup.object().shape({
     firstName:          yup.string().min(4).max(20),
@@ -32,6 +33,7 @@ const SignUp = () => {
 
     return (
       <div className={'form--background'}>
+          <HomeLogo/>
           <div className={'log-in--flex'}>
           <h2 className={'log-in__header'}>Sign Up</h2>
           <Formik enableReinitialize

@@ -112,4 +112,8 @@ a{
 .profile-page{
   min-width: 1000px;
 }
-
+.home-logo{
+  position: absolute;
+  left: 30px;
+  top: 10px;
+}

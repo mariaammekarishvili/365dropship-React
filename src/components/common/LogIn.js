@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom";
 import {failedMessageAction, successMessageAction} from "../../reducers/CommonReducers/CommonAction";
 import {useDispatch} from "react-redux";
 import {adminInformationAction} from "../../reducers/ProfileReducer/ProfileActions";
+import {HomeLogo} from "./HomeLogo";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -56,6 +57,7 @@ const LogIn = () => {
 
     return(
         <div className={'log-in form--background'}>
+            <HomeLogo/>
         <form onSubmit={loginAction} className={'log-in--flex'}>
            <h2 className={'log-in__header'}>Log In</h2>
            <input type={'text'} name={'email'}
