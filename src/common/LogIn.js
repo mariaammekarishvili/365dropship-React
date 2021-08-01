@@ -1,4 +1,4 @@
-import '../CSS/LogIn-SignUp.css'
+import '../assets/CSS/LogIn-SignUp.css'
 import {Button, makeStyles, TextField} from "@material-ui/core";
 import {login} from '../API/AuthAPI'
 import {useEffect, useState} from "react";

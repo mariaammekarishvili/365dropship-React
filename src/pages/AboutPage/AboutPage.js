@@ -1,8 +1,8 @@
-import '../CSS/AboutPage.css'
+import '../../assets/CSS/AboutPage.css'
 import {AboutPageMap} from "./AboutPageMap";
-import Navigation from "../common/Navigation";
+import Navigation from "../../common/Navigation";
 import {Hidden} from "@material-ui/core";
-import pic from '../img/webiz.png'
+import pic from '../../assets/img/webiz.png'
 export const AboutPage = () => {
     return(
         <>

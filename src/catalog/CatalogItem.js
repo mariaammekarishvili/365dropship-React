@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
 import Cost from "./Cost";
 import {Link,useHistory} from "react-router-dom";
-import cart from '../img/grocery-cart.png'
-import more from '../img/more.png'
+import cart from '../assets/img/grocery-cart.png'
+import more from '../assets/img/more.png'
 import {addToCart, removeFromCart} from "../API/CartAPI";
 import {useDispatch, useSelector} from "react-redux";
-import '../CSS/CatalogItem.css'
+import '../assets/CSS/CatalogItem.css'
 import {
     editProductAction,
     selectProductIdAction,

@@ -8,10 +8,10 @@ import {
     headerModalOpenAction,
     successMessageAction
 } from "../reducers/CommonReducers/CommonAction";
-import '../CSS/Header.css'
+import '../assets/CSS/Header.css'
 import {deleteProduct} from "../API/ProductAPI";
 import {editProductAction, refreshStateAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
-import {useStyles} from "../CSS/ModalStyle";
+import {useStyles} from "../assets/CSS/ModalStyle";
 import {useHistory} from "react-router-dom";
 
 export default function ItemRemoveModal() {

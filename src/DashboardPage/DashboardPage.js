@@ -1,8 +1,8 @@
-import '../CSS/DashboardPage.css'
+import '../assets/CSS/DashboardPage.css'
 import Navigation from "../common/Navigation";
 import {Hidden} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import map from'../img/map.PNG'
+import map from '../assets/img/map.PNG'
 export const DashboardPage = () => {
     const userInformation = useSelector(state => state.ProfileReducer.fullInformation)
 

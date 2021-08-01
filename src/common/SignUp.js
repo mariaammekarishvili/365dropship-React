@@ -1,4 +1,4 @@
-import '../CSS/LogIn-SignUp.css'
+import '../assets/CSS/LogIn-SignUp.css'
 import {signUp} from "../API/AuthAPI";
 import {useHistory} from "react-router-dom";
 import {Form, Formik, Field, ErrorMessage} from 'formik'

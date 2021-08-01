@@ -1,9 +1,9 @@
-import './CSS/App.css';
-import './CSS/Responsive.css'
-import './CSS/AsideBar.css'
-import './CSS/Catalog.css'
-import './CSS/Navigation.css'
-import './CSS/cart.css'
+import './assets/CSS/App.css';
+import './assets/CSS/Responsive.css'
+import './assets/CSS/AsideBar.css'
+import './assets/CSS/Catalog.css'
+import './assets/CSS/Navigation.css'
+import './assets/CSS/cart.css'
 
 import Main from "./Main";
 import {Route, Switch, useHistory} from "react-router-dom";
@@ -15,7 +15,7 @@ import SignUp from "./common/SignUp";
 import {Messages} from "./Messages";
 import UsersInformationPage from "./UsersPage/UsersInformationPage";
 import {useState} from "react";
-import {AboutPage} from "./AboutPage/AboutPage";
+import {AboutPage} from "./pages/AboutPage/AboutPage";
 import {DashboardPage, dashboardPage} from "./DashboardPage/DashboardPage";
 
 function App() {

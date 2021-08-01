@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import check from '../img/check.png'
+import check from '../assets/img/check.png'
 
 export const UserStatus = () => {
     const userInformation = useSelector(state => state.ProfileReducer.fullInformation)

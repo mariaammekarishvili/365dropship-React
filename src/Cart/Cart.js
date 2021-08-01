@@ -3,13 +3,13 @@ import {cart} from "../API/CartAPI";
 import {Hidden,} from "@material-ui/core";
 import Navigation from "../common/Navigation";
 import AsideBar from "../asideBar/AsideBar";
-import '../CSS/AddProduct.css'
+import '../assets/CSS/AddProduct.css'
 import {useDispatch, useSelector} from "react-redux";
-import '../CSS/cart.css'
+import '../assets/CSS/cart.css'
 import CartItem from "./CartItem";
 import SearchBox from "../header/SearchBox";
 import {getProductsAction} from "../reducers/ProductReducer/ProductActions";
-import headerCart from '../img/shopping-cart.png'
+import headerCart from '../assets/img/shopping-cart.png'
 
 const Cart = () => {
     const products = useSelector( state => state.products.productList)

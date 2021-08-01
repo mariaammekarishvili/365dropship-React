@@ -2,17 +2,17 @@ import {Fade} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
-import '../CSS/AddProduct.css'
+import '../assets/CSS/AddProduct.css'
 import {useHistory} from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
-import {useStyles} from "../CSS/ModalStyle";
+import {useStyles} from "../assets/CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";
 import {openEditAction} from "../reducers/ProfileReducer/ProfileActions";
 import {editUserInformation} from "../API/UserAPI";
 import {refreshStateAction} from "../reducers/ProductReducer/ProductActions";
-import mail from '../img/email.png';
-import name from '../img/name.png'
-import pass from '../img/key.png'
+import mail from '../assets/img/email.png';
+import name from '../assets/img/name.png'
+import pass from '../assets/img/key.png'
 import {failedMessageAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const editProfileValidation = yup.object().shape({

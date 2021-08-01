@@ -5,10 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {creatProduct, getProduct, updateProduct} from "../API/ProductAPI";
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
-import '../CSS/AddProduct.css'
+import '../assets/CSS/AddProduct.css'
 import {useHistory} from "react-router-dom";
 import Backdrop from "@material-ui/core/Backdrop";
-import {useStyles} from "../CSS/ModalStyle";
+import {useStyles} from "../assets/CSS/ModalStyle";
 import Modal from "@material-ui/core/Modal";
 import {
     editProductAction,
@@ -16,9 +16,9 @@ import {
     unselectAllIdAction,
     unselectProductIdAction
 } from "../reducers/ProductReducer/ProductActions";
-import price from '../img/price-tag.png'
-import title from '../img/title.png'
-import link from '../img/link.png'
+import price from '../assets/img/price-tag.png'
+import title from '../assets/img/title.png'
+import link from '../assets/img/link.png'
 import {failedMessageAction, headerModalOpenAction, successMessageAction} from "../reducers/CommonReducers/CommonAction";
 
 const creatProductValidation = yup.object().shape({

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {getAllUser} from "../API/UserAPI";
 import {useSelector} from "react-redux";
-import '../CSS/UsersTablePage.css'
+import '../assets/CSS/UsersTablePage.css'
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,7 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 import Navigation from "../common/Navigation";
 import {Hidden} from "@material-ui/core";
-import group from "../img/group.png";
+import group from "../assets/img/group.png";
 import {UsersTableHead} from "./UsersTableHead";
 import {UsersTableBody} from "./UsersTableBody";
 

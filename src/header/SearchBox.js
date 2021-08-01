@@ -1,6 +1,6 @@
 import {inputSortAction} from "../reducers/ProductReducer/ProductActions";
 import {useDispatch, useSelector} from "react-redux";
-import search from '../img/search.png'
+import search from '../assets/img/search.png'
 
 const SearchBox = () => {
     const inputText = useSelector(state => state.products.inputText);
