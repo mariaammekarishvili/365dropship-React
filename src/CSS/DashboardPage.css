@@ -32,6 +32,11 @@
 }
 .dashboard__first-section>h3{
     text-align: left;
-    color: #3f3d3d;
+    color: #383333;
     margin-bottom: 30px;
 }
+.dashboard__map{
+    margin-top: 0;
+}
+
+

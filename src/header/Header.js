@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {editProductAction, inputSortAction} from "../reducers/ProductReducer/ProductActions";
+import {editProductAction, inputSortAction, refreshStateAction} from "../reducers/ProductReducer/ProductActions";
 import {selectAllAction, selectProductIdAction, unselectAllIdAction} from "../reducers/ProductReducer/ProductActions";
 import { addToCart as cartRequest} from "../API/CartAPI";
 import {useHistory} from "react-router-dom";
@@ -13,6 +13,7 @@ const Header = ({products}) => {
     const selectedQty = useSelector(state => state.products.selectedQty)
     const selectedType = useSelector(state => state.products.selectType)
     const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
+    const refresh = useSelector(state => state.products.needRefresh)
     const dispatch = useDispatch();
 
     const handleOpenForEdit = () => {
@@ -37,16 +38,20 @@ const Header = ({products}) => {
         if (selectedType === 'select') {
             for (let i = 0; i < selectedId.length; i++) {
                 const response = await cartRequest(selectedId[i], 1)
+                dispatch(successMessageAction(true))
+                dispatch(selectAllAction('clear'))
             }
         } else {
             for (let i = 0; i < selectedId.length; i++) {
                 const response = await cartRequest(selectedId[i], selectedQty[i])
                     .then(res => {
                         dispatch(successMessageAction(true))
+                        dispatch(selectAllAction('clear'))
                     }).catch(err => dispatch(failedMessageAction(true)))
             }
         }
         dispatch(unselectAllIdAction([]))
+        dispatch(refreshStateAction(!refresh))
     }
 
 

@@ -18,6 +18,7 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
     const selectType = useSelector(state => state.products.selectType)
     const selectedId = useSelector(state => state.products.selectedId)
     const isAdmin = useSelector(state => state.ProfileReducer.isAdmin)
+    const refresh = useSelector(state => state.products.needRefresh)
     const [itemSelected, setItemSelected] = useState(false)
     const [qtyNumb, setQtyNumb] = useState(1)
     const dispatch = useDispatch()
@@ -39,10 +40,12 @@ const CatalogItem = ({title,price,img,id,catalog,products}) => {
             setItemSelected(true)
         } else if (selectType === 'clear' && selectedId.length === 0) {
             setItemSelected(false)
+        }else if(selectedId.length === 0){
+            setItemSelected(false)
         } else {
             setItemSelected(itemSelected)
         }
-    }, [selectType,selectedId])
+    }, [selectType,selectedId,refresh])
 
     const qtyNumberSelect = (e) => {
         if (e.target.value === 'plus') {
